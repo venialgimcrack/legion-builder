@@ -1,0 +1,19 @@
+{
+  "name": "legion-builder",
+  "version": "0.0.1",
+  "description": "List builder for Star Wars: Legion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/venialgimcrack/legion-builder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/venialgimcrack/legion-builder/issues"
+  },
+  "homepage": "https://github.com/venialgimcrack/legion-builder#readme"
+}
