@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import Home from './Home';
 
 export default class Main extends Component {
     render () {
-        return <div>Legion Builder</div>;
+        return (
+            <Router>
+                <Route path="/" exact component={Home} />
+            </Router>
+        );
     }
 };
