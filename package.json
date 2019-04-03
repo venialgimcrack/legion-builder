@@ -1,26 +1,27 @@
 {
-  "name": "legion-builder",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8"
-  },
+  "name": "lb-server",
+  "version": "0.0.1",
+  "description": "Legion Builder server-side APIs.",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --no-watch",
-    "eject": "react-scripts eject"
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node server.js",
+    "client": "node start-client.js"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/venialgimcrack/legion-builder.git"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "author": "Gimcrack",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/venialgimcrack/legion-builder/issues"
+  },
+  "homepage": "https://github.com/venialgimcrack/legion-builder#readme",
+  "devDependencies": {
+    "concurrently": "^4.1.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
