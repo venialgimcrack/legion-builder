@@ -1,6 +1,7 @@
 {
   "name": "lb-server",
   "version": "0.0.1",
+  "private": true,
   "description": "Legion Builder server-side APIs.",
   "main": "server.js",
   "scripts": {
