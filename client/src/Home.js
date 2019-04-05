@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { logout } from './actions/login';
-
 class Home extends Component {
     render () {
         return this.props.isAuthenticated ? (
@@ -12,9 +10,6 @@ class Home extends Component {
                     <li><Link to="/lists">Lists</Link></li>
                     <li><Link to="/collection">Collection</Link></li>
                 </ul>
-                <div>
-                    <button onClick={this.props.logout}>Log me out</button>
-                </div>
             </div>
         ) : (
             <div>
@@ -33,8 +28,6 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = {
-    logout
-};
+const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

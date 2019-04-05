@@ -18,7 +18,7 @@ class LoginPage extends Component {
             <div>
                 <div>Login Form</div>
                 <div>
-                    <button onClick={this.props.login}>Log me in!</button>
+                    <button onClick={this.props.login}>Log in</button>
                 </div>
             </div>
         );

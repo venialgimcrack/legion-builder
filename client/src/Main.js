@@ -3,6 +3,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Route } from 'react-router-dom';
 
 import Collection from './Collection';
+import Header from './Header';
 import Home from './Home';
 import Lists from './Lists';
 import LoginPage from './LoginPage';
@@ -12,10 +13,7 @@ import Signup from './Signup';
 const Main = ({ history }) => {
     return (
         <div>
-            <div>
-                Legion Builder
-            </div>
-            <hr/>
+            <Header />
             <ConnectedRouter history={history}>
                 <Route path="/" exact component={Home} />
                 <Route path="/login" component={LoginPage} />
