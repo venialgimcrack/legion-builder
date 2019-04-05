@@ -27,7 +27,7 @@ router.post('/register', (req, res) => {
             const newUser = new User({
                 name: req.body.name,
                 email: req.body.email,
-                password: req.body.password
+                password: req.body.password1
             });
 
             bcrypt.genSalt(10, (err, salt) => {
@@ -61,7 +61,7 @@ router.post('/login', (req, res) => {
                 return res.status(404).json({ emailnotfound: 'Email not found' });
             }
 
-            bcrypt.compare(password, user.password, isMatch => {
+            bcrypt.compare(password, user.password, (err, isMatch) => {
                 if (isMatch) {
                     const payload = {
                         id: user.id,
