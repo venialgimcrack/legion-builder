@@ -7,11 +7,11 @@ const INITIAL_STATE = {
 const user = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case ActionTypes.LOGIN_SUCCESS:
-            return { isAuthenticated: true };
+            return Object.assign({}, state, { isAuthenticated: true });
         case ActionTypes.LOGIN_FAILURE:
         case ActionTypes.LOGOUT_SUCCESS:
         case ActionTypes.LOGOUT_FAILURE:
-            return { isAuthenticated: false };
+            return Object.assign({}, state, { isAuthenticated: false });
         default:
             return state;
     }
