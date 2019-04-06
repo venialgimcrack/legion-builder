@@ -3,12 +3,14 @@ import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 
+import errors from './reducers/errors';
 import user from './reducers/user';
 
 export const history = createBrowserHistory();
 
 const reducers = combineReducers({
     router : connectRouter(history),
+    errors,
     user
 });
 

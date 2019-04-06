@@ -1,17 +1,24 @@
 import ActionTypes from '../actions/ActionTypes';
 
 const INITIAL_STATE = {
-    isAuthenticated: false
+    isAuthenticated: false,
+    user: {}
 };
 
 const user = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case ActionTypes.LOGIN_SUCCESS:
-            return Object.assign({}, state, { isAuthenticated: true });
-        case ActionTypes.LOGIN_FAILURE:
+            return Object.assign({}, state, {
+                isAuthenticated: !!action.payload,
+                user: action.payload
+            });
+
         case ActionTypes.LOGOUT_SUCCESS:
-        case ActionTypes.LOGOUT_FAILURE:
-            return Object.assign({}, state, { isAuthenticated: false });
+            return Object.assign({}, state, {
+                isAuthenticated: false,
+                user: {}
+            });
+
         default:
             return state;
     }
