@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 
+import { register } from './actions/register';
+
 class Register extends Component {
     constructor() {
         super();
@@ -28,13 +30,11 @@ class Register extends Component {
             password2: this.state.password2
         };
 
-        console.log(registerData);
+        this.props.register(registerData, this.props.history);
     };
 
     render() {
         const { errors, redirect } = this.props;
-
-        console.log(errors);
 
         if (redirect) {
             return <Redirect to="/" />
@@ -47,18 +47,22 @@ class Register extends Component {
                     <div>
                         <label htmlFor="name">Name</label>
                         <input id="name" type="text" value={this.state.name} onChange={this.onChange} />
+                        <span>{errors.name || ''}</span>
                     </div>
                     <div>
                         <label htmlFor="email">Email</label>
                         <input id="email" type="email" value={this.state.email} onChange={this.onChange} />
+                        <span>{errors.email || ''}</span>
                     </div>
                     <div>
                         <label htmlFor="password1">Password</label>
                         <input id="password1" type="password" value={this.state.password1} onChange={this.onChange} />
+                        <span>{errors.password1 || ''}</span>
                     </div>
                     <div>
                         <label htmlFor="password2">Confirm Password</label>
                         <input id="password2" type="password" value={this.state.password2} onChange={this.onChange} />
+                        <span>{errors.password2 || ''}</span>
                     </div>
                     <div>
                         <button type="submit">Register</button>
@@ -77,6 +81,8 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+    register
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
