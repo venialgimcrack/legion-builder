@@ -1,3 +1,3 @@
 module.exports = {
-    JWT_TOKEN_KEY: ''
+    JWT_TOKEN_KEY: 'lb-jwt-token'
 };
