@@ -3,23 +3,22 @@ import jwt_decode from 'jwt-decode';
 
 import ActionTypes from './ActionTypes';
 import setAuthToken from '../utils/setAuthToken';
+import { JWT_TOKEN_KEY } from '../utils/constants';
 
-const TOKEN_KEY = 'lb-jwt-token';
-
-const loginSuccess = user => {
+export const loginSuccess = user => {
     return {
         type: ActionTypes.LOGIN_SUCCESS,
         payload: user
     };
 };
 
-const logoutSuccess = () => {
+export const logoutSuccess = () => {
     return {
         type: ActionTypes.LOGOUT_SUCCESS
     };
 };
 
-const loginFailure = errors => {
+export const loginFailure = errors => {
     return {
         type: ActionTypes.LOGIN_FAILURE,
         payload: errors
@@ -32,7 +31,7 @@ export const login = userData => {
             .then(res => {
                 const { token } = res.data;
 
-                localStorage.setItem(TOKEN_KEY, token);
+                localStorage.setItem(JWT_TOKEN_KEY, token);
                 setAuthToken(token);
 
                 const decoded = jwt_decode(token);
@@ -47,7 +46,7 @@ export const login = userData => {
 
 export const logout = () => {
     return dispatch => {
-        localStorage.removeItem(TOKEN_KEY);
+        localStorage.removeItem(JWT_TOKEN_KEY);
         setAuthToken(null);
 
         dispatch(logoutSuccess());
