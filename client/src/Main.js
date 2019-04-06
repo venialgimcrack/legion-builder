@@ -8,7 +8,7 @@ import Home from './Home';
 import Lists from './Lists';
 import LoginPage from './LoginPage';
 import PrivateRoute from './PrivateRoute';
-import Signup from './Signup';
+import Register from './Register';
 
 const Main = ({ history }) => {
     return (
@@ -17,7 +17,7 @@ const Main = ({ history }) => {
             <ConnectedRouter history={history}>
                 <Route path="/" exact component={Home} />
                 <Route path="/login" component={LoginPage} />
-                <Route path="/signup" component={Signup} />
+                <Route path="/register" component={Register} />
                 <PrivateRoute path="/lists" component={Lists} />
                 <PrivateRoute path="/collection" component={Collection} />
             </ConnectedRouter>
