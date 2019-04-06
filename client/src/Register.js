@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
 
 class Register extends Component {
     constructor() {
@@ -8,8 +10,7 @@ class Register extends Component {
             name: '',
             email: '',
             password1: '',
-            password2: '',
-            errors: {}
+            password2: ''
         };
     }
 
@@ -18,6 +19,8 @@ class Register extends Component {
     };
 
     onSubmit = e => {
+        e.preventDefault();
+
         const registerData = {
             name: this.state.name,
             email: this.state.email,
@@ -29,7 +32,13 @@ class Register extends Component {
     };
 
     render() {
-        const { errors } = this.state;
+        const { errors, redirect } = this.props;
+
+        console.log(errors);
+
+        if (redirect) {
+            return <Redirect to="/" />
+        }
 
         return (
             <div>
@@ -37,27 +46,37 @@ class Register extends Component {
                 <form noValidate onSubmit={this.onSubmit}>
                     <div>
                         <label htmlFor="name">Name</label>
-                        <input id="name" type="text" value={this.state.name} error={errors.name} onChange={this.onChange} />
+                        <input id="name" type="text" value={this.state.name} onChange={this.onChange} />
                     </div>
                     <div>
                         <label htmlFor="email">Email</label>
-                        <input id="email" type="email" value={this.state.email} error={errors.email} onChange={this.onChange} />
+                        <input id="email" type="email" value={this.state.email} onChange={this.onChange} />
                     </div>
                     <div>
                         <label htmlFor="password1">Password</label>
-                        <input id="password1" type="password" value={this.state.password1} error={errors.password} onChange={this.onChange} />
+                        <input id="password1" type="password" value={this.state.password1} onChange={this.onChange} />
                     </div>
                     <div>
                         <label htmlFor="password2">Confirm Password</label>
-                        <input id="password2" type="password" value={this.state.password2} error={errors.password} onChange={this.onChange} />
+                        <input id="password2" type="password" value={this.state.password2} onChange={this.onChange} />
                     </div>
                     <div>
                         <button type="submit">Register</button>
                     </div>
+                    <div>Already have an account? <Link to="/login">Login</Link></div>
                 </form>
             </div>
         );
     }
 };
 
-export default Register;
+const mapStateToProps = state => {
+    return {
+        errors: state.errors,
+        redirect: state.user.isAuthenticated
+    };
+};
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

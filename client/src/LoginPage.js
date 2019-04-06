@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import { login } from './actions/login';
 
@@ -55,6 +55,7 @@ class LoginPage extends Component {
                     <div>
                         <button type="submit">Login</button>
                     </div>
+                    <div>Don't have an account? <Link to="/register">Register</Link></div>
                 </form>
             </div>
         );
