@@ -2,6 +2,7 @@
   "name": "legion-builder",
   "version": "0.1.0",
   "private": true,
+  "description": "Legion Builder client application",
   "dependencies": {
     "axios": "^0.18.0",
     "connected-react-router": "^6.3.2",
