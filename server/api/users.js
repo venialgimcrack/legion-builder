@@ -7,6 +7,8 @@ const express = require('express'),
 const validateRegister = require('../validation/register'),
     validateLogin = require('../validation/login');
 
+const SALT_ROUNDS = 10;
+
 const User = require('../models/User');
 
 router.post('/register', (req, res) => {
@@ -30,18 +32,19 @@ router.post('/register', (req, res) => {
                 password: req.body.password1
             });
 
-            bcrypt.genSalt(10, (err, salt) => {
-                bcrypt.hash(newUser.password, salt, (err, hash) => {
-                    if (err) {
-                        throw err;
-                    }
-
+            return bcrypt.hash(newUser.password, SALT_ROUNDS)
+                .then(hash => {
                     newUser.password = hash;
-                    newUser.save()
-                        .then(user => res.json(user))
-                        .catch(ex => console.error(ex));
+
+                    return newUser.save();
+                })
+                .then(user => {
+                    return res.json(user);
+                })
+                .catch(err => {
+                    return res.status(500)
+                        .json({ internal: 'Internal server error' });
                 });
-            });
         });
 });
 
@@ -58,34 +61,42 @@ router.post('/login', (req, res) => {
     User.findOne({ email })
         .then(user => {
             if (!user) {
-                return res.status(400).json({ email: 'Email not found' });
+                return res.status(400)
+                    .json({ email: 'Email not found' });
             }
 
-            bcrypt.compare(password, user.password, (err, isMatch) => {
-                if (isMatch) {
-                    const payload = {
-                        id: user.id,
-                        name: user.name
-                    };
+            return bcrypt.compare(password, user.password)
+                .then(result => {
+                    if (result) {
+                        const payload = {
+                                id: user.id,
+                                name: user.name
+                            };
 
-                    jwt.sign(
-                        payload,
-                        keys.secretOrKey,
-                        {
-                            expiresIn: 31556926
-                        },
-                        (err, token) => {
-                            res.json({
+                        try {
+                            let token = jwt.sign(payload, keys.secretOrKey, { expiresIn: 31556926 });
+
+                            return res.json({
                                 success: true,
-                                token: 'Bearer ' + token
+                                token: `Bearer ${token}`
                             });
+
+                        } catch (ex) {
+                            console.error(ex);
+                            return res.status(500)
+                                .json({ internal: 'Internal server error' });
                         }
-                    );
-                
-                } else {
-                    return res.status(400).json({ password: 'Password incorrect' });
-                }
-            });
+
+                    } else {
+                        return res.status(400)
+                            .json({ password: 'Password incorrect' });
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    return res.status(500)
+                        .json({ internal: 'Internal server error' });
+                });
         });
 });
 
