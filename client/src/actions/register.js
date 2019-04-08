@@ -1,4 +1,5 @@
 import axios from 'axios';
+import _ from 'lodash';
 
 import ActionTypes from './ActionTypes';
 
@@ -22,6 +23,12 @@ export const register = (userData, history) => {
                 dispatch(registerSuccess());
                 history.push('/login');
             })
-            .catch(err => dispatch(registerFailure(err.response.data)));
+            .catch(err => {
+                console.error(err);
+
+                let errors = _.get(err, 'response.data', {});
+
+                dispatch(registerFailure(errors));
+            });
     };
 };

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
+import _ from 'lodash';
 
 import ActionTypes from './ActionTypes';
 import setAuthToken from '../utils/setAuthToken';
@@ -39,7 +40,11 @@ export const login = userData => {
                 dispatch(loginSuccess(decoded));
             })
             .catch(err => {
-                dispatch(loginFailure(err.response.data));
+                console.error(err);
+
+                let errors = _.get(err, 'response.data', {});
+
+                dispatch(loginFailure(errors));
             });
     };
 };
