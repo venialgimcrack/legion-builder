@@ -9,7 +9,7 @@ const validateRegister = require('../validation/register'),
 
 const SALT_ROUNDS = 10;
 
-const User = require('../models/User');
+const User = require('../models/User').model;
 
 router.post('/register', (req, res) => {
     const { errors, isValid } = validateRegister(req.body);
