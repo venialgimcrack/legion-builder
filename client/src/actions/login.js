@@ -26,6 +26,13 @@ export const loginFailure = errors => {
     }
 };
 
+export const clearErrors = () => {
+    return {
+        type: ActionTypes.CLEAR_ERRORS,
+        payload: [ 'login', 'register' ]
+    }
+};
+
 export const login = userData => {
     return dispatch => {
         axios.post('/api/users/login', userData)
@@ -38,6 +45,7 @@ export const login = userData => {
                 const decoded = jwt_decode(token);
 
                 dispatch(loginSuccess(decoded));
+                dispatch(clearErrors());
             })
             .catch(err => {
                 console.error(err);
@@ -55,5 +63,6 @@ export const logout = () => {
         setAuthToken(null);
 
         dispatch(logoutSuccess());
+        dispatch(clearErrors());
     };
 };

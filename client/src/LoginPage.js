@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
+import _ from 'lodash';
 
 import { login } from './actions/login';
 
@@ -63,9 +64,12 @@ class LoginPage extends Component {
 }
 
 const mapStateToProps = state => {
+    let errors = _.get(state, 'errors.login', {}),
+        redirect = _.get(state, 'user.isAuthenticated', false);
+
     return {
-        errors: state.errors,
-        redirect: state.user.isAuthenticated
+        errors,
+        redirect
     };
 };
 

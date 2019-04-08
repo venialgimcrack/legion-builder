@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
+import _ from 'lodash';
 
 import { register } from './actions/register';
 
@@ -75,9 +76,12 @@ class Register extends Component {
 };
 
 const mapStateToProps = state => {
+    let errors = _.get(state, 'errors.register', {}),
+        redirect = _.get(state, 'user.isAuthenticated', false);
+
     return {
-        errors: state.errors,
-        redirect: state.user.isAuthenticated
+        errors,
+        redirect
     };
 };
 

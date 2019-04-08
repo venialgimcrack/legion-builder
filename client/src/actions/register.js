@@ -16,11 +16,20 @@ export const registerFailure = errors => {
     };
 };
 
+export const clearErrors = () => {
+    return {
+        type: ActionTypes.CLEAR_ERRORS,
+        payload: [ 'login', 'register' ]
+    }
+};
+
 export const register = (userData, history) => {
     return dispatch => {
         axios.post('/api/users/register', userData)
             .then(() => {
                 dispatch(registerSuccess());
+                dispatch(clearErrors());
+
                 history.push('/login');
             })
             .catch(err => {
