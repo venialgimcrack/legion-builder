@@ -4,7 +4,7 @@ import { Redirect, Route } from 'react-router-dom';
 
 const checkAuthentication = (Component, props) => {
     if (props.isAuthenticated) {
-        return <Component {...props} />
+        return <Component {...props} />;
     } else {
         return (
             <Redirect {...props}
