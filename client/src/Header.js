@@ -3,22 +3,20 @@ import { connect } from 'react-redux';
 
 import { logout } from './actions/login';
 
-const Header = ({ username, isAuthenticated, logout }) => {
-    return (
-        <div>
-            <div>Legion Builder</div>
-            {
-                isAuthenticated ? (
-                    <div>
-                        <div>Welcome, {username}!</div>
-                        <div><button onClick={logout}>Log out</button></div>
-                    </div>
-                ) : null
-            }
-            <hr />
-        </div>
-    );
-};
+const Header = ({ username, isAuthenticated, logout }) => (
+    <div>
+        <div>Legion Builder</div>
+        {
+            isAuthenticated ? (
+                <div>
+                    <div>Welcome, {username}!</div>
+                    <div><button onClick={logout}>Log out</button></div>
+                </div>
+            ) : null
+        }
+        <hr />
+    </div>
+);
 
 const mapStateToProps = state => {
     return {
