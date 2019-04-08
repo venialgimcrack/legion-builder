@@ -3,11 +3,18 @@ import { connect } from 'react-redux';
 
 import { logout } from './actions/login';
 
-const Header = ({ isAuthenticated, logout }) => {
+const Header = ({ username, isAuthenticated, logout }) => {
     return (
         <div>
             <div>Legion Builder</div>
-            { isAuthenticated ? (<div>Welcome!&nbsp;<button onClick={logout}>Log out</button></div>) : null }
+            {
+                isAuthenticated ? (
+                    <div>
+                        <div>Welcome, {username}!</div>
+                        <div><button onClick={logout}>Log out</button></div>
+                    </div>
+                ) : null
+            }
             <hr />
         </div>
     );
@@ -15,6 +22,7 @@ const Header = ({ isAuthenticated, logout }) => {
 
 const mapStateToProps = state => {
     return {
+        username: state.user.user.name,
         isAuthenticated: state.user.isAuthenticated
     };
 };
