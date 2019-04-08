@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import _ from 'lodash';
 
-import { login } from './actions/login';
+import { clearErrors, login } from './actions/login';
 
 class LoginPage extends Component {
 
@@ -30,6 +30,10 @@ class LoginPage extends Component {
 
         this.props.login(loginData);
     };
+
+    componentDidMount () {
+        this.props.clearErrors();
+    }
 
     render () {
         const { from } = this.props.location.state || { from: { pathname: '/' } },
@@ -74,6 +78,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
+    clearErrors,
     login
 };
 
