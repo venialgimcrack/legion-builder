@@ -42,6 +42,7 @@ router.post('/register', (req, res) => {
                     return res.json(user);
                 })
                 .catch(err => {
+                    console.error(err);
                     return res.status(500)
                         .json({ internal: 'Internal server error' });
                 });
