@@ -30,19 +30,17 @@ if (!!localStorage[JWT_TOKEN_KEY]) {
     }
 }
 
-const Main = ({ history }) => {
-    return (
-        <div>
-            <Header />
-            <ConnectedRouter history={history}>
-                <Route path="/" exact component={Home} />
-                <Route path="/login" component={LoginPage} />
-                <Route path="/register" component={Register} />
-                <PrivateRoute path="/lists" component={Lists} />
-                <PrivateRoute path="/collection" component={Collection} />
-            </ConnectedRouter>
-        </div>
-    );
-};
+const Main = ({ history }) => (
+    <div>
+        <Header />
+        <ConnectedRouter history={history}>
+            <Route path="/" exact component={Home} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={Register} />
+            <PrivateRoute path="/lists" component={Lists} />
+            <PrivateRoute path="/collection" component={Collection} />
+        </ConnectedRouter>
+    </div>
+);
 
 export default Main;
