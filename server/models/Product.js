@@ -5,6 +5,16 @@ const schema = new Schema({
     name: {
         type: String,
         required: true
+    },
+    category: {
+        type: String,
+        enum: [ 'core', 'expansion' ],
+        required: true
+    },
+    contents: {
+        units: [ Schema.Types.ObjectId ],
+        upgrades: [ Schema.Types.ObjectId ],
+        cmdCards: [ Schema.Types.ObjectId ]
     }
 });
 

@@ -5,13 +5,15 @@ import thunk from 'redux-thunk';
 
 import errors from './reducers/errors';
 import user from './reducers/user';
+import products from './reducers/productReducer';
 
 export const history = createBrowserHistory();
 
 const reducers = combineReducers({
     router : connectRouter(history),
     errors,
-    user
+    user,
+    products
 });
 
 const enhancers = compose(applyMiddleware(routerMiddleware(history), thunk));
