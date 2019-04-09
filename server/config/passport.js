@@ -22,7 +22,7 @@ module.exports = passport => {
                 })
                 .catch(err => {
                     console.error(err);
-                    return done(null, false, err);
+                    return done(err, false);
                 });
         })
     );
