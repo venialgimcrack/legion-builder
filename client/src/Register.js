@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import _ from 'lodash';
 
-import { clearErrors, register } from './actions/register';
+import { register } from './actions/registerActions';
 
 class Register extends Component {
     constructor() {
@@ -33,10 +33,6 @@ class Register extends Component {
 
         this.props.register(registerData, this.props.history);
     };
-
-    componentDidMount () {
-        this.props.clearErrors();
-    }
 
     render() {
         const { errors, redirect } = this.props;
@@ -80,8 +76,8 @@ class Register extends Component {
 };
 
 const mapStateToProps = state => {
-    let errors = _.get(state, 'errors.register', {}),
-        redirect = _.get(state, 'user.isAuthenticated', false);
+    let errors = _.get(state, 'register.errors', {}),
+        redirect = _.get(state, 'login.auth', false);
 
     return {
         errors,
@@ -90,7 +86,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    clearErrors,
     register
 };
 

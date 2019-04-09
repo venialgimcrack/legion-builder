@@ -12,7 +12,7 @@ import PrivateRoute from './PrivateRoute';
 import Register from './Register';
 
 import store from './store';
-import { loginSuccess, logout } from './actions/login';
+import { loginFinish, logout } from './actions/loginActions';
 import setAuthToken from './utils/setAuthToken';
 import { JWT_TOKEN_KEY } from './utils/constants';
 
@@ -23,7 +23,7 @@ if (!!localStorage[JWT_TOKEN_KEY]) {
 
     setAuthToken(token);
 
-    store.dispatch(loginSuccess(decoded));
+    store.dispatch(loginFinish(decoded));
 
     if (decoded.exp < currentTimeInSeconds) {
         store.dispatch(logout());

@@ -20,13 +20,13 @@ const LoggedOut = () => (
     </div>
 );
 
-const Home = ({ isAuthenticated }) => {
-    return isAuthenticated ? <LoggedIn /> : <LoggedOut />;
+const Home = ({ isLoggedIn }) => {
+    return isLoggedIn ? <LoggedIn /> : <LoggedOut />;
 };
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state.user.isAuthenticated
+        isLoggedIn: state.login.auth
     };
 };
 

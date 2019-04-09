@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 
 const checkAuthentication = (Component, props) => {
-    if (props.isAuthenticated) {
+    if (props.isLoggedIn) {
         return <Component {...props} />;
     } else {
         return (
@@ -23,7 +23,7 @@ const PrivateRoute = ({ component: Component, ...props }) => {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state.user.isAuthenticated
+        isLoggedIn: state.login.auth
     };
 };
 

@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { logout } from './actions/login';
+import { logout } from './actions/loginActions';
 
-const Header = ({ username, isAuthenticated, logout }) => (
+const Header = ({ username, isLoggedIn, logout }) => (
     <div>
         <div>Legion Builder</div>
         {
-            isAuthenticated ? (
+            isLoggedIn ? (
                 <div>
                     <div>Welcome, {username}!</div>
                     <div><button onClick={logout}>Log out</button></div>
@@ -19,9 +19,11 @@ const Header = ({ username, isAuthenticated, logout }) => (
 );
 
 const mapStateToProps = state => {
+    const { login } = state;
+
     return {
-        username: state.user.user.name,
-        isAuthenticated: state.user.isAuthenticated
+        username: login.user.name,
+        isLoggedIn: login.auth
     };
 };
 
