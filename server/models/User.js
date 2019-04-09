@@ -17,8 +17,7 @@ const schema = new Schema({
     date: {
         type: Date,
         default: Date.now
-    },
-    products: [ Schema.Types.ObjectId ]
+    }
 });
 
 module.exports = {

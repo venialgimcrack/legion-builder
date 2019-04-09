@@ -1,14 +1,14 @@
 const Validator = require('validator'),
     isEmpty = require('is-empty');
 
-module.exports = function validateSaveInput(data) {
+module.exports = data => {
     let errors = {};
 
-    data.userId = isEmpty(data.userId) ? '' : data.userId;
+    data.owner = isEmpty(data.owner) ? '' : data.owner;
     data.products = isEmpty(data.products) ? [] : data.products;
 
-    if (Validator.isEmpty(data.userId)) {
-        errors.userId = 'User ID is required';
+    if (Validator.isEmpty(data.owner)) {
+        errors.owner = 'Owner is required';
     }
 
     return {

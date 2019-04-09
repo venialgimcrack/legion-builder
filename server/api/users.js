@@ -7,7 +7,6 @@ const passport = require('passport'),
 
 const validateRegister = require('../validation/register'),
     validateLogin = require('../validation/login'),
-    validateSave = require('../validation/user'),
     User = require('../models/User').model;
 
 const SALT_ROUNDS = 10,
@@ -100,37 +99,6 @@ router.post('/login', (req, res) => {
                     return res.status(500)
                         .json({ internal: 'Internal server error' });
                 });
-        });
-});
-
-router.post('/save', passport.authenticate('jwt', { session: false }), (req, res) => {
-    const { errors, isValid } = validateSave(req.body);
-
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
-
-    const userId = req.body.userId,
-        products = req.body.products;
-
-    User.findOne({ _id: userId })
-        .then(user => {
-            if (!user) {
-                return res.status(404)
-                    .json({ message: `${userId} not found` });
-            }
-
-            user.products = products;
-
-            return user.save()
-                .then(result => {
-                    res.json(result);
-                });
-        })
-        .catch(err => {
-            console.error(err);
-            return res.status(500)
-                .json({ internal: 'Internal server error' });
         });
 });
 

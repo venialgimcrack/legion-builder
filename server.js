@@ -2,6 +2,7 @@ const express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     passport = require('passport'),
+    collection = require('./server/api/collection'),
     users = require('./server/api/users'),
     products = require('./server/api/products');
 
@@ -20,6 +21,7 @@ backend.use(passport.initialize());
 
 require('./server/config/passport')(passport);
 
+backend.use('/api/collection', collection);
 backend.use('/api/users', users);
 backend.use('/api/products', products);
 
