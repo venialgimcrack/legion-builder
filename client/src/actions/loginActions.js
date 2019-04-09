@@ -49,6 +49,11 @@ export const login = userData => {
     };
 };
 
-export const logout = () => ({
-    type: LOGOUT
-});
+export const logout = () => {
+    localStorage.removeItem(JWT_TOKEN_KEY);
+    setAuthToken(null);
+
+    return {
+        type: LOGOUT
+    };
+};
