@@ -12,13 +12,12 @@ router.post('/save', passport.authenticate('jwt', { session: false }), (req, res
         return res.status(400).json(errors);
     }
 
-    const owner = req.body.owner,
+    const owner = req.user._id,
         products = req.body.products;
 
     Collection.findOne({ owner })
         .then(collection => {
             if (!collection) {
-                console.log(`Creating new Collection for ${owner}`);
                 collection = new Collection({ owner });
             }
 
@@ -28,6 +27,22 @@ router.post('/save', passport.authenticate('jwt', { session: false }), (req, res
                 .then(result => {
                     res.json(result);
                 });
+        })
+        .catch(err => {
+            console.error(err);
+            return res.status(500)
+                .json({ internal: 'Internal server error' });
+        });
+});
+
+router.get('/load', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const owner = req.user._id;
+
+    Collection.findOne({ owner })
+        .then(collection => {
+            let owned = collection ? (collection.products || []) : [];
+
+            return res.json(owned);
         })
         .catch(err => {
             console.error(err);
