@@ -78,8 +78,8 @@ class Collection extends Component {
 
 const mapStateToProps = state => {
     return {
-        collection: state.collection.items,
-        products: state.products.items
+        collection: _.get(state, 'collection.items', []),
+        products: _.get(state, 'products.items', [])
     };
 };
 
