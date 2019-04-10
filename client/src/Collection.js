@@ -6,7 +6,7 @@ import { loadCollection, saveCollection } from './actions/collectionActions';
 import { getProducts } from './actions/productActions';
 
 class Collection extends Component {
-    static getDerivedStateFromProps(props, state) {
+    static getDerivedStateFromProps (props, state) {
         let diff = _.difference(props.collection, state.collection);
 
         if (diff.length > 0) {
@@ -18,7 +18,7 @@ class Collection extends Component {
         return null;
     }
 
-    constructor(props) {
+    constructor (props) {
         super(props);
 
         this.state = {
@@ -46,12 +46,12 @@ class Collection extends Component {
         this.props.saveCollection(this.state.collection);
     };
 
-    componentDidMount() {
+    componentDidMount () {
         this.props.loadCollection();
         this.props.getProducts();
     }
 
-    render() {
+    render () {
         return (
             <div>
                 <div>Collection</div>

@@ -6,7 +6,7 @@ import _ from 'lodash';
 import { login } from './actions/loginActions';
 
 class LoginPage extends Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
 
         this.state = {

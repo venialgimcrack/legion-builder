@@ -6,7 +6,7 @@ import _ from 'lodash';
 import { register } from './actions/registerActions';
 
 class Register extends Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
 
         this.state = {
@@ -34,7 +34,7 @@ class Register extends Component {
         this.props.register(registerData, this.props.history);
     };
 
-    render() {
+    render () {
         const { errors, redirect } = this.props;
 
         if (redirect) {
