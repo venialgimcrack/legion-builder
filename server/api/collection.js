@@ -25,7 +25,7 @@ router.post('/save', passport.authenticate('jwt', { session: false }), (req, res
 
             return collection.save()
                 .then(result => {
-                    res.json(result);
+                    res.json(result.products);
                 });
         })
         .catch(err => {
