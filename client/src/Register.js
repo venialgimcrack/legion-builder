@@ -6,8 +6,8 @@ import _ from 'lodash';
 import { register } from './actions/registerActions';
 
 class Register extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             name: '',

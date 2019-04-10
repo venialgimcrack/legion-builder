@@ -22,7 +22,7 @@ export const saveCollection = collection => {
     return dispatch => {
         dispatch(saveCollectionStart());
 
-        axios.post('/api/collection/save', collection)
+        axios.post('/api/collection/save', { products: collection })
             .then(res => {
                 let collection = res.data;
 
