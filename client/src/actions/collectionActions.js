@@ -1,4 +1,5 @@
 import axios from 'axios';
+import _ from 'lodash';
 
 export const SAVE_COLLECTION_START = 'SAVE_COLLECTION_START';
 export const SAVE_COLLECTION_FINISH = 'SAVE_COLLECTION_FINISH';
@@ -20,7 +21,20 @@ export const saveCollectionError = errors => ({
 export const saveCollection = collection => {
     return dispatch => {
         dispatch(saveCollectionStart());
-        dispatch(saveCollectionFinish());
+
+        axios.post('/api/collection/save', collection)
+            .then(res => {
+                let collection = res.data;
+
+                dispatch(saveCollectionFinish(collection));
+            })
+            .catch(err => {
+                console.error(err);
+
+                let errors = _.get(err, 'response.data', {});
+
+                dispatch(saveCollectionError(errors));
+            });
     };
 };
 
@@ -53,7 +67,11 @@ export const loadCollection = () => {
                 dispatch(loadCollectionFinish(collection));
             })
             .catch(err => {
-                dispatch(loadCollectionError(err));
+                console.error(err);
+
+                let errors = _.get(err, 'response.data', {});
+
+                dispatch(loadCollectionError(errors));
             });
     };
 };
