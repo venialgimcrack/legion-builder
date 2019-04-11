@@ -14,7 +14,14 @@ const schema = new Schema({
     contents: {
         units: [ Schema.Types.ObjectId ],
         upgrades: [ Schema.Types.ObjectId ],
-        cmdCards: [ Schema.Types.ObjectId ]
+        cards: {
+            battle: {
+                objective: [ Schema.Types.ObjectId ],
+                deployment: [ Schema.Types.ObjectId ],
+                condition: [ Schema.Types.ObjectId ]
+            },
+            command: [ Schema.Types.ObjectId ]
+        }
     }
 });
 
