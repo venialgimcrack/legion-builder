@@ -4,9 +4,15 @@ const mongoose = require('mongoose'),
 const schema = new Schema({
     owner: {
         type: Schema.Types.ObjectId,
+        ref: 'users',
         required: true
     },
-    products: [ Schema.Types.ObjectId ]
+    products: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'products'
+        }
+    ]
 });
 
 module.exports = {

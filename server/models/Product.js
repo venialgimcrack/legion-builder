@@ -8,19 +8,37 @@ const schema = new Schema({
     },
     category: {
         type: String,
-        enum: [ 'core', 'expansion' ],
+        enum: [
+            'core',
+            'expansion'
+        ],
         required: true
     },
     contents: {
-        units: [ Schema.Types.ObjectId ],
-        upgrades: [ Schema.Types.ObjectId ],
+        units: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'units'
+            }
+        ],
+        upgrades: [
+            Schema.Types.ObjectId
+        ],
         cards: {
             battle: {
-                objective: [ Schema.Types.ObjectId ],
-                deployment: [ Schema.Types.ObjectId ],
-                condition: [ Schema.Types.ObjectId ]
+                objective: [
+                    Schema.Types.ObjectId
+                ],
+                deployment: [
+                    Schema.Types.ObjectId
+                ],
+                condition: [
+                    Schema.Types.ObjectId
+                ]
             },
-            command: [ Schema.Types.ObjectId ]
+            command: [
+                Schema.Types.ObjectId
+            ]
         }
     }
 });
