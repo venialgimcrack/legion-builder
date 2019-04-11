@@ -47,8 +47,8 @@ class Collection extends Component {
     };
 
     componentDidMount () {
-        this.props.loadCollection();
         this.props.getProducts();
+        this.props.loadCollection();
     }
 
     render () {
@@ -84,9 +84,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
+    getProducts,
     loadCollection,
-    saveCollection,
-    getProducts
+    saveCollection
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Collection);
