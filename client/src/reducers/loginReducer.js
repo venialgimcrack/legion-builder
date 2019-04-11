@@ -2,6 +2,7 @@ import {
     LOGIN_START,
     LOGIN_FINISH,
     LOGIN_ERROR,
+    LOGIN_CLEAR,
     LOGOUT
 } from '../actions/loginActions';
 
@@ -38,6 +39,7 @@ const user = (state = INIT_STATE, action) => {
                 errors: { ...action.payload }
             });
 
+        case LOGIN_CLEAR:
         case LOGOUT:
             return INIT_STATE;
 

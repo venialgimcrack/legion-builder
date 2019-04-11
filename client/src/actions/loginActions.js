@@ -8,6 +8,7 @@ import { JWT_TOKEN_KEY } from '../utils/constants';
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_FINISH = 'LOGIN_FINISH';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const LOGIN_CLEAR = 'LOGIN_CLEAR';
 export const LOGOUT = 'LOGOUT';
 
 export const loginStart = () => ({
@@ -48,6 +49,10 @@ export const login = userData => {
             });
     };
 };
+
+export const loginClear = () => ({
+    type: LOGIN_CLEAR
+});
 
 export const logout = () => {
     localStorage.removeItem(JWT_TOKEN_KEY);
