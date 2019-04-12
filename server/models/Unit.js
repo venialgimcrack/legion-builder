@@ -1,5 +1,6 @@
 const mongoose = require('mongoose'),
     {
+        ALIGNMENT,
         FACTIONS,
         RANKS,
         SURGES,
@@ -22,6 +23,11 @@ const schema = new Schema({
         type: String,
         required: true,
         enum: FACTIONS
+    },
+    align: {
+        type: String,
+        enum: ALIGNMENT,
+        default: 'neutral'
     },
     points: {
         type: Number,

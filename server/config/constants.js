@@ -1,4 +1,9 @@
 module.exports = {
+    ALIGNMENT: [
+        'light',
+        'dark',
+        'neutral'
+    ],
     CATEGORIES: [
         'core',
         'expansion'
