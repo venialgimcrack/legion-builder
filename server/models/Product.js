@@ -22,7 +22,10 @@ const schema = new Schema({
             }
         ],
         upgrades: [
-            Schema.Types.ObjectId
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'upgrades'
+            }
         ],
         cards: {
             battle: {

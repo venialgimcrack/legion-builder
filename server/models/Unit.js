@@ -1,4 +1,11 @@
 const mongoose = require('mongoose'),
+    {
+        FACTIONS,
+        RANKS,
+        SURGES,
+        TYPES,
+        UPGRADES
+    } = require('../config/constants'),
     Schema = mongoose.Schema;
 
 const schema = new Schema({
@@ -6,15 +13,15 @@ const schema = new Schema({
         type: String,
         required: true
     },
+    subtitle: String,
+    unique: {
+        type: Boolean,
+        default: false
+    },
     faction: {
         type: String,
         required: true,
-        enum: [
-            'rebel',
-            'empire',
-            'republic',
-            'separatist'
-        ]
+        enum: FACTIONS
     },
     points: {
         type: Number,
@@ -23,21 +30,7 @@ const schema = new Schema({
     upgrades: [
         {
             type: String,
-            enum: [
-                'armament',
-                'command',
-                'comms',
-                'crew',
-                'force',
-                'gear',
-                'generator',
-                'grenades',
-                'hardpoint',
-                'heavy',
-                'personnel',
-                'pilot',
-                'training'
-            ]
+            enum: UPGRADES
         }
     ],
     keywords: [ String ],
@@ -58,14 +51,7 @@ const schema = new Schema({
     rank: {
         type: String,
         required: true,
-        enum: [
-            'commander',
-            'operative',
-            'corps',
-            'special',
-            'support',
-            'heavy'
-        ]
+        enum: RANKS
     },
     minis: {
         type: Number,
@@ -75,13 +61,7 @@ const schema = new Schema({
     types: [
         {
             type: String,
-            enum: [
-                'trooper',
-                'ground',
-                'repulsor',
-                'emplacement',
-                'vehicle'
-            ]
+            enum: TYPES
         }
     ],
     wounds: {
@@ -95,17 +75,11 @@ const schema = new Schema({
     surges: {
         attack: {
             type: String,
-            enum: [
-                'hit',
-                'crit'
-            ]
+            enum: SURGES
         },
         block: {
             type: String,
-            enum: [
-                'hit',
-                'crit'
-            ]
+            enum: SURGES
         }
     },
     speed: {
