@@ -1,4 +1,8 @@
 module.exports = {
+    CATEGORIES: [
+        'core',
+        'expansion'
+    ],
     FACTIONS: [
         'rebel',
         'empire',
@@ -15,7 +19,8 @@ module.exports = {
     ],
     SURGES: [
         'hit',
-        'crit'
+        'crit',
+        'block'
     ],
     TYPES: [
         'trooper',

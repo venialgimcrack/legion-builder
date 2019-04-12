@@ -29,11 +29,39 @@ const schema = new Schema({
     },
     upgrades: [
         {
-            type: String,
-            enum: UPGRADES
+            kind: {
+                type: String,
+                enum: UPGRADES,
+                required: true
+            },
+            excludes: [
+                {
+                    type: String,
+                    enum: UPGRADES
+                }
+            ]
         }
     ],
-    keywords: [ String ],
+    keywords: [
+        {
+            text: {
+                type: String,
+                required: true
+            },
+            value: Number,
+            qualifiers: [ String ],
+            action: {
+                type: Boolean,
+                default: false
+            },
+            requires: [
+                {
+                    type: String,
+                    enum: UPGRADES
+                }
+            ]
+        }
+    ],
     weapons: [
         {
             name: {
@@ -45,7 +73,19 @@ const schema = new Schema({
                 required: true
             },
             dice: [ String ],
-            keywords: [ String ]
+            keywords: [
+                {
+                    text: {
+                        type: String,
+                        required: true
+                    },
+                    value: Number,
+                    action: {
+                        type: Boolean,
+                        default: false
+                    }
+                }
+            ]
         }
     ],
     rank: {
@@ -57,13 +97,13 @@ const schema = new Schema({
         type: Number,
         default: 1
     },
-    defense: [ String ],
     types: [
         {
             type: String,
             enum: TYPES
         }
     ],
+    defense: [ String ],
     wounds: {
         type: Number,
         required: true
@@ -77,7 +117,7 @@ const schema = new Schema({
             type: String,
             enum: SURGES
         },
-        block: {
+        defense: {
             type: String,
             enum: SURGES
         }

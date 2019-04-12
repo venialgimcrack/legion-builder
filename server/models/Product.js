@@ -1,4 +1,5 @@
 const mongoose = require('mongoose'),
+    { CATEGORIES } = require('../config/constants'),
     Schema = mongoose.Schema;
 
 const schema = new Schema({
@@ -8,10 +9,7 @@ const schema = new Schema({
     },
     category: {
         type: String,
-        enum: [
-            'core',
-            'expansion'
-        ],
+        enum: CATEGORIES,
         required: true
     },
     contents: {
