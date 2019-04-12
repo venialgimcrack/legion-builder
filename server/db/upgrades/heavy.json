@@ -18,10 +18,10 @@
             ]
         },
         "exhaust": true,
-        "restrictions": [
+        "requirements": [
             {
                 "field": "name",
-                "value": "Rebel Pathfinders"
+                "values": [ "Rebel Pathfinders" ]
             }
         ],
         "effects": [
@@ -46,10 +46,10 @@
                 }
             ]
         },
-        "restrictions": [
+        "requirements": [
             {
                 "field": "name",
-                "value": "Wookiee Warriors"
+                "values": [ "Wookie Warriors" ]
             }
         ],
         "effects": [
@@ -73,10 +73,10 @@
                 }
             ]
         },
-        "restrictions": [
+        "requirements": [
             {
                 "field": "name",
-                "value": "Rebel Commandos"
+                "values": [ "Rebel Commandos" ]
             }
         ],
         "effects": [
@@ -98,10 +98,10 @@
                 }
             ]
         },
-        "restrictions": [
+        "requirements": [
             {
                 "field": "name",
-                "value": "Stormtroopers"
+                "values": [ "Stormtroopers" ]
             }
         ],
         "effects": [
@@ -126,10 +126,10 @@
             ]
         },
         "exhaust": true,
-        "restrictions": [
+        "requirements": [
             {
                 "field": "name",
-                "value": "Stormtroopers"
+                "values": [ "Stormtroopers" ]
             }
         ],
         "effects": [
@@ -154,10 +154,10 @@
             ]
         },
         "exhaust": true,
-        "restrictions": [
+        "requirements": [
             {
                 "field": "name",
-                "value": "Fleet Troopers"
+                "values": [ "Fleet Troopers" ]
             }
         ],
         "effects": [
@@ -183,10 +183,10 @@
             ]
         },
         "exhaust": true,
-        "restrictions": [
+        "requirements": [
             {
                 "field": "name",
-                "value": "Rebel Troopers"
+                "values": [ "Rebel Troopers" ]
             }
         ],
         "effects": [
@@ -211,10 +211,10 @@
                 "text": "Leader"
             }
         ],
-        "restrictions": [
+        "requirements": [
             {
                 "field": "name",
-                "value": "Rebel Pathfinders"
+                "values": [ "Rebel Pathfinders" ]
             }
         ],
         "effects": [
@@ -259,10 +259,10 @@
         "surges": {
             "attack": "crit"
         },
-        "restrictions": [
+        "requirements": [
             {
                 "field": "name",
-                "value": "Rebel Commandos"
+                "values": [ "Rebel Commandos" ]
             }
         ],
         "effects": [
@@ -284,10 +284,10 @@
                 }
             ]
         },
-        "restrictions": [
+        "requirements": [
             {
                 "field": "name",
-                "value": "Fleet Troopers"
+                "values": [ "Fleet Troopers" ]
             }
         ],
         "effects": [
@@ -304,10 +304,10 @@
                 "white", "white", "white"
             ]
         },
-        "restrictions": [
+        "requirements": [
             {
                 "field": "name",
-                "value": "Rebel Troopers"
+                "values": [ "Rebel Troopers" ]
             }
         ],
         "effects": [

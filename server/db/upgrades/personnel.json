@@ -19,10 +19,10 @@
                 "text": "Noncombatant"
             }
         ],
-        "restrictions": [
+        "requirements": [
             {
                 "field": "faction",
-                "value": "rebel"
+                "values": [ "rebel" ]
             }
         ],
         "effects": [],
@@ -30,10 +30,10 @@
         "points": 18
     }, {
         "title": "Fleet Trooper",
-        "restrictions": [
+        "requirements": [
             {
                 "field": "name",
-                "value": "Fleet Troopers"
+                "values": [ "Fleet Troopers" ]
             }
         ],
         "effects": [
@@ -61,10 +61,10 @@
                 "text": "Noncombatant"
             }
         ],
-        "restrictions": [
+        "requirements": [
             {
                 "field": "faction",
-                "value": "rebel"
+                "values": [ "rebel" ]
             }
         ],
         "effects": [
@@ -82,10 +82,10 @@
                 ]
             }
         ],
-        "restrictions": [
+        "requirements": [
             {
                 "field": "faction",
-                "value": "rebel"
+                "values": [ "rebel" ]
             }
         ],
         "effects": [
@@ -103,10 +103,10 @@
                 "text": "Leader"
             }
         ],
-        "restrictions": [
+        "requirements": [
             {
                 "field": "faction",
-                "value": "rebel"
+                "values": [ "rebel" ]
             }
         ],
         "effects": [
@@ -117,10 +117,10 @@
         "points": 19
     }, {
         "title": "Rebel Trooper",
-        "restrictions": [
+        "requirements": [
             {
                 "field": "name",
-                "value": "Rebel Troopers"
+                "values": [ "Rebel Troopers" ]
             }
         ],
         "effects": [
@@ -130,10 +130,10 @@
         "points": 10
     }, {
         "title": "Stormtrooper",
-        "restrictions": [
+        "requirements": [
             {
                 "field": "name",
-                "value": "Stormtroopers"
+                "values": [ "Stormtroopers" ]
             }
         ],
         "effects": [

@@ -1,0 +1,33 @@
+[
+    {
+        "title": "Wedge Antilles",
+        "unique": true,
+        "keywords": [
+            {
+                "text": "Full Pivot",
+                "perform": {
+                    "action": true,
+                    "free": true
+                }
+            }
+        ],
+        "exhaust": true,
+        "requirements": [
+            {
+                "field": "faction",
+                "values": [
+                    "rebel"
+                ]
+            }, {
+                "field": "types",
+                "values": [
+                    "repulsor", "vehicle"
+                ]
+            }
+        ],
+        "effects": [
+        ],
+        "kind": "pilot",
+        "points": 5
+    }
+]

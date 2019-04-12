@@ -1,0 +1,46 @@
+[
+    {
+        "title": "Emergency Stims",
+        "exhaust": true,
+        "effects": [
+            "During an attack, when you would suffer wounds, prevent up to 2 wounds and place an equal number of wound tokens on this card instead.",
+            "If you do, at the end of your next activation, discard each token on this card and suffer wounds equal to the number of tokens discarded."
+        ],
+        "kind": "gear",
+        "points": 8
+    }, {
+        "title": "Environmental Gear",
+        "keywords": [
+            { "text": "Unhindered" }
+        ],
+        "kind": "gear",
+        "points": 3
+    }, {
+        "title": "Grappling Hooks",
+        "keywords": [
+            { "text": "Expert Climber" }
+        ],
+        "kind": "gear",
+        "points": 3
+    }, {
+        "title": "Recon Intel",
+        "keywords": [
+            {
+                "text": "Scout",
+                "value": 1
+            }
+        ],
+        "kind": "gear",
+        "points": 2
+    }, {
+        "title": "Targeting Scopes",
+        "keywords": [
+            {
+                "text": "Precise",
+                "value": 1
+            }
+        ],
+        "kind": "gear",
+        "points": 6
+    }
+]
