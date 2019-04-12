@@ -410,6 +410,7 @@
         "subtitle": "Hero of the Rebellion",
         "unique": true,
         "faction": "rebel",
+        "align": "light",
         "points": 160,
         "upgrades": [
             { "kind": "force" },
