@@ -38,7 +38,7 @@
                     }, {
                         "text": "Fixed",
                         "qualifiers": [
-                            "Front"
+                            { "text": "Front" }
                         ]
                     }
                 ]
@@ -125,7 +125,7 @@
             }, {
                 "text": "Teamwork",
                 "qualifiers": [
-                    "Han Solo"
+                    { "text": "Han Solo" }
                 ]
             }, {
                 "text": "Unhindered"
@@ -299,7 +299,9 @@
         "keywords": [
             {
                 "text": "Quick Thinking",
-                "action": true
+                "perform": {
+                    "action": true
+                }
             }, {
                 "text": "Danger Sense",
                 "value": 4
@@ -355,7 +357,9 @@
             {
                 "text": "Take Cover",
                 "value": 2,
-                "action": true
+                "perform": {
+                    "action": true
+                }
             }, {
                 "text": "Inspire",
                 "value": 2
@@ -416,7 +420,9 @@
             {
                 "text": "Jump",
                 "value": 1,
-                "action": true
+                "perform": {
+                    "action": true
+                }
             }, {
                 "text": "Charge"
             }, {
@@ -424,7 +430,7 @@
             }, {
                 "text": "Immune",
                 "qualifiers": [
-                    "Pierce"
+                    { "text": "Pierce" }
                 ]
             }
         ],
@@ -595,7 +601,9 @@
             {
                 "text": "Take Cover",
                 "value": 1,
-                "action": true
+                "perform": {
+                    "action": true
+                }
             }, {
                 "text": "Inspire",
                 "value": 1
@@ -754,8 +762,8 @@
             }, {
                 "text": "Immune",
                 "qualifiers": [
-                    "Blast",
-                    "Melee"
+                    { "text": "Blast" },
+                    { "text": "Melee" }
                 ]
             }, {
                 "text": "Speeder",
@@ -774,7 +782,7 @@
                     {
                         "text": "Fixed",
                         "qualifiers": [
-                            "Front"
+                            { "text": "Front" }
                         ]
                     }, {
                         "text": "Impact",

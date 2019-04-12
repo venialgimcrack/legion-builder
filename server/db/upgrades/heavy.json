@@ -243,14 +243,16 @@
                 "text": "Arm",
                 "value": 1,
                 "qualifiers": [
-                    "Proton Charge"
+                    { "text": "Proton Charge" }
                 ],
-                "action": true
+                "perform": {
+                    "action": true
+                }
             }, {
                 "text": "Detonate",
                 "value": 1,
                 "qualifiers": [
-                    "Proton Charge"
+                    { "text": "Proton Charge" }
                 ]
             }
         ],
