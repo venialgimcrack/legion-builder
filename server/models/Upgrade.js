@@ -80,6 +80,21 @@ const schema = new Schema({
             ]
         }
     ],
+    adds: [
+        {
+            upgrade: {
+                type: String,
+                required: true,
+                enum: UPGRADES
+            },
+            requires: [
+                {
+                    type: String,
+                    enum: UPGRADES
+                }
+            ]
+        }
+    ],
     surges: {
         attack: {
             type: String,

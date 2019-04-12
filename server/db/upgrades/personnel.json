@@ -1,0 +1,145 @@
+[
+    {
+        "title": "2-1B Medical Droid",
+        "keywords": [
+            {
+                "text": "Treat",
+                "value": 1,
+                "qualifiers": [
+                    {
+                        "text": "Capacity",
+                        "value": 2
+                    }
+                ],
+                "perform": {
+                    "action": true,
+                    "free": true
+                }
+            }, {
+                "text": "Noncombatant"
+            }
+        ],
+        "restrictions": [
+            {
+                "field": "faction",
+                "value": "rebel"
+            }
+        ],
+        "effects": [],
+        "kind": "personnel",
+        "points": 18
+    }, {
+        "title": "Fleet Trooper",
+        "restrictions": [
+            {
+                "field": "name",
+                "value": "Fleet Troopers"
+            }
+        ],
+        "effects": [
+            "Add 1 fleet trooper mini."
+        ],
+        "kind": "personnel",
+        "points": 11
+    }, {
+        "title": "R5 Astromech Droid",
+        "keywords": [
+            {
+                "text": "Repair",
+                "value": 1,
+                "qualifiers": [
+                    {
+                        "text": "Capacity",
+                        "value": 2
+                    }
+                ],
+                "perform": {
+                    "action": true,
+                    "free": true
+                }
+            }, {
+                "text": "Noncombatant"
+            }
+        ],
+        "restrictions": [
+            {
+                "field": "faction",
+                "value": "rebel"
+            }
+        ],
+        "effects": [
+            "Add 1 R5 astromech droid mini."
+        ],
+        "kind": "personnel",
+        "points": 8
+    }, {
+        "title": "Rebel Comms Technician",
+        "adds": [
+            {
+                "upgrade": "comms",
+                "requires": [
+                    "comms"
+                ]
+            }
+        ],
+        "restrictions": [
+            {
+                "field": "faction",
+                "value": "rebel"
+            }
+        ],
+        "effects": [
+            "Adds 1 Rebel comms technician mini."
+        ],
+        "kind": "personnel",
+        "points": 9
+    }, {
+        "title": "Rebel Officer",
+        "keywords": [
+            {
+                "text": "Inspire",
+                "value": 1
+            }, {
+                "text": "Leader"
+            }
+        ],
+        "restrictions": [
+            {
+                "field": "faction",
+                "value": "rebel"
+            }
+        ],
+        "effects": [
+            "Add 1 Rebel officer mini.",
+            "Your courage is increased by 1."
+        ],
+        "kind": "personnel",
+        "points": 19
+    }, {
+        "title": "Rebel Trooper",
+        "restrictions": [
+            {
+                "field": "name",
+                "value": "Rebel Troopers"
+            }
+        ],
+        "effects": [
+            "Add 1 Rebel trooper mini."
+        ],
+        "kind": "personnel",
+        "points": 10
+    }, {
+        "title": "Stormtrooper",
+        "restrictions": [
+            {
+                "field": "name",
+                "value": "Stormtroopers"
+            }
+        ],
+        "effects": [
+            "Add 1 stormtrooper mini."
+        ],
+        "kind": "personnel",
+        "points": 11
+    }
+]
