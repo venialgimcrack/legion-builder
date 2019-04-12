@@ -109,16 +109,13 @@ const schema = new Schema({
         type: Boolean,
         default: false
     },
-    restrictions: [
+    requirements: [
         {
             field: {
                 type: String,
                 required: true
             },
-            value: {
-                type: String,
-                required: true
-            }
+            values: [ String ]
         }
     ],
     effects: [ String ],
