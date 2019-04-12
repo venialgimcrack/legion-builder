@@ -1,0 +1,317 @@
+[
+    {
+        "title": "Bistan",
+        "unique": true,
+        "weapon": {
+            "range": "1-4",
+            "dice": [
+                "black", "white", "white", "white", "white"
+            ],
+            "keywords": [
+                {
+                    "text": "Impact",
+                    "value": 1
+                }, {
+                    "text": "Ion",
+                    "value": 1
+                }
+            ]
+        },
+        "exhaust": true,
+        "restrictions": [
+            {
+                "field": "name",
+                "value": "Rebel Pathfinders"
+            }
+        ],
+        "effects": [
+            "Add 1 Bistan mini."
+        ],
+        "kind": "heavy",
+        "points": 32
+    }, {
+        "title": "Bowcaster Wookiee",
+        "weapon": {
+            "range": "1-3",
+            "dice": [
+                "red", "white"
+            ],
+            "keywords": [
+                {
+                    "text": "Impact",
+                    "value": 1
+                }, {
+                    "text": "Pierce",
+                    "value": 1
+                }
+            ]
+        },
+        "restrictions": [
+            {
+                "field": "name",
+                "value": "Wookiee Warriors"
+            }
+        ],
+        "effects": [
+            "Add 1 bowcaster wookiee mini."
+        ],
+        "kind": "heavy",
+        "points": 35
+    }, {
+        "title": "DH-447 Sniper",
+        "weapon": {
+            "range": "1+",
+            "dice": [
+                "black", "white"
+            ],
+            "keywords": [
+                {
+                    "text": "High Velocity"
+                }, {
+                    "text": "Pierce",
+                    "value": 1
+                }
+            ]
+        },
+        "restrictions": [
+            {
+                "field": "name",
+                "value": "Rebel Commandos"
+            }
+        ],
+        "effects": [
+            "Add 1 DH-447 sniper mini."
+        ],
+        "kind": "heavy",
+        "points": 28
+    }, {
+        "title": "DLT-19 Stormtrooper",
+        "weapon": {
+            "range": "1-4",
+            "dice": [
+                "red", "red"
+            ],
+            "keywords": [
+                {
+                    "text": "Impact",
+                    "value": 1
+                }
+            ]
+        },
+        "restrictions": [
+            {
+                "field": "name",
+                "value": "Stormtroopers"
+            }
+        ],
+        "effects": [
+            "Add 1 DLT-19 stormtrooper mini."
+        ],
+        "kind": "heavy",
+        "points": 24
+    }, {
+        "title": "HH-12 Stormtrooper",
+        "weapon": {
+            "range": "2-4",
+            "dice": [
+                "black", "black", "black"
+            ],
+            "keywords": [
+                {
+                    "text": "Cumbersome"
+                }, {
+                    "text": "Impact",
+                    "value": 3
+                }
+            ]
+        },
+        "exhaust": true,
+        "restrictions": [
+            {
+                "field": "name",
+                "value": "Stormtroopers"
+            }
+        ],
+        "effects": [
+            "Add 1 HH-12 stormtrooper mini."
+        ],
+        "kind": "heavy",
+        "points": 34
+    }, {
+        "title": "MPL-57 Barrage Trooper",
+        "weapon": {
+            "range": "1-3",
+            "dice": [
+                "black", "white", "white"
+            ],
+            "keywords": [
+                {
+                    "text": "Blast"
+                }, {
+                    "text": "Impact",
+                    "value": 2
+                }
+            ]
+        },
+        "exhaust": true,
+        "restrictions": [
+            {
+                "field": "name",
+                "value": "Fleet Troopers"
+            }
+        ],
+        "effects": [
+            "Add 1 MPL-57 barrage trooper mini."
+        ],
+        "kind": "heavy",
+        "points": 33
+    }, {
+        "title": "MPL-57 Ion Trooper",
+        "weapon": {
+            "range": "1-3",
+            "dice": [
+                "red", "red"
+            ],
+            "keywords": [
+                {
+                    "text": "Impact",
+                    "value": 1
+                }, {
+                    "text": "Ion",
+                    "value": 1
+                }
+            ]
+        },
+        "exhaust": true,
+        "restrictions": [
+            {
+                "field": "name",
+                "value": "Rebel Troopers"
+            }
+        ],
+        "effects": [
+            "Add 1 MPL-57 ion trooper mini."
+        ],
+        "kind": "heavy",
+        "points": 32
+    }, {
+        "title": "Pao",
+        "unique": true,
+        "weapon": {
+            "range": "1-4",
+            "dice": [
+                "red", "white"
+            ]
+        },
+        "keywords": [
+            {
+                "text": "Inspire",
+                "value": 1
+            }, {
+                "text": "Leader"
+            }
+        ],
+        "restrictions": [
+            {
+                "field": "name",
+                "value": "Rebel Pathfinders"
+            }
+        ],
+        "effects": [
+            "Add 1 Pao mini."
+        ],
+        "kind": "heavy",
+        "points": 22
+    }, {
+        "title": "Proton Charge Saboteur",
+        "weapon": {
+            "range": "1",
+            "dice": [
+                "red", "white", "white"
+            ],
+            "keywords": [
+                {
+                    "text": "Blast"
+                }, {
+                    "text": "Impact",
+                    "value": 1
+                }
+            ]
+        },
+        "keywords": [
+            {
+                "text": "Arm",
+                "value": 1,
+                "qualifiers": [
+                    "Proton Charge"
+                ],
+                "action": true
+            }, {
+                "text": "Detonate",
+                "value": 1,
+                "qualifiers": [
+                    "Proton Charge"
+                ]
+            }
+        ],
+        "surges": {
+            "attack": "crit"
+        },
+        "restrictions": [
+            {
+                "field": "name",
+                "value": "Rebel Commandos"
+            }
+        ],
+        "effects": [
+            "Add 1 proton charge saboteur mini."
+        ],
+        "kind": "heavy",
+        "points": 26
+    }, {
+        "title": "Scatter Gun Trooper",
+        "weapon": {
+            "range": "1-2",
+            "dice": [
+                "red", "red"
+            ],
+            "keywords": [
+                {
+                    "text": "Pierce",
+                    "value": 1
+                }
+            ]
+        },
+        "restrictions": [
+            {
+                "field": "name",
+                "value": "Fleet Troopers"
+            }
+        ],
+        "effects": [
+            "Add 1 scatter gun trooper mini."
+        ],
+        "kind": "heavy",
+        "points": 23
+    }, {
+        "title": "Z-6 Trooper",
+        "weapon": {
+            "range": "1-3",
+            "dice": [
+                "white", "white", "white",
+                "white", "white", "white"
+            ]
+        },
+        "restrictions": [
+            {
+                "field": "name",
+                "value": "Rebel Troopers"
+            }
+        ],
+        "effects": [
+            "Add 1 Z-6 trooper mini."
+        ],
+        "kind": "heavy",
+        "points": 22
+    }
+]
