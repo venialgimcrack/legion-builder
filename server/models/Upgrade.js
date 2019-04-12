@@ -24,10 +24,24 @@ const schema = new Schema({
                     required: true
                 },
                 value: Number,
-                qualifiers: [ String ],
-                action: {
-                    type: Boolean,
-                    required: false
+                qualifiers: [
+                    {
+                        text: {
+                            type: String,
+                            required: true
+                        },
+                        value: Number
+                    }
+                ],
+                perform: {
+                    action: {
+                        type: Boolean,
+                        default: false
+                    },
+                    free: {
+                        type: Boolean,
+                        default: false
+                    }
                 }
             }
         ]
@@ -39,10 +53,24 @@ const schema = new Schema({
                 required: true
             },
             value: Number,
-            qualifiers: [ String ],
-            action: {
-                type: Boolean,
-                required: false
+            qualifiers: [
+                {
+                    text: {
+                        type: String,
+                        required: true
+                    },
+                    value: Number
+                }
+            ],
+            perform: {
+                action: {
+                    type: Boolean,
+                    default: false
+                },
+                free: {
+                    type: Boolean,
+                    default: false
+                }
             },
             requires: [
                 {
