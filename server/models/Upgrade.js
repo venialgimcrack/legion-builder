@@ -1,5 +1,8 @@
 const mongoose = require('mongoose'),
-    { UPGRADES } = require('../config/constants'),
+    {
+        UPGRADES,
+        SURGES
+    } = require('../config/constants'),
     Schema = mongoose.Schema;
 
 const schema = new Schema({
@@ -7,15 +10,63 @@ const schema = new Schema({
         type: String,
         required: true
     },
+    unique: {
+        type: Boolean,
+        default: false
+    },
     weapon: {
         range: String,
-        dice: [ String ]
+        dice: [ String ],
+        keywords: [
+            {
+                text: {
+                    type: String,
+                    required: true
+                },
+                value: Number,
+                qualifiers: [ String ],
+                action: {
+                    type: Boolean,
+                    required: false
+                }
+            }
+        ]
+    },
+    keywords: [
+        {
+            text: {
+                type: String,
+                required: true
+            },
+            value: Number,
+            qualifiers: [ String ],
+            action: {
+                type: Boolean,
+                required: false
+            },
+            requires: [
+                {
+                    type: String,
+                    enum: UPGRADES
+                }
+            ]
+        }
+    ],
+    surges: {
+        attack: {
+            type: String,
+            enum: SURGES
+        },
+        defense: {
+            type: String,
+            enum: SURGES
+        }
     },
     exhaust: {
         type: Boolean,
         default: false
     },
-    restriction: [
+    restrictions: [
         {
             field: {
                 type: String,
@@ -27,9 +78,7 @@ const schema = new Schema({
             }
         }
     ],
-    effect: [
-        String
-    ],
+    effects: [ String ],
     kind: {
         type: String,
         required: true,

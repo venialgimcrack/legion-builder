@@ -80,6 +80,7 @@ const schema = new Schema({
                         required: true
                     },
                     value: Number,
+                    qualifiers: [ String ],
                     action: {
                         type: Boolean,
                         default: false
