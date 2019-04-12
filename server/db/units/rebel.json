@@ -1,0 +1,847 @@
+[
+    {
+        "name": "1.4 FD Laser Cannon Team",
+        "faction": "rebel",
+        "points": 70,
+        "upgrades": [
+            { "kind": "comms" },
+            { "kind": "generator" }
+        ],
+        "keywords": [
+            { "text": "Full Pivot" },
+            { "text": "Sentinel" },
+            { "text": "Stationary" }
+        ],
+        "weapons": [
+            {
+                "name": "Unarmed",
+                "range": "melee",
+                "dice": [
+                    "black", "black"
+                ]
+            }, {
+                "name": "DH-17 Blaster Pistols",
+                "range": "1-2",
+                "dice": [
+                    "white", "white", "white", "white"
+                ]
+            }, {
+                "name": "1.4 FD Laser Cannon",
+                "range": "1-4",
+                "dice": [
+                    "black", "black", "black", "black", "black"
+                ],
+                "keywords": [
+                    {
+                        "text": "Impact",
+                        "value": 2
+                    }, {
+                        "text": "Fixed",
+                        "qualifiers": [
+                            "Front"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "rank": "support",
+        "types": [
+            "emplacement", "trooper"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 6,
+        "resilience": 2,
+        "surges": {
+            "attack": "hit",
+            "defense": "block"
+        },
+        "speed": 0
+    }, {
+        "name": "AT-RT",
+        "faction": "rebel",
+        "points": 55,
+        "upgrades": [
+            { "kind": "hardpoint" },
+            { "kind": "comms" }
+        ],
+        "keywords": [
+            { "text": "Armor" },
+            { "text": "Climbing Vehicle" },
+            { "text": "Expert Climber" }
+        ],
+        "weapons": [
+            {
+                "name": "Grappling Claws",
+                "range": "melee",
+                "dice": [
+                    "red", "red", "red"
+                ],
+                "keywords": [
+                    "Impact 1"
+                ]
+            }, {
+                "name": "A-300 Blaster Rifle",
+                "range": "1-3",
+                "dice": [
+                    "white", "white"
+                ]
+            }
+        ],
+        "rank": "support",
+        "types": [
+            "ground", "vehicle"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 6,
+        "resilience": 4,
+        "surges": {
+            "attack": "crit"
+        },
+        "speed": 2
+    }, {
+        "name": "Chewbacca",
+        "subtitle": "Walking Carpet",
+        "unique": true,
+        "faction": "rebel",
+        "points": 110,
+        "upgrades": [
+            { "kind": "training" },
+            { "kind": "training" },
+            { "kind": "gear" }
+        ],
+        "keywords": [
+            {
+                "text": "Enrage",
+                "value": 4
+            }, {
+                "text": "Expert Climber" 
+            }, {
+                "text": "Guardian",
+                "value": 3
+            }, {
+                "text": "Teamwork",
+                "qualifiers": [
+                    "Han Solo"
+                ]
+            }, {
+                "text": "Unhindered"
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Overpower",
+                "range": "melee",
+                "dice": [
+                    "red", "red", "red", "red"
+                ]
+            }, {
+                "name": "Chewbacca's Bowcaster",
+                "range": "1-3",
+                "dice": [
+                    "red", "red", "white", "white"
+                ],
+                "keywords": [
+                    {
+                        "text": "Impact",
+                        "value": 1
+                    }, {
+                        "text": "Pierce",
+                        "value": 1
+                    }
+                ]
+            }
+        ],
+        "rank": "operative",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 9,
+        "resilience": 2,
+        "surges": {
+            "attack": "crit"
+        },
+        "speed": 2
+    }, {
+        "name": "Fleet Troopers",
+        "faction": "rebel",
+        "points": 44,
+        "upgrades": [
+            {
+                "kind": "heavy",
+                "excludes": [
+                    "personnel"
+                ]
+            }, {
+                "kind": "personnel",
+                "excludes": [
+                    "heavy"
+                ]
+            }, {
+                "kind": "gear"
+            }, {
+                "kind": "grenades"
+            }
+        ],
+        "keywords": [
+            {
+                "text": "Ready",
+                "value": 1
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Unarmed",
+                "range": "melee",
+                "dice": [
+                    "black"
+                ]
+            }, {
+                "name": "DH-17 Blaster Pistol",
+                "range": "1-2",
+                "dice": [
+                    "white", "white"
+                ]
+            }
+        ],
+        "rank": "corps",
+        "minis": 4,
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 1,
+        "resilience": 1,
+        "surges": {
+            "attack": "hit",
+            "defense": "block"
+        },
+        "speed": 2
+    }, {
+        "name": "Han Solo",
+        "subtitle": "Unorthodox General",
+        "unique": true,
+        "faction": "rebel",
+        "points": 120,
+        "upgrades": [
+            { "kind": "command" },
+            { "kind": "training" },
+            { "kind": "gear" }
+        ],
+        "keywords": [
+            {
+                "text": "Low Profile"
+            }, {
+                "text": "Gunslinger"
+            }, {
+                "text": "Sharpshooter",
+                "value": 1
+            }, {
+                "text": "Uncanny Luck",
+                "value": 3
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Brawl",
+                "range": "melee",
+                "dice": [
+                    "white", "white", "white"
+                ]
+            }, {
+                "name": "Han's DL-44 Blaster Pistol",
+                "range": "1-2",
+                "dice": [
+                    "red", "red"
+                ],
+                "keywords": [
+                    {
+                        "text": "Pierce",
+                        "value": 2
+                    }
+                ]
+            }
+        ],
+        "rank": "commander",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 6,
+        "resilience": 2,
+        "surges": {
+            "attack": "crit",
+            "defense": "block"
+        },
+        "speed": 2
+    }, {
+        "name": "Jyn Erso",
+        "subtitle": "Stardust",
+        "unique": true,
+        "faction": "rebel",
+        "points": 130,
+        "upgrades": [
+            { "kind": "command" },
+            { "kind": "training" },
+            { "kind": "gear" },
+            { "kind": "armament" }
+        ],
+        "keywords": [
+            {
+                "text": "Quick Thinking",
+                "action": true
+            }, {
+                "text": "Danger Sense",
+                "value": 4
+            }, {
+                "text": "Infiltrate"
+            }, {
+                "text": "Nimble"
+            }, {
+                "text": "Sharpshooter",
+                "value": 1
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Collapsible Tonfa",
+                "range": "melee",
+                "dice": [
+                    "black", "black", "black", "black"
+                ],
+                "keywords": [
+                    {
+                        "text": "Suppressive"
+                    }
+                ]
+            }
+        ],
+        "rank": "commander",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 6,
+        "resilience": 3,
+        "surges": {
+            "attack": "crit",
+            "defense": "block"
+        },
+        "speed": 2
+    }, {
+        "name": "Leia Organa",
+        "subtitle": "Fearless and Inventive",
+        "unique": true,
+        "faction": "rebel",
+        "points": 90,
+        "upgrades": [
+            { "kind": "command" },
+            { "kind": "command" },
+            { "kind": "gear" }
+        ],
+        "keywords": [
+            {
+                "text": "Take Cover",
+                "value": 2,
+                "action": true
+            }, {
+                "text": "Inspire",
+                "value": 2
+            }, {
+                "text": "Nimble"
+            }, {
+                "text": "Sharpshooter",
+                "value": 2
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Martial Arts",
+                "range": "melee",
+                "dice": [
+                    "black", "black", "black"
+                ]
+            }, {
+                "name": "Leia's Defender Sporting Blaster",
+                "range": "1-2",
+                "dice": [
+                    "black", "black", "black"
+                ],
+                "keywords": [
+                    {
+                        "text": "Pierce",
+                        "value": 1
+                    }
+                ]
+            }
+        ],
+        "rank": "commander",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 6,
+        "resilience": 2,
+        "surges": {
+            "attack": "crit",
+            "defense": "block"
+        },
+        "speed": 2
+    }, {
+        "name": "Luke Skywalker",
+        "subtitle": "Hero of the Rebellion",
+        "unique": true,
+        "faction": "rebel",
+        "points": 160,
+        "upgrades": [
+            { "kind": "force" },
+            { "kind": "force" },
+            { "kind": "gear" }
+        ],
+        "keywords": [
+            {
+                "text": "Jump",
+                "value": 1,
+                "action": true
+            }, {
+                "text": "Charge"
+            }, {
+                "text": "Deflect"
+            }, {
+                "text": "Immune",
+                "qualifiers": [
+                    "Pierce"
+                ]
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Anakin's Lightsaber",
+                "range": "melee",
+                "dice": [
+                    "black", "black", "black",
+                    "black", "black", "black"
+                ],
+                "keywords": [
+                    {
+                        "text": "Impact",
+                        "value": 2
+                    }, {
+                        "text": "Pierce",
+                        "value": 2
+                    }
+                ]
+            }, {
+                "name": "Luke's DL-44 Blaster Pistol",
+                "range": "1-2",
+                "dice": [
+                    "red", "red"
+                ],
+                "keywords": [
+                    {
+                        "text": "Pierce",
+                        "value": 2
+                    }
+                ]
+            }
+        ],
+        "rank": "commander",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "red"
+        ],
+        "wounds": 6,
+        "resilience": 3,
+        "surges": {
+            "attack": "crit"
+        },
+        "speed": 2
+    }, {
+        "name": "Rebel Commandos",
+        "faction": "rebel",
+        "points": 60,
+        "upgrades": [
+            { "kind": "heavy" },
+            { "kind": "training" },
+            { "kind": "comms" },
+            { "kind": "gear" },
+            { "kind": "grenades" }
+        ],
+        "keywords": [
+            {
+                "text": "Low Profile"
+            }, {
+                "text": "Scout",
+                "value": 2
+            }, {
+                "text": "Sharpshooter",
+                "value": 1
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Unarmed",
+                "range": "melee",
+                "dice": [
+                    "black"
+                ]
+            }, {
+                "name": "A-280 Blaster Rifle",
+                "range": "1-3",
+                "dice": [
+                    "black"
+                ]
+            }
+        ],
+        "rank": "special",
+        "minis": 4,
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 1,
+        "resilience": 2,
+        "surges": {
+            "attack": "hit",
+            "defense": "block"
+        },
+        "speed": 2
+    }, {
+        "name": "Rebel Commandos",
+        "subtitle": "Strike Team",
+        "faction": "rebel",
+        "points": 16,
+        "upgrades": [
+            { "kind": "heavy" },
+            { "kind": "training" },
+            { "kind": "comms" },
+            { "kind": "gear" },
+            { "kind": "grenades" }
+        ],
+        "keywords": [
+            {
+                "text": "Heavy Weapon Team",
+                "requires": [
+                    "heavy"
+                ]
+            }, {
+                "text": "Low Profile"
+            }, {
+                "text": "Scout",
+                "value": 2
+            }, {
+                "text": "Sharpshooter",
+                "value": 1
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Unarmed",
+                "range": "melee",
+                "dice": [
+                    "black"
+                ]
+            }, {
+                "name": "A-280 Blaster Rifle",
+                "range": "1-3",
+                "dice": [
+                    "black"
+                ]
+            }
+        ],
+        "rank": "special",
+        "minis": 1,
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 1,
+        "resilience": 2,
+        "surges": {
+            "attack": "hit",
+            "defense": "block"
+        },
+        "speed": 2
+    }, {
+        "name": "Rebel Officer",
+        "subtitle": "Resolute Commander",
+        "faction": "rebel",
+        "points": 50,
+        "upgrades": [
+            { "kind": "command" },
+            { "kind": "gear" }
+        ],
+        "keywords": [
+            {
+                "text": "Take Cover",
+                "value": 1,
+                "action": true
+            }, {
+                "text": "Inspire",
+                "value": 1
+            }, {
+                "text": "Sharpshooter",
+                "value": 1
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Unarmed",
+                "range": "melee",
+                "dice": [
+                    "black"
+                ]
+            }, {
+                "name": "Officer's A-180 Blaster Pistol",
+                "range": "1-2",
+                "dice": [
+                    "black", "white"
+                ]
+            }
+        ],
+        "rank": "commander",
+        "minis": 1,
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 4,
+        "resilience": 2,
+        "surges": {
+            "attack": "hit",
+            "defense": "block"
+        },
+        "speed": 2
+    }, {
+        "name": "Rebel Pathfinders",
+        "faction": "rebel",
+        "points": 68,
+        "upgrades": [
+            { "kind": "heavy" },
+            { "kind": "training" },
+            { "kind": "comms" },
+            { "kind": "gear" },
+            { "kind": "armament" },
+            { "kind": "grenades" }
+        ],
+        "keywords": [
+            {
+                "text": "Danger Sense",
+                "value": 3
+            }, {
+                "text": "Dauntless"
+            }, {
+                "text": "Infiltrate"
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Unarmed",
+                "range": "melee",
+                "dice": [
+                    "black"
+                ]
+            }, {
+                "name": "A-300 Blaster Rifle",
+                "range": "1-3",
+                "dice": [
+                    "white", "white"
+                ]
+            }
+        ],
+        "rank": "special",
+        "minis": 4,
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 1,
+        "resilience": 2,
+        "surges": {
+            "attack": "hit",
+            "defense": "block"
+        },
+        "speed": 2
+    }, {
+        "name": "Rebel Troopers",
+        "faction": "rebel",
+        "points": 40,
+        "upgrades": [
+            {
+                "kind": "heavy",
+                "excludes": [
+                    "personnel"
+                ]
+            }, {
+                "kind": "personnel",
+                "excludes": [
+                    "heavy"
+                ]
+            }, {
+                "kind": "gear"
+            }, {
+                "kind": "grenades"
+            }
+        ],
+        "keywords": [
+            { "text": "Nimble" }
+        ],
+        "weapons": [
+            {
+                "name": "Unarmed",
+                "range": "melee",
+                "dice": [
+                    "black"
+                ]
+            }
+        ],
+        "rank": "corps",
+        "minis": 4,
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 1,
+        "resilience": 1,
+        "surges": {
+            "defense": "block"
+        },
+        "speed": 2
+    }, {
+        "name": "T-47 Airspeeder",
+        "faction": "rebel",
+        "points": 175,
+        "upgrades": [
+            { "kind": "pilot" },
+            { "kind": "hardpoint" },
+            { "kind": "comms" }
+        ],
+        "keywords": [
+            {
+                "text": "Armor"
+            }, {
+                "text": "Arsenal",
+                "value": 2
+            }, {
+                "text": "Cover",
+                "value": 1
+            }, {
+                "text": "Immune",
+                "qualifiers": [
+                    "Blast",
+                    "Melee"
+                ]
+            }, {
+                "text": "Speeder",
+                "value": 2
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Ap/11 Double Laser Cannon",
+                "range": "1-3",
+                "dice": [
+                    "red", "red", "red",
+                    "black", "black", "black"
+                ],
+                "keywords": [
+                    {
+                        "text": "Fixed",
+                        "qualifiers": [
+                            "Front"
+                        ]
+                    }, {
+                        "text": "Impact",
+                        "value": 3
+                    }
+                ]
+            }
+        ],
+        "rank": "heavy",
+        "types": [
+            "repulsor",
+            "vehicle"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 7,
+        "resilience": 5,
+        "surges": {
+            "defense": "block"
+        },
+        "speed": 3
+    }, {
+        "name": "Wookiee Warriors",
+        "faction": "rebel",
+        "points": 75,
+        "upgrades": [
+            { "kind": "heavy" },
+            { "kind": "training" },
+            { "kind": "training" },
+            { "kind": "gear" },
+            { "kind": "grenades" }
+        ],
+        "keywords": [
+            { "text": "Charge" },
+            { "text": "Expert Climber" },
+            { "text": "Indomitable" },
+            { "text": "Unhindered" }
+        ],
+        "weapons": [
+            {
+                "name": "Ryyk Blade",
+                "range": "melee",
+                "dice": [
+                    "black", "black"
+                ]
+            }, {
+                "name": "Kashyyk Pistol",
+                "range": "1-2",
+                "dice": [
+                    "black", "white"
+                ]
+            }
+        ],
+        "rank": "special",
+        "minis": 3,
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 3,
+        "resilience": 2,
+        "surges": {
+            "attack": "hit"
+        },
+        "speed": 2
+    }
+]
