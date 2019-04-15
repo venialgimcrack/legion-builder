@@ -74,9 +74,9 @@ class LoginPage extends Component {
 
     render () {
         const { from } = this.props.location.state || { from: { pathname: '/' } },
-            { classes, errors, redirect } = this.props;
+            { classes, /*errors,*/ redirect } = this.props;
 
-        console.log(errors);
+        // console.log(errors);
 
         if (redirect) {
             return <Redirect to={from} />;
