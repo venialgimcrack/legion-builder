@@ -7,12 +7,9 @@ const schema = new Schema({
         ref: 'users',
         required: true
     },
-    products: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'products'
-        }
-    ]
+    products: [ String ],
+    units: [ String ],
+    upgrades: [ String ]
 });
 
 module.exports = {

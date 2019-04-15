@@ -1,42 +1,68 @@
 [
     {
+        "_id": "atrt",
         "name": "AT-RT Unit Expansion",
-        "category": "expansion"
+        "category": "expansion",
+        "wave": 1
     }, {
+        "_id": "rebel",
         "name": "Rebel Troopers Unit Expansion",
-        "category": "expansion"
+        "category": "expansion",
+        "wave": 1
     }, {
+        "_id": "t47",
         "name": "T-47 Airspeeder Unit Expansion",
-        "category": "expansion"
+        "category": "expansion",
+        "wave": 1
     }, {
+        "_id": "leia",
         "name": "Leia Organa Commander Expansion",
-        "category": "expansion"
+        "category": "expansion",
+        "wave": 2
     }, {
+        "_id": "fleet",
         "name": "Fleet Troopers Unit Expansion",
-        "category": "expansion"
+        "category": "expansion",
+        "wave": 2
     }, {
+        "_id": "laser",
         "name": "1.4 FD Laser Cannon Team Unit Expansion",
-        "category": "expansion"
+        "category": "expansion",
+        "wave": 3
     }, {
+        "_id": "han",
         "name": "Han Solo Commander Expansion",
-        "category": "expansion"
+        "category": "expansion",
+        "wave": 3
     }, {
+        "_id": "commando",
         "name": "Rebel Commandos Unit Expansion",
-        "category": "expansion"
+        "category": "expansion",
+        "wave": 3
     }, {
+        "_id": "chewbacca",
         "name": "Chewbacca Operative Expansion",
-        "category": "expansion"
+        "category": "expansion",
+        "wave": 4
     }, {
+        "_id": "wookie",
         "name": "Wookie Warriors Unit Expansion",
-        "category": "expansion"
+        "category": "expansion",
+        "wave": 4
     }, {
+        "_id": "reb_specials",
         "name": "Rebel Specialists Personnel Expansion",
-        "category": "expansion"
+        "category": "expansion",
+        "wave": 5
     }, {
+        "_id": "jyn",
         "name": "Jyn Erso Commander Expansion",
-        "category": "expansion"
+        "category": "expansion",
+        "wave": 5
     }, {
+        "_id": "pathfinder",
         "name": "Rebel Pathfinders Unit Expansion",
-        "category": "expansion"
+        "category": "expansion",
+        "wave": 5
     }
 ]

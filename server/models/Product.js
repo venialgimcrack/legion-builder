@@ -12,36 +12,7 @@ const schema = new Schema({
         enum: CATEGORIES,
         required: true
     },
-    contents: {
-        units: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'units'
-            }
-        ],
-        upgrades: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'upgrades'
-            }
-        ],
-        cards: {
-            battle: {
-                objective: [
-                    Schema.Types.ObjectId
-                ],
-                deployment: [
-                    Schema.Types.ObjectId
-                ],
-                condition: [
-                    Schema.Types.ObjectId
-                ]
-            },
-            command: [
-                Schema.Types.ObjectId
-            ]
-        }
-    }
+    wave: Number
 });
 
 module.exports = {
