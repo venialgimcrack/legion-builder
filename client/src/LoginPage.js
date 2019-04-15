@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { /*Link,*/ Redirect } from 'react-router-dom';
+import { Link as RouterLink, Redirect } from 'react-router-dom';
 import _ from 'lodash';
 
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -8,7 +8,9 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 import { login } from './actions/loginActions';
 
@@ -35,9 +37,15 @@ const styles = theme => ({
         width: '100%'
     },
     submit: {
-        marginTop: theme.spacing.unit * 4
+        marginTop: theme.spacing.unit * 4,
+        marginBottom: theme.spacing.unit * 2
+    },
+    link: {
+        margin: theme.spacing.unit
     }
 });
+
+const RegisterLink = props => <RouterLink to="/register" {...props} />;
 
 class LoginPage extends Component {
     constructor (props) {
@@ -73,29 +81,7 @@ class LoginPage extends Component {
         if (redirect) {
             return <Redirect to={from} />;
         }
-/*
-        return (
-            <div>
-                <div>Login Form</div>
-                <form noValidate onSubmit={this.onSubmit}>
-                    <div>
-                        <label htmlFor="email">Email</label>
-                        <input id="email" type="email" value={this.state.email} onChange={this.onChange} />
-                        <span>{errors.email || ''}</span>
-                    </div>
-                    <div>
-                        <label htmlFor="password">Password</label>
-                        <input id="password" type="password" value={this.state.password} onChange={this.onChange} />
-                        <span>{errors.password || ''}</span>
-                    </div>
-                    <div>
-                        <button type="submit">Login</button>
-                    </div>
-                    <div>Don't have an account? <Link to="/register">Register</Link></div>
-                </form>
-            </div>
-        );
-*/
+
         return (
             <main className={classes.main}>
                 <Paper className={classes.paper}>
@@ -109,6 +95,10 @@ class LoginPage extends Component {
                             <Input name="password" type="password" id="password" autoComplete="current-password" onChange={this.onChange} />
                         </FormControl>
                         <Button type="submit" variant="contained" fullWidth className={classes.submit}>Login</Button>
+                        <Typography>
+                            Don't have an account?
+                            <Link component={RegisterLink} className={classes.link}>Register</Link>
+                        </Typography>
                     </form>
                 </Paper>
             </main>
@@ -129,8 +119,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     login
 };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
 
 const connected = connect(mapStateToProps, mapDispatchToProps)(LoginPage);
 export default withStyles(styles)(connected);
