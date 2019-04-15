@@ -12,6 +12,10 @@ const validateRegister = require('../validation/register'),
 const SALT_ROUNDS = 10,
     TOKEN_EXPIRY = 31556926;
 
+const EXISTS = 'Email already registered',
+    INVALID = 'Invalid credentials',
+    INTERNAL = 'Internal server error';
+
 router.post('/register', (req, res) => {
     const { errors, isValid } = validateRegister(req.body);
 
@@ -24,7 +28,7 @@ router.post('/register', (req, res) => {
     User.findOne({ email })
         .then(user => {
             if (user) {
-                return res.status(400).json({ email: 'Email already exists' });
+                return res.status(400).json({ message: EXISTS });
             }
 
             const newUser = new User({
@@ -45,7 +49,7 @@ router.post('/register', (req, res) => {
                 .catch(err => {
                     console.error(err);
                     return res.status(500)
-                        .json({ internal: 'Internal server error' });
+                        .json({ message: INTERNAL });
                 });
         });
 });
@@ -64,7 +68,7 @@ router.post('/login', (req, res) => {
         .then(user => {
             if (!user) {
                 return res.status(400)
-                    .json({ email: 'Email not found' });
+                    .json({ message: INVALID });
             }
 
             return bcrypt.compare(password, user.password)
@@ -86,18 +90,18 @@ router.post('/login', (req, res) => {
                         } catch (ex) {
                             console.error(ex);
                             return res.status(500)
-                                .json({ internal: 'Internal server error' });
+                                .json({ message: INTERNAL });
                         }
 
                     } else {
                         return res.status(400)
-                            .json({ password: 'Password incorrect' });
+                            .json({ message: INVALID });
                     }
                 })
                 .catch(err => {
                     console.error(err);
                     return res.status(500)
-                        .json({ internal: 'Internal server error' });
+                        .json({ message: INTERNAL });
                 });
         });
 });
