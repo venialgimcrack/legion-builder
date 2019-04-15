@@ -1,0 +1,107 @@
+[
+    {
+        "title": "A-180 Pistol Config",
+        "weapon": {
+            "range": "1-2",
+            "dice": [
+                "red", "red", "white"
+            ],
+            "keywords": [
+                {
+                    "text": "Pierce",
+                    "value": 1
+                }
+            ]
+        },
+        "keywords": [
+            {
+                "text": "Reconfigure"
+            }
+        ],
+        "requirements": [
+            {
+                "field": "name",
+                "values": [
+                    "Jyn Erso"
+                ]
+            }
+        ],
+        "kind": "armament",
+        "points": 0
+    }, {
+        "title": "A-180 Rifle Config",
+        "weapon": {
+            "range": "1-3",
+            "dice": [
+                "black", "black", "white"
+            ],
+            "keywords": [
+                {
+                    "text": "Pierce",
+                    "value": 1
+                }
+            ]
+        },
+        "keywords": [
+            {
+                "text": "Reconfigure"
+            }
+        ],
+        "requirements": [
+            {
+                "field": "name",
+                "values": [
+                    "Jyn Erso"
+                ]
+            }
+        ],
+        "kind": "armament",
+        "points": 0
+    }, {
+        "title": "A-300 Long Range Config",
+        "weapon": {
+            "range": "1-4",
+            "dice": [
+                "white"
+            ]
+        },
+        "keywords": [
+            {
+                "text": "Reconfigure"
+            }
+        ],
+        "requirements": [
+            {
+                "field": "name",
+                "values": [
+                    "Rebel Pathfinders"
+                ]
+            }
+        ],
+        "kind": "armament",
+        "points": 6
+    }, {
+        "title": "A-300 Short Range Config",
+        "weapon": {
+            "range": "1-2",
+            "dice": [
+                "red"
+            ]
+        },
+        "keywords": [
+            {
+                "text": "Reconfigure"
+            }
+        ],
+        "requirements": [
+            {
+                "field": "name",
+                "values": [
+                    "Rebel Pathfinders"
+                ]
+            }
+        ],
+        "kind": "armament",
+        "points": 6
+    }
+]

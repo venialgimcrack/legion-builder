@@ -1,0 +1,49 @@
+[
+    {
+        "title": "Commanding Presence",
+        "effects": [
+            {
+                "text": [
+                    "When issuing orders, you can issue orders at range 4."
+                ]
+            }
+        ],
+        "kind": "command",
+        "points": 10
+    }, {
+        "title": "Esteemed Leader",
+        "effects": [
+            {
+                "text": [
+                    "While you are defending, each friendly corps trooper unit at range 1 gains \"Guardian 1\"."
+                ]
+            }
+        ],
+        "kind": "command",
+        "points": 5
+    }, {
+        "title": "Improvised Orders",
+        "exhaust": true,
+        "effects": [
+            {
+                "text": [
+                    "After an order token is drawn from a friendly order pool, draw a second order token from that order pool; choose 1 to use and shuffle the other back into its order pool.",
+                    "If you do, during the End Phase, ready this card."
+                ]
+            }
+        ],
+        "kind": "command",
+        "points": 10
+    }, {
+        "title": "Strict Orders",
+        "effects": [
+            {
+                "text": [
+                    "When a friendly trooper unit with a faceup order token activates, during its Rally step, it may remove 1 suppression token instead of rolling dice."
+                ]
+            }
+        ],
+        "kind": "command",
+        "points": 5
+    }
+]
