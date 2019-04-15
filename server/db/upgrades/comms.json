@@ -1,0 +1,49 @@
+[
+    {
+        "title": "Comms Jammer",
+        "effects": [
+            {
+                "text": [
+                    "Enemy units at range 1 cannot be issued orders, unless they are issuing an order to themselves."
+                ]
+            }
+        ],
+        "kind": "comms",
+        "points": 15
+    }, {
+        "title": "Comms Relay",
+        "effects": [
+            {
+                "text": [
+                    "When you would be issued an order, you may choose a friendly unit at range 1-2.",
+                    "Issue an order to the chosen unit instead."
+                ]
+            }
+        ],
+        "kind": "comms",
+        "points": 5
+    }, {
+        "title": "HQ Uplink",
+        "exhaust": true,
+        "effects": [
+            {
+                "text": [
+                    "During the Issue Orders step of the Command Phase, issue an order to yourself."
+                ]
+            }
+        ],
+        "kind": "comms",
+        "points": 10
+    }, {
+        "title": "Long-Range Comlink",
+        "effects": [
+            {
+                "text": [
+                    "During the Command Phase, you may be issued orders as though you are in range of the nominated commander."
+                ]
+            }
+        ],
+        "kind": "comms",
+        "points": 10
+    }
+]

@@ -1,0 +1,47 @@
+[
+    {
+        "title": "Concussion Grenades",
+        "weapon": {
+            "range": 1,
+            "dice": [
+                "black"
+            ],
+            "keywords": [
+                {
+                    "text": "Blast"
+                }
+            ]
+        },
+        "kind": "grenades",
+        "points": 5
+    }, {
+        "title": "Fragmentation Grenades",
+        "weapon": {
+            "range": 1,
+            "dice": [
+                "red"
+            ],
+            "surges": {
+                "attack": "crit"
+            }
+        },
+        "kind": "grenades",
+        "points": 5
+    }, {
+        "title": "Impact Grenades",
+        "weapon": {
+            "range": 1,
+            "dice": [
+                "black"
+            ],
+            "keywords": [
+                {
+                    "text": "Impact",
+                    "value": 1
+                }
+            ]
+        },
+        "kind": "grenades",
+        "points": 5
+    }
+]
