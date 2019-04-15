@@ -3,6 +3,8 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Route } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 import Collection from './Collection';
 import Header from './Header';
 import Home from './Home';
@@ -31,7 +33,8 @@ if (!!localStorage[JWT_TOKEN_KEY]) {
 }
 
 const Main = ({ history }) => (
-    <div>
+    <React.Fragment>
+        <CssBaseline />
         <Header />
         <ConnectedRouter history={history}>
             <Route path="/" exact component={Home} />
@@ -40,7 +43,7 @@ const Main = ({ history }) => (
             <PrivateRoute path="/lists" component={Lists} />
             <PrivateRoute path="/collection" component={Collection} />
         </ConnectedRouter>
-    </div>
+    </React.Fragment>
 );
 
 export default Main;

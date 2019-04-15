@@ -1,9 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { /*Link,*/ Redirect } from 'react-router-dom';
 import _ from 'lodash';
 
+import withStyles from '@material-ui/core/styles/withStyles';
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import Paper from '@material-ui/core/Paper';
+
 import { login } from './actions/loginActions';
+
+const styles = theme => ({
+    main: {
+        width: 'auto',
+        display: 'block',
+        marginLeft: theme.spacing.unit * 2,
+        marginRight: theme.spacing.unit * 2,
+        [ theme.breakpoints.up(400 + theme.spacing.unit * 4) ]: {
+            width: 400,
+            marginLeft: 'auto',
+            marginRight: 'auto'
+        }
+    },
+    paper: {
+        marginTop: theme.spacing.unit * 2,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: `0px ${theme.spacing.unit * 2}px ${theme.spacing.unit * 2}px`
+    },
+    form: {
+        width: '100%'
+    },
+    submit: {
+        marginTop: theme.spacing.unit * 4
+    }
+});
 
 class LoginPage extends Component {
     constructor (props) {
@@ -32,12 +66,14 @@ class LoginPage extends Component {
 
     render () {
         const { from } = this.props.location.state || { from: { pathname: '/' } },
-            { errors, redirect } = this.props;
+            { classes, errors, redirect } = this.props;
+
+        console.log(errors);
 
         if (redirect) {
             return <Redirect to={from} />;
         }
-
+/*
         return (
             <div>
                 <div>Login Form</div>
@@ -59,6 +95,24 @@ class LoginPage extends Component {
                 </form>
             </div>
         );
+*/
+        return (
+            <main className={classes.main}>
+                <Paper className={classes.paper}>
+                    <form onSubmit={this.onSubmit} className={classes.form}>
+                        <FormControl margin="normal" required fullWidth>
+                            <InputLabel htmlFor="email">Email</InputLabel>
+                            <Input id="email" name="email" autoComplete="email" autoFocus onChange={this.onChange} />
+                        </FormControl>
+                        <FormControl margin="normal" required fullWidth>
+                            <InputLabel htmlFor="password">Password</InputLabel>
+                            <Input name="password" type="password" id="password" autoComplete="current-password" onChange={this.onChange} />
+                        </FormControl>
+                        <Button type="submit" variant="contained" fullWidth className={classes.submit}>Login</Button>
+                    </form>
+                </Paper>
+            </main>
+        );
     }
 }
 
@@ -76,4 +130,7 @@ const mapDispatchToProps = {
     login
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+// export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+
+const connected = connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default withStyles(styles)(connected);
