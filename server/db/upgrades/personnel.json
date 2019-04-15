@@ -25,7 +25,13 @@
                 "values": [ "rebel" ]
             }
         ],
-        "effects": [],
+        "effects": [
+            {
+                "text": [
+                    "Add 1 2-1B medical droid mini."
+                ]
+            }
+        ],
         "kind": "personnel",
         "points": 18
     }, {
@@ -37,7 +43,11 @@
             }
         ],
         "effects": [
-            "Add 1 fleet trooper mini."
+            {
+                "text": [
+                    "Add 1 fleet trooper mini."
+                ]
+            }
         ],
         "kind": "personnel",
         "points": 11
@@ -68,7 +78,11 @@
             }
         ],
         "effects": [
-            "Add 1 R5 astromech droid mini."
+            {
+                "text": [
+                    "Add 1 R5 astromech droid mini."
+                ]
+            }
         ],
         "kind": "personnel",
         "points": 8
@@ -89,7 +103,11 @@
             }
         ],
         "effects": [
-            "Adds 1 Rebel comms technician mini."
+            {
+                "text": [
+                    "Adds 1 Rebel comms technician mini."
+                ]
+            }
         ],
         "kind": "personnel",
         "points": 9
@@ -110,8 +128,15 @@
             }
         ],
         "effects": [
-            "Add 1 Rebel officer mini.",
-            "Your courage is increased by 1."
+            {
+                "text": [
+                    "Add 1 Rebel officer mini."
+                ]
+            }, {
+                "text": [
+                    "Your courage is increased by 1."
+                ]
+            }
         ],
         "kind": "personnel",
         "points": 19
@@ -124,7 +149,11 @@
             }
         ],
         "effects": [
-            "Add 1 Rebel trooper mini."
+            {
+                "text": [
+                    "Add 1 Rebel trooper mini."
+                ]
+            }
         ],
         "kind": "personnel",
         "points": 10
@@ -137,7 +166,11 @@
             }
         ],
         "effects": [
-            "Add 1 stormtrooper mini."
+            {
+                "text": [
+                    "Add 1 stormtrooper mini."
+                ]
+            }
         ],
         "kind": "personnel",
         "points": 11

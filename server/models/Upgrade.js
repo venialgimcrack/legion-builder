@@ -118,7 +118,24 @@ const schema = new Schema({
             values: [ String ]
         }
     ],
-    effects: [ String ],
+    effects: [
+        {
+            text: {
+                type: [ String ],
+                required: true
+            },
+            perform: {
+                action: {
+                    type: Boolean,
+                    default: false
+                },
+                free: {
+                    type: Boolean,
+                    default: false
+                }
+            }
+        }
+    ],
     kind: {
         type: String,
         required: true,

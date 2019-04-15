@@ -1,0 +1,113 @@
+[
+    {
+        "title": "Battle Meditation",
+        "effects": [
+            {
+                "text": [
+                    "When you issue orders, one of those orders can be issued to any friendly unit on the battlefield."
+                ]
+            }
+        ],
+        "kind": "force",
+        "points": 10
+    }, {
+        "title": "Force Choke",
+        "exhaust": true,
+        "requirements": [
+            {
+                "field": "align",
+                "values": [
+                    "dark"
+                ]
+            }
+        ],
+        "effects": [
+            {
+                "text": [
+                    "Choose an enemy trooper mini at range 1 that is not a commander.",
+                    "It suffers 1 wound."
+                ],
+                "perform": {
+                    "action": true,
+                    "free": true
+                }
+            }
+        ],
+        "kind": "force",
+        "points": 5
+    }, {
+        "title": "Force Push",
+        "exhaust": true,
+        "effects": [
+            {
+                "text": [
+                    "Choose an enemy trooper unit at range 1.",
+                    "Perform a speed-1 move with that unit, even if it is engaged."
+                ],
+                "perform": {
+                    "action": true,
+                    "free": true
+                }
+            }
+        ],
+        "kind": "force",
+        "points": 10
+    }, {
+        "title": "Force Reflexes",
+        "exhaust": true,
+        "effects": [
+            {
+                "text": [
+                    "Gain 1 dodge token."
+                ],
+                "perform": {
+                    "action": true,
+                    "free": true
+                }
+            }
+        ],
+        "kind": "force",
+        "points": 15
+    }, {
+        "title": "Jedi Mind Trick",
+        "exhaust": true,
+        "requirements": [
+            {
+                "field": "align",
+                "values": [
+                    "light"
+                ]
+            }
+        ],
+        "effects": [
+            {
+                "text": [
+                    "Choose an enemy trooper unit at range 1-2.",
+                    "It gains 2 suppression tokens."
+                ],
+                "perform": {
+                    "action": true,
+                    "free": true
+                }
+            }
+        ],
+        "kind": "force",
+        "points": 5
+    }, {
+        "title": "Saber Throw",
+        "effects": [
+            {
+                "text": [
+                    "Choose one of your melee weapons.",
+                    "Perform a ranged attack with that weapon against an enemy unit at range 1-2, using half of that weapon's dice, rounded up.",
+                    "This is treated as an attack action."
+                ],
+                "perform": {
+                    "action": true
+                }
+            }
+        ],
+        "kind": "force",
+        "points": 10
+    }
+]

@@ -1,0 +1,45 @@
+[
+    {
+        "title": "Duck and Cover",
+        "effects": [
+            {
+                "text": [
+                    "While defending against a ranged attack, during the Apply Dodge and Cover step, you may gain 1 suppression token."
+                ]
+            }
+        ],
+        "kind": "training",
+        "points": 8
+    }, {
+        "title": "Hunter",
+        "effects": [
+            {
+                "text": [
+                    "While attacking a wounded trooper unit, during the Roll Attack Dice step, you may gain 1 aim token."
+                ]
+            }
+        ],
+        "kind": "training",
+        "points": 6
+    }, {
+        "title": "Overwatch",
+        "keywords": [
+            {
+                "text": "Sentinel"
+            }
+        ],
+        "kind": "training",
+        "points": 4
+    }, {
+        "title": "Tenacity",
+        "effects": [
+            {
+                "text": [
+                    "While performing a melee attack, if you are wounded or if one or more of your minis have been defeated, add 1 red attack die to your attack pool."
+                ]
+            }
+        ],
+        "kind": "training",
+        "points": 4
+    }
+]

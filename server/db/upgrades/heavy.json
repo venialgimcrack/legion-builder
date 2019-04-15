@@ -25,7 +25,11 @@
             }
         ],
         "effects": [
-            "Add 1 Bistan mini."
+            {
+                "text": [
+                    "Add 1 Bistan mini."
+                ]
+            }
         ],
         "kind": "heavy",
         "points": 32
@@ -53,7 +57,11 @@
             }
         ],
         "effects": [
-            "Add 1 bowcaster wookiee mini."
+            {
+                "text": [
+                    "Add 1 bowcaster wookiee mini."
+                ]
+            }
         ],
         "kind": "heavy",
         "points": 35
@@ -80,7 +88,11 @@
             }
         ],
         "effects": [
-            "Add 1 DH-447 sniper mini."
+            {
+                "text": [
+                    "Add 1 DH-447 sniper mini."
+                ]
+            }
         ],
         "kind": "heavy",
         "points": 28
@@ -105,7 +117,11 @@
             }
         ],
         "effects": [
-            "Add 1 DLT-19 stormtrooper mini."
+            {
+                "title": [
+                    "Add 1 DLT-19 stormtrooper mini."
+                ]
+            }
         ],
         "kind": "heavy",
         "points": 24
@@ -133,7 +149,11 @@
             }
         ],
         "effects": [
-            "Add 1 HH-12 stormtrooper mini."
+            {
+                "text": [
+                    "Add 1 HH-12 stormtrooper mini."
+                ]
+            }
         ],
         "kind": "heavy",
         "points": 34
@@ -161,7 +181,11 @@
             }
         ],
         "effects": [
-            "Add 1 MPL-57 barrage trooper mini."
+            {
+                "text": [
+                    "Add 1 MPL-57 barrage trooper mini."
+                ]
+            }
         ],
         "kind": "heavy",
         "points": 33
@@ -190,7 +214,11 @@
             }
         ],
         "effects": [
-            "Add 1 MPL-57 ion trooper mini."
+            {
+                "text": [
+                    "Add 1 MPL-57 ion trooper mini."
+                ]
+            }
         ],
         "kind": "heavy",
         "points": 32
@@ -218,7 +246,11 @@
             }
         ],
         "effects": [
-            "Add 1 Pao mini."
+            {
+                "text": [
+                    "Add 1 Pao mini."
+                ]
+            }
         ],
         "kind": "heavy",
         "points": 22
@@ -266,7 +298,11 @@
             }
         ],
         "effects": [
-            "Add 1 proton charge saboteur mini."
+            {
+                "text": [
+                    "Add 1 proton charge saboteur mini."
+                ]
+            }
         ],
         "kind": "heavy",
         "points": 26
@@ -291,7 +327,11 @@
             }
         ],
         "effects": [
-            "Add 1 scatter gun trooper mini."
+            {
+                "text": [
+                    "Add 1 scatter gun trooper mini."
+                ]
+            }
         ],
         "kind": "heavy",
         "points": 23
@@ -311,7 +351,11 @@
             }
         ],
         "effects": [
-            "Add 1 Z-6 trooper mini."
+            {
+                "text": [
+                    "Add 1 Z-6 trooper mini."
+                ]
+            }
         ],
         "kind": "heavy",
         "points": 22
