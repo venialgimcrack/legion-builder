@@ -144,7 +144,19 @@ const schema = new Schema({
     points: {
         type: Number,
         required: true
-    }
+    },
+    products: [
+        {
+            product_id: {
+                type: String,
+                required: true
+            },
+            count: {
+                type: Number,
+                default: 1
+            }
+        }
+    ]
 });
 
 module.exports = {
