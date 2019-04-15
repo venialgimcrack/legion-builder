@@ -13,7 +13,13 @@
             ]
         },
         "kind": "grenades",
-        "points": 5
+        "points": 5,
+        "products": [
+            {
+                "product_id": "core",
+                "count": 4
+            }
+        ]
     }, {
         "title": "Fragmentation Grenades",
         "weapon": {
@@ -26,7 +32,14 @@
             }
         },
         "kind": "grenades",
-        "points": 5
+        "points": 5,
+        "products": [
+            {
+                "product_id": "wookie"
+            }, {
+                "product_id": "pathfinder"
+            }
+        ]
     }, {
         "title": "Impact Grenades",
         "weapon": {
@@ -42,6 +55,13 @@
             ]
         },
         "kind": "grenades",
-        "points": 5
+        "points": 5,
+        "products": [
+            {
+                "product_id": "rebel"
+            }, {
+                "product_id": "fleet"
+            }
+        ]
     }
 ]

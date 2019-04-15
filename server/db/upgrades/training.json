@@ -9,7 +9,18 @@
             }
         ],
         "kind": "training",
-        "points": 8
+        "points": 8,
+        "products": [
+            {
+                "product_id": "han"
+            }, {
+                "product_id": "commando"
+            }, {
+                "product_id": "jyn"
+            }, {
+                "product_id": "pathfinder"
+            }
+        ]
     }, {
         "title": "Hunter",
         "effects": [
@@ -20,7 +31,14 @@
             }
         ],
         "kind": "training",
-        "points": 6
+        "points": 6,
+        "products": [
+            {
+                "product_id": "chewbacca"
+            }, {
+                "product_id": "wookie"
+            }
+        ]
     }, {
         "title": "Overwatch",
         "keywords": [
@@ -29,7 +47,12 @@
             }
         ],
         "kind": "training",
-        "points": 4
+        "points": 4,
+        "products": [
+            {
+                "product_id": "pathfinder"
+            }
+        ]
     }, {
         "title": "Tenacity",
         "effects": [
@@ -40,6 +63,13 @@
             }
         ],
         "kind": "training",
-        "points": 4
+        "points": 4,
+        "products": [
+            {
+                "product_id": "chewbacca"
+            }, {
+                "product_id": "wookie"
+            }
+        ]
     }
 ]

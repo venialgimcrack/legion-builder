@@ -32,7 +32,12 @@
             }
         ],
         "kind": "heavy",
-        "points": 32
+        "points": 32,
+        "products": [
+            {
+                "product_id": "pathfinder"
+            }
+        ]
     }, {
         "title": "Bowcaster Wookiee",
         "weapon": {
@@ -64,7 +69,12 @@
             }
         ],
         "kind": "heavy",
-        "points": 35
+        "points": 35,
+        "products": [
+            {
+                "product_id": "wookie"
+            }
+        ]
     }, {
         "title": "DH-447 Sniper",
         "weapon": {
@@ -95,7 +105,12 @@
             }
         ],
         "kind": "heavy",
-        "points": 28
+        "points": 28,
+        "products": [
+            {
+                "product_id": "commando"
+            }
+        ]
     }, {
         "title": "DLT-19 Stormtrooper",
         "weapon": {
@@ -124,7 +139,14 @@
             }
         ],
         "kind": "heavy",
-        "points": 24
+        "points": 24,
+        "products": [
+            {
+                "product_id": "core"
+            }, {
+                "product_id": "storm"
+            }
+        ]
     }, {
         "title": "HH-12 Stormtrooper",
         "weapon": {
@@ -156,7 +178,14 @@
             }
         ],
         "kind": "heavy",
-        "points": 34
+        "points": 34,
+        "products": [
+            {
+                "product_id": "core"
+            }, {
+                "product_id": "storm"
+            }
+        ]
     }, {
         "title": "MPL-57 Barrage Trooper",
         "weapon": {
@@ -188,7 +217,12 @@
             }
         ],
         "kind": "heavy",
-        "points": 33
+        "points": 33,
+        "products": [
+            {
+                "product_id": "fleet"
+            }
+        ]
     }, {
         "title": "MPL-57 Ion Trooper",
         "weapon": {
@@ -221,7 +255,14 @@
             }
         ],
         "kind": "heavy",
-        "points": 32
+        "points": 32,
+        "products": [
+            {
+                "product_id": "core"
+            }, {
+                "product_id": "rebel"
+            }
+        ]
     }, {
         "title": "Pao",
         "unique": true,
@@ -253,7 +294,12 @@
             }
         ],
         "kind": "heavy",
-        "points": 22
+        "points": 22,
+        "products": [
+            {
+                "product_id": "pathfinder"
+            }
+        ]
     }, {
         "title": "Proton Charge Saboteur",
         "weapon": {
@@ -305,7 +351,12 @@
             }
         ],
         "kind": "heavy",
-        "points": 26
+        "points": 26,
+        "products": [
+            {
+                "product_id": "commando"
+            }
+        ]
     }, {
         "title": "Scatter Gun Trooper",
         "weapon": {
@@ -334,7 +385,12 @@
             }
         ],
         "kind": "heavy",
-        "points": 23
+        "points": 23,
+        "products": [
+            {
+                "product_id": "fleet"
+            }
+        ]
     }, {
         "title": "Z-6 Trooper",
         "weapon": {
@@ -358,6 +414,13 @@
             }
         ],
         "kind": "heavy",
-        "points": 22
+        "points": 22,
+        "products": [
+            {
+                "product_id": "core"
+            }, {
+                "product_id": "rebel"
+            }
+        ]
     }
 ]

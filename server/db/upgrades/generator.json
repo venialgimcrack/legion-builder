@@ -6,7 +6,12 @@
             "While performing a ranged attack with a weapon that has \"Fixed\", add 2 white attack dice and apply \"Suppressive\" to your attack pool."
         ],
         "kind": "generator",
-        "points": 10
+        "points": 10,
+        "products": [
+            {
+                "product_id": "eweb"
+            }
+        ]
     }, {
         "title": "Overcharged Generator",
         "exhaust": true,
@@ -14,6 +19,11 @@
             "While performing a ranged attack with a weapon that has \"Fixed\", add 1 black attack die and apply \"Impact 1\" to your attack pool."
         ],
         "kind": "generator",
-        "points": 10
+        "points": 10,
+        "products": [
+            {
+                "product_id": "laser"
+            }
+        ]
     }
 ]

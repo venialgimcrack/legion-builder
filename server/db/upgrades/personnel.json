@@ -33,7 +33,12 @@
             }
         ],
         "kind": "personnel",
-        "points": 18
+        "points": 18,
+        "products": [
+            {
+                "product_id": "reb_specials"
+            }
+        ]
     }, {
         "title": "Fleet Trooper",
         "requirements": [
@@ -50,7 +55,12 @@
             }
         ],
         "kind": "personnel",
-        "points": 11
+        "points": 11,
+        "products": [
+            {
+                "product_id": "fleet"
+            }
+        ]
     }, {
         "title": "R5 Astromech Droid",
         "keywords": [
@@ -85,7 +95,12 @@
             }
         ],
         "kind": "personnel",
-        "points": 8
+        "points": 8,
+        "products": [
+            {
+                "product_id": "reb_specials"
+            }
+        ]
     }, {
         "title": "Rebel Comms Technician",
         "adds": [
@@ -110,7 +125,12 @@
             }
         ],
         "kind": "personnel",
-        "points": 9
+        "points": 9,
+        "products": [
+            {
+                "product_id": "reb_specials"
+            }
+        ]
     }, {
         "title": "Rebel Officer",
         "keywords": [
@@ -139,7 +159,12 @@
             }
         ],
         "kind": "personnel",
-        "points": 19
+        "points": 19,
+        "products": [
+            {
+                "product_id": "reb_specials"
+            }
+        ]
     }, {
         "title": "Rebel Trooper",
         "requirements": [
@@ -156,7 +181,14 @@
             }
         ],
         "kind": "personnel",
-        "points": 10
+        "points": 10,
+        "products": [
+            {
+                "product_id": "core"
+            }, {
+                "product_id": "rebel"
+            }
+        ]
     }, {
         "title": "Stormtrooper",
         "requirements": [
@@ -173,6 +205,13 @@
             }
         ],
         "kind": "personnel",
-        "points": 11
+        "points": 11,
+        "products": [
+            {
+                "product_id": "core"
+            }, {
+                "product_id": "storm"
+            }
+        ]
     }
 ]

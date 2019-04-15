@@ -9,7 +9,13 @@
             }
         ],
         "kind": "force",
-        "points": 10
+        "points": 10,
+        "products": [
+            {
+                "product_id": "core",
+                "count": 2
+            }
+        ]
     }, {
         "title": "Force Choke",
         "exhaust": true,
@@ -34,7 +40,12 @@
             }
         ],
         "kind": "force",
-        "points": 5
+        "points": 5,
+        "products": [
+            {
+                "product_id": "core"
+            }
+        ]
     }, {
         "title": "Force Push",
         "exhaust": true,
@@ -51,7 +62,13 @@
             }
         ],
         "kind": "force",
-        "points": 10
+        "points": 10,
+        "products": [
+            {
+                "product_id": "core",
+                "count": 2
+            }
+        ]
     }, {
         "title": "Force Reflexes",
         "exhaust": true,
@@ -67,7 +84,13 @@
             }
         ],
         "kind": "force",
-        "points": 15
+        "points": 15,
+        "products": [
+            {
+                "product_id": "core",
+                "count": 2
+            }
+        ]
     }, {
         "title": "Jedi Mind Trick",
         "exhaust": true,
@@ -92,7 +115,12 @@
             }
         ],
         "kind": "force",
-        "points": 5
+        "points": 5,
+        "products": [
+            {
+                "product_id": "core"
+            }
+        ]
     }, {
         "title": "Saber Throw",
         "effects": [
@@ -108,6 +136,12 @@
             }
         ],
         "kind": "force",
-        "points": 10
+        "points": 10,
+        "products": [
+            {
+                "product_id": "core",
+                "count": 2
+            }
+        ]
     }
 ]

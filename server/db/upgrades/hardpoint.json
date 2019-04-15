@@ -26,7 +26,14 @@
             }
         ],
         "kind": "hardpoint",
-        "points": 25
+        "points": 25,
+        "products": [
+            {
+                "product_id": "core"
+            }, {
+                "product_id": "atrt"
+            }
+        ]
     }, {
         "title": "AT-RT Laser Cannon",
         "weapon": {
@@ -53,7 +60,14 @@
             }
         ],
         "kind": "hardpoint",
-        "points": 35
+        "points": 35,
+        "products": [
+            {
+                "product_id": "core"
+            }, {
+                "product_id": "atrt"
+            }
+        ]
     }, {
         "title": "AT-RT Rotary Blaster",
         "weapon": {
@@ -78,7 +92,14 @@
             }
         ],
         "kind": "hardpoint",
-        "points": 30
+        "points": 30,
+        "products": [
+            {
+                "product_id": "core"
+            }, {
+                "product_id": "atrt"
+            }
+        ]
     }, {
         "title": "Ax-108 \"Ground Buzzer\"",
         "weapon": {
@@ -102,7 +123,12 @@
             }
         ],
         "kind": "hardpoint",
-        "points": 20
+        "points": 20,
+        "products": [
+            {
+                "product_id": "t47"
+            }
+        ]
     }, {
         "title": "Mo/Dk Power Harpoon",
         "weapon": {
@@ -131,6 +157,11 @@
             }
         ],
         "kind": "hardpoint",
-        "points": 8
+        "points": 8,
+        "products": [
+            {
+                "product_id": "t47"
+            }
+        ]
     }
 ]
