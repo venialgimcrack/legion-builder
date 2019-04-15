@@ -57,7 +57,12 @@
             "attack": "hit",
             "defense": "block"
         },
-        "speed": 0
+        "speed": 0,
+        "products": [
+            {
+                "product_id": "laser"
+            }
+        ]
     }, {
         "name": "AT-RT",
         "faction": "rebel",
@@ -101,7 +106,14 @@
         "surges": {
             "attack": "crit"
         },
-        "speed": 2
+        "speed": 2,
+        "products": [
+            {
+                "product_id": "core"
+            }, {
+                "product_id": "atrt"
+            }
+        ]
     }, {
         "name": "Chewbacca",
         "subtitle": "Walking Carpet",
@@ -167,7 +179,12 @@
         "surges": {
             "attack": "crit"
         },
-        "speed": 2
+        "speed": 2,
+        "products": [
+            {
+                "product_id": "chewbacca"
+            }
+        ]
     }, {
         "name": "Fleet Troopers",
         "faction": "rebel",
@@ -224,7 +241,12 @@
             "attack": "hit",
             "defense": "block"
         },
-        "speed": 2
+        "speed": 2,
+        "products": [
+            {
+                "product_id": "fleet"
+            }
+        ]
     }, {
         "name": "Han Solo",
         "subtitle": "Unorthodox General",
@@ -283,7 +305,12 @@
             "attack": "crit",
             "defense": "block"
         },
-        "speed": 2
+        "speed": 2,
+        "products": [
+            {
+                "product_id": "han"
+            }
+        ]
     }, {
         "name": "Jyn Erso",
         "subtitle": "Stardust",
@@ -341,7 +368,12 @@
             "attack": "crit",
             "defense": "block"
         },
-        "speed": 2
+        "speed": 2,
+        "products": [
+            {
+                "product_id": "jyn"
+            }
+        ]
     }, {
         "name": "Leia Organa",
         "subtitle": "Fearless and Inventive",
@@ -404,7 +436,12 @@
             "attack": "crit",
             "defense": "block"
         },
-        "speed": 2
+        "speed": 2,
+        "products": [
+            {
+                "product_id": "leia"
+            }
+        ]
     }, {
         "name": "Luke Skywalker",
         "subtitle": "Hero of the Rebellion",
@@ -478,7 +515,12 @@
         "surges": {
             "attack": "crit"
         },
-        "speed": 2
+        "speed": 2,
+        "products": [
+            {
+                "product_id": "core"
+            }
+        ]
     }, {
         "name": "Rebel Commandos",
         "faction": "rebel",
@@ -530,7 +572,12 @@
             "attack": "hit",
             "defense": "block"
         },
-        "speed": 2
+        "speed": 2,
+        "products": [
+            {
+                "product_id": "commando"
+            }
+        ]
     }, {
         "name": "Rebel Commandos",
         "subtitle": "Strike Team",
@@ -588,7 +635,12 @@
             "attack": "hit",
             "defense": "block"
         },
-        "speed": 2
+        "speed": 2,
+        "products": [
+            {
+                "product_id": "commando"
+            }
+        ]
     }, {
         "name": "Rebel Officer",
         "subtitle": "Resolute Commander",
@@ -642,7 +694,12 @@
             "attack": "hit",
             "defense": "block"
         },
-        "speed": 2
+        "speed": 2,
+        "products": [
+            {
+                "product_id": "reb_specials"
+            }
+        ]
     }, {
         "name": "Rebel Pathfinders",
         "faction": "rebel",
@@ -694,7 +751,12 @@
             "attack": "hit",
             "defense": "block"
         },
-        "speed": 2
+        "speed": 2,
+        "products": [
+            {
+                "product_id": "pathfinder"
+            }
+        ]
     }, {
         "name": "Rebel Troopers",
         "faction": "rebel",
@@ -741,7 +803,14 @@
         "surges": {
             "defense": "block"
         },
-        "speed": 2
+        "speed": 2,
+        "products": [
+            {
+                "product_id": "core"
+            }, {
+                "product_id": "rebel"
+            }
+        ]
     }, {
         "name": "T-47 Airspeeder",
         "faction": "rebel",
@@ -805,7 +874,12 @@
         "surges": {
             "defense": "block"
         },
-        "speed": 3
+        "speed": 3,
+        "products": [
+            {
+                "product_id": "t47"
+            }
+        ]
     }, {
         "name": "Wookiee Warriors",
         "faction": "rebel",
@@ -851,6 +925,11 @@
         "surges": {
             "attack": "hit"
         },
-        "speed": 2
+        "speed": 2,
+        "products": [
+            {
+                "product_id": "wookie"
+            }
+        ]
     }
 ]

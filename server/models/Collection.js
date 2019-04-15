@@ -7,9 +7,44 @@ const schema = new Schema({
         ref: 'users',
         required: true
     },
-    products: [ String ],
-    units: [ String ],
-    upgrades: [ String ]
+    products: [
+        {
+            product_id: {
+                type: String,
+                required: true
+            },
+            count: {
+                type: Number,
+                default: 0
+            }
+        }
+    ],
+    units: [
+        {
+            unit_id: {
+                type: Schema.Types.ObjectId,
+                ref: 'units',
+                required: true
+            },
+            count: {
+                type: Number,
+                default: 0
+            }
+        }
+    ],
+    upgrades: [
+        {
+            upgrade_id: {
+                type: Schema.Types.ObjectId,
+                ref: 'upgrades',
+                required: true
+            },
+            count: {
+                type: Number,
+                default: 0
+            }
+        }
+    ]
 });
 
 module.exports = {
