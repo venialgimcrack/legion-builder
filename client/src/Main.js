@@ -6,7 +6,7 @@ import jwt_decode from 'jwt-decode';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Collection from './Collection';
-import Header from './Header';
+import HeaderBar from './HeaderBar';
 import Home from './Home';
 import Lists from './Lists';
 import LoginPage from './LoginPage';
@@ -19,15 +19,21 @@ import setAuthToken from './utils/setAuthToken';
 import { JWT_TOKEN_KEY } from './utils/constants';
 
 if (!!localStorage[JWT_TOKEN_KEY]) {
-    const token = localStorage[JWT_TOKEN_KEY],
-        decoded = jwt_decode(token),
-        currentTimeInSeconds = Date.now() / 1000;
+    try {
+        const token = localStorage[JWT_TOKEN_KEY],
+            decoded = jwt_decode(token),
+            currentTimeInSeconds = Date.now() / 1000;
 
-    setAuthToken(token);
+        setAuthToken(token);
 
-    store.dispatch(loginFinish(decoded));
+        store.dispatch(loginFinish(decoded));
 
-    if (decoded.exp < currentTimeInSeconds) {
+        if (decoded.exp < currentTimeInSeconds) {
+            store.dispatch(logout());
+        }
+
+    } catch (ex) {
+        console.error(ex);
         store.dispatch(logout());
     }
 }
@@ -35,7 +41,7 @@ if (!!localStorage[JWT_TOKEN_KEY]) {
 const Main = ({ history }) => (
     <React.Fragment>
         <CssBaseline />
-        <Header />
+        <HeaderBar />
         <ConnectedRouter history={history}>
             <Route path="/" exact component={Home} />
             <Route path="/login" component={LoginPage} />
