@@ -106,7 +106,7 @@ const mapDispatchToProps = {
     loginClear
 };
 
-const pageStyles = theme => ({
+const styles = theme => ({
     main: {
         width: 'auto',
         display: 'block',
@@ -141,4 +141,4 @@ const pageStyles = theme => ({
 });
 
 const connected = connect(mapStateToProps, mapDispatchToProps)(LoginPage);
-export default withStyles(pageStyles)(connected);
+export default withStyles(styles)(connected);
