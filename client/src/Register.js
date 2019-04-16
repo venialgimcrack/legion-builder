@@ -13,7 +13,7 @@ import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import { register } from './actions/registerActions';
+import { register, registerClear } from './actions/registerActions';
 import MessageBarContent from './MessageBarContent';
 
 const LoginLink = props => <RouterLink to="/login" {...props} />;
@@ -30,7 +30,15 @@ class Register extends Component {
         };
     }
 
+    showingError = () => {
+        return !_.isEmpty(this.props.errors);
+    };
+
     onChange = e => {
+        if (this.showingError()) {
+            this.props.registerClear();
+        }
+
         this.setState({ [e.target.id]: e.target.value });
     };
 
@@ -46,6 +54,12 @@ class Register extends Component {
 
         this.props.register(registerData, this.props.history);
     };
+
+    componentDidMount () {
+        if (this.showingError()) {
+            this.props.registerClear();
+        }
+    }
 
     render () {
         const { classes, errors, redirect } = this.props;
@@ -113,7 +127,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    register
+    register,
+    registerClear
 };
 
 const styles = theme => ({

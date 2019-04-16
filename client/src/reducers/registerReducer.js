@@ -1,7 +1,8 @@
 import {
     REGISTER_START,
     REGISTER_FINISH,
-    REGISTER_ERROR
+    REGISTER_ERROR,
+    REGISTER_CLEAR
 } from '../actions/registerActions';
 
 const INIT_STATE = {
@@ -17,6 +18,7 @@ const register = (state = INIT_STATE, action) => {
                 errors: {}
             });
 
+        case REGISTER_CLEAR:
         case REGISTER_FINISH:
             return INIT_STATE;
 

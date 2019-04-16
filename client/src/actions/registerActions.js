@@ -1,11 +1,10 @@
 import axios from 'axios';
 import _ from 'lodash';
 
-import { loginClear } from './loginActions';
-
 export const REGISTER_START = 'REGISTER_START';
 export const REGISTER_FINISH = 'REGISTER_FINISH';
 export const REGISTER_ERROR = 'REGISTER_ERROR';
+export const REGISTER_CLEAR = 'REGISTER_CLEAR';
 
 export const registerStart = () => ({
     type: REGISTER_START
@@ -27,7 +26,6 @@ export const register = (userData, history) => {
         axios.post('/api/users/register', userData)
             .then(() => {
                 dispatch(registerFinish());
-                dispatch(loginClear());
 
                 history.push('/login');
             })
@@ -40,3 +38,7 @@ export const register = (userData, history) => {
             });
     };
 };
+
+export const registerClear = () => ({
+    type: REGISTER_CLEAR
+});

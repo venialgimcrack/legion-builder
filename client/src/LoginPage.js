@@ -28,8 +28,12 @@ class LoginPage extends Component {
         };
     }
 
+    showingError = () => {
+        return !_.isEmpty(this.props.errors);
+    };
+
     onChange = e => {
-        if (this.props.errors) {
+        if (this.showingError()) {
             this.props.loginClear();
         }
 
@@ -46,6 +50,12 @@ class LoginPage extends Component {
 
         this.props.login(loginData);
     };
+
+    componentDidMount () {
+        if (this.showingError()) {
+            this.props.loginClear();
+        }
+    }
 
     render () {
         const { from } = this.props.location.state || { from: { pathname: '/' } },
