@@ -12,8 +12,8 @@ const validateRegister = require('../validation/register'),
 const SALT_ROUNDS = 10,
     TOKEN_EXPIRY = 31556926;
 
-const EXISTS = 'Email already registered',
-    INVALID = 'Invalid credentials',
+const EMAIL_EXISTS = 'Email already registered',
+    CREDS_INVALID = 'Incorrect email and/or password',
     INTERNAL = 'Internal server error';
 
 router.post('/register', (req, res) => {
@@ -28,7 +28,7 @@ router.post('/register', (req, res) => {
     User.findOne({ email })
         .then(user => {
             if (user) {
-                return res.status(400).json({ message: EXISTS });
+                return res.status(400).json({ email: EMAIL_EXISTS });
             }
 
             const newUser = new User({
@@ -49,7 +49,7 @@ router.post('/register', (req, res) => {
                 .catch(err => {
                     console.error(err);
                     return res.status(500)
-                        .json({ message: INTERNAL });
+                        .json({ server: INTERNAL });
                 });
         });
 });
@@ -68,7 +68,7 @@ router.post('/login', (req, res) => {
         .then(user => {
             if (!user) {
                 return res.status(400)
-                    .json({ message: INVALID });
+                    .json({ form: CREDS_INVALID });
             }
 
             return bcrypt.compare(password, user.password)
@@ -90,18 +90,18 @@ router.post('/login', (req, res) => {
                         } catch (ex) {
                             console.error(ex);
                             return res.status(500)
-                                .json({ message: INTERNAL });
+                                .json({ server: INTERNAL });
                         }
 
                     } else {
                         return res.status(400)
-                            .json({ message: INVALID });
+                            .json({ form: CREDS_INVALID });
                     }
                 })
                 .catch(err => {
                     console.error(err);
                     return res.status(500)
-                        .json({ message: INTERNAL });
+                        .json({ server: INTERNAL });
                 });
         });
 });

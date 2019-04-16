@@ -20,9 +20,9 @@ export const loginFinish = user => ({
     payload: user
 });
 
-export const loginError = errors => ({
+export const loginError = error => ({
     type: LOGIN_ERROR,
-    payload: errors
+    payload: error
 });
 
 export const login = userData => {
