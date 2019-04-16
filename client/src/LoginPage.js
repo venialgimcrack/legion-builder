@@ -67,7 +67,7 @@ class LoginPage extends Component {
         return (
             <main className={classes.main}>
                 <Paper className={classes.paper}>
-                    <form onSubmit={this.onSubmit} className={classes.form}>
+                    <form noValidate onSubmit={this.onSubmit} className={classes.form}>
                         <FormControl margin="normal" required fullWidth error={!!emailHelper}>
                             <InputLabel htmlFor="email">Email</InputLabel>
                             <Input id="email" name="email" autoComplete="email" autoFocus onChange={this.onChange} />
