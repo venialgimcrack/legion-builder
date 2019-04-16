@@ -19,12 +19,7 @@ const HeaderBar = props => {
                 <Typography variant="h6" color="inherit" className={classes.grow}>
                     Legion List Builder
                 </Typography>
-                {
-                    loggedIn ?
-                        <Button color="inherit" onClick={logout}>Logout</Button>
-                    :
-                        null
-                }
+                { loggedIn ? <Button color="inherit" onClick={logout}>Logout</Button> : null }
                 </Toolbar>
             </AppBar>
         </div>
