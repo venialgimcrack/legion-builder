@@ -1,5 +1,5 @@
 const mongoose = require('mongoose'),
-    { CATEGORIES } = require('../config/constants'),
+    { CATEGORIES, FACTIONS } = require('../config/constants'),
     Schema = mongoose.Schema;
 
 const schema = new Schema({
@@ -12,7 +12,11 @@ const schema = new Schema({
         enum: CATEGORIES,
         required: true
     },
-    wave: Number
+    wave: Number,
+    faction: {
+        type: String,
+        enum: FACTIONS
+    }
 });
 
 module.exports = {
