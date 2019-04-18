@@ -1,78 +1,78 @@
 [
     {
-        "_id": "atrt",
+        "id": "atrt",
         "name": "AT-RT Unit Expansion",
         "category": "expansion",
         "wave": 1,
         "faction": "rebel"
     }, {
-        "_id": "rebel",
+        "id": "rebel",
         "name": "Rebel Troopers Unit Expansion",
         "category": "expansion",
         "wave": 1,
         "faction": "rebel"
     }, {
-        "_id": "t47",
+        "id": "t47",
         "name": "T-47 Airspeeder Unit Expansion",
         "category": "expansion",
         "wave": 1,
         "faction": "rebel"
     }, {
-        "_id": "leia",
+        "id": "leia",
         "name": "Leia Organa Commander Expansion",
         "category": "expansion",
         "wave": 2,
         "faction": "rebel"
     }, {
-        "_id": "fleet",
+        "id": "fleet",
         "name": "Fleet Troopers Unit Expansion",
         "category": "expansion",
         "wave": 2,
         "faction": "rebel"
     }, {
-        "_id": "laser",
+        "id": "laser",
         "name": "1.4 FD Laser Cannon Team Unit Expansion",
         "category": "expansion",
         "wave": 3,
         "faction": "rebel"
     }, {
-        "_id": "han",
+        "id": "han",
         "name": "Han Solo Commander Expansion",
         "category": "expansion",
         "wave": 3,
         "faction": "rebel"
     }, {
-        "_id": "commando",
+        "id": "commando",
         "name": "Rebel Commandos Unit Expansion",
         "category": "expansion",
         "wave": 3,
         "faction": "rebel"
     }, {
-        "_id": "chewbacca",
+        "id": "chewbacca",
         "name": "Chewbacca Operative Expansion",
         "category": "expansion",
         "wave": 4,
         "faction": "rebel"
     }, {
-        "_id": "wookie",
+        "id": "wookie",
         "name": "Wookie Warriors Unit Expansion",
         "category": "expansion",
         "wave": 4,
         "faction": "rebel"
     }, {
-        "_id": "reb_specials",
+        "id": "reb_specials",
         "name": "Rebel Specialists Personnel Expansion",
         "category": "expansion",
         "wave": 5,
         "faction": "rebel"
     }, {
-        "_id": "jyn",
+        "id": "jyn",
         "name": "Jyn Erso Commander Expansion",
         "category": "expansion",
         "wave": 5,
         "faction": "rebel"
     }, {
-        "_id": "pathfinder",
+        "id": "pathfinder",
         "name": "Rebel Pathfinders Unit Expansion",
         "category": "expansion",
         "wave": 5,

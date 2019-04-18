@@ -1,78 +1,78 @@
 [
     {
-        "_id": "74z",
+        "id": "74z",
         "name": "74-Z Speeder Bikes Unit Expansion",
         "category": "expansion",
         "wave": 1,
         "faction": "empire"
     }, {
-        "_id": "storm",
+        "id": "storm",
         "name": "Stormtroopers Unit Expansion",
         "category": "expansion",
         "wave": 1,
         "faction": "empire"
     }, {
-        "_id": "atst",
+        "id": "atst",
         "name": "AT-ST Unit Expansion",
         "category": "expansion",
         "wave": 1,
         "faction": "empire"
     }, {
-        "_id": "veers",
+        "id": "veers",
         "name": "General Veers Commander Expansion",
         "category": "expansion",
         "wave": 2,
         "faction": "empire"
     }, {
-        "_id": "snow",
+        "id": "snow",
         "name": "Snowtroopers Unit Expansion",
         "category": "expansion",
         "wave": 2,
         "faction": "empire"
     }, {
-        "_id": "eweb",
+        "id": "eweb",
         "name": "E-Web Heavy Blaster Team Unit Expansion",
         "category": "expansion",
         "wave": 3,
         "faction": "empire"
     }, {
-        "_id": "boba",
+        "id": "boba",
         "name": "Boba Fett Operative Unit Expansion",
         "category": "expansion",
         "wave": 3,
         "faction": "empire"
     }, {
-        "_id": "scout",
+        "id": "scout",
         "name": "Scout Troopers Unit Expansion",
         "category": "expansion",
         "wave": 3,
         "faction": "empire"
     }, {
-        "_id": "palpatine",
+        "id": "palpatine",
         "name": "Emperor Palpatine Commander Unit Expansion",
         "category": "expansion",
         "wave": 4,
         "faction": "empire"
     }, {
-        "_id": "royal",
+        "id": "royal",
         "name": "Imperial Royal Guards Unit Expansion",
         "category": "expansion",
         "wave": 4,
         "faction": "empire"
     }, {
-        "_id": "imp_specials",
+        "id": "imp_specials",
         "name": "Imperial Specialists Personnel Expansion",
         "category": "expansion",
         "wave": 5,
         "faction": "empire"
     }, {
-        "_id": "krennic",
+        "id": "krennic",
         "name": "Director Orson Krennic Commander Expansion",
         "category": "expansion",
         "wave": 5,
         "faction": "empire"
     }, {
-        "_id": "death",
+        "id": "death",
         "name": "Imperial Death Troopers Unit Expansion",
         "category": "expansion",
         "wave": 5,

@@ -1,6 +1,6 @@
 [
     {
-        "_id": "core",
+        "id": "core",
         "name": "Star Wars: Legion",
         "category": "core",
         "wave": 1

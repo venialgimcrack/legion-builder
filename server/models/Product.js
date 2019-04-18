@@ -3,6 +3,11 @@ const mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 const schema = new Schema({
+    id: {
+        type: String,
+        required: true,
+        unique: true
+    },
     name: {
         type: String,
         required: true
@@ -17,7 +22,7 @@ const schema = new Schema({
         type: String,
         enum: FACTIONS
     }
-});
+}, { id: false });
 
 module.exports = {
     schema,
