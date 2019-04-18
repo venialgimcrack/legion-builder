@@ -13,6 +13,8 @@ backend.use(bodyParser.json());
 
 const db = require('./server/config/keys').mongoURI;
 
+mongoose.set('useCreateIndex', true);
+
 mongoose.connect(db, { useNewUrlParser: true })
     .then(() => console.log('MongoDB connection successful'))
     .catch(err => console.error(err));

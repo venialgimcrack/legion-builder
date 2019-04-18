@@ -13,7 +13,7 @@ router.post('/save', passport.authenticate('jwt', { session: false }), (req, res
     }
 
     const owner = req.user._id,
-        products = req.body.products;
+        products = req.body.products[0];
 
     Collection.findOne({ owner })
         .then(collection => {
@@ -21,12 +21,10 @@ router.post('/save', passport.authenticate('jwt', { session: false }), (req, res
                 collection = new Collection({ owner });
             }
 
-            collection.products = products;
+            // TODO reconcile products against collection
 
             return collection.save()
-                .then(result => {
-                    res.json(result.products);
-                });
+                .then(result => res.json(result));
         })
         .catch(err => {
             console.error(err);
@@ -40,7 +38,7 @@ router.get('/load', passport.authenticate('jwt', { session: false }), (req, res)
 
     Collection.findOne({ owner })
         .then(collection => {
-            let owned = collection ? (collection.products || []) : [];
+            let owned = collection || {};
 
             return res.json(owned);
         })
