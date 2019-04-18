@@ -4,22 +4,18 @@ import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-// import Checkbox from '@material-ui/core/Checkbox';
 import Divider from '@material-ui/core/Divider';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-// import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-// import TextField from '@material-ui/core/TextField';
+
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { loadCollection, saveCollection } from './actions/collectionActions';
 import { getProducts } from './actions/productActions';
+import CollectionFormTable from './CollectionFormTable';
 
 class Collection extends Component {
     static getDerivedStateFromProps (props, state) {
@@ -74,8 +70,10 @@ class Collection extends Component {
     }
 
     render () {
-        const { classes } = this.props,
-            { expanded } = this.state;
+        const { classes, products } = this.props,
+            { expanded } = this.state,
+            cores = products.filter(prod => prod.category === 'core'),
+            expansions = products.filter(prod => prod.category === 'expansion');
 
         return (
             <div className={classes.root}>
@@ -86,49 +84,21 @@ class Collection extends Component {
                         </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                        <form noValidate>
-                            <List dense className={classes.list}>
-                            {
-                                this.props.products.filter(product => product.category === 'core').map((product, index) => {
-                                    let itemKey = `prod_core_${index}`;
-
-                                    return (
-                                        <ListItem key={itemKey} alignItems="flex-start">
-                                            <ListItemText primary={product.name} />
-                                        </ListItem>
-                                    );
-                                })
-                            }
-                            </List>
-                        </form>
+                        <CollectionFormTable products={cores} />
                     </ExpansionPanelDetails>
                     <Divider />
                     <ExpansionPanelActions>
                         <Button size="small" color="primary">Save</Button>
                     </ExpansionPanelActions>
                 </ExpansionPanel>
-                <ExpansionPanel expanded={expanded === 'xpacks'} onChange={this.onExpand('xpacks')}>
+                <ExpansionPanel expanded={expanded === 'xpacs'} onChange={this.onExpand('xpacs')}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                         <Typography className={classes.heading}>
                             Expansions
                         </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                        <form noValidate>
-                            <List dense className={classes.list}>
-                            {
-                                this.props.products.filter(product => product.category === 'expansion').map((product, index) => {
-                                    let itemKey = `prod_xpack_${index}`;
-
-                                    return (
-                                        <ListItem key={itemKey} alignItems="flex-start">
-                                            <ListItemText primary={product.name} />
-                                        </ListItem>
-                                    );
-                                })
-                            }
-                            </List>
-                        </form>
+                        <CollectionFormTable products={expansions} />
                     </ExpansionPanelDetails>
                     <Divider />
                     <ExpansionPanelActions>
@@ -156,10 +126,20 @@ const mapDispatchToProps = {
 const styles = theme => ({
     root: {
         width: 'auto',
-        margin: theme.spacing.unit
-    },
-    list: {
-        width: '100%'
+        marginTop: theme.spacing.unit * 2,
+        marginLeft: theme.spacing.unit * 2,
+        marginRight: theme.spacing.unit * 2,
+        marginBottom: theme.spacing.unit,
+        [ theme.breakpoints.down(320 + theme.spacing.unit * 4) ]: {
+            width: 320,
+            marginLeft: 'auto',
+            marginRight: 'auto'
+        },
+        [ theme.breakpoints.up(640 + theme.spacing.unit * 4) ]: {
+            width: 640,
+            marginLeft: 'auto',
+            marginRight: 'auto'
+        }
     }
 });
 
