@@ -10,6 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 
 class CollectionFormTable extends Component {
+    // TODO probably will need this in parent Collection page
     // static getDerivedStateFromProps (props, state) {
     //     let diff = _.difference(_.keys(props.collection), _.keys(state.collection));
 
@@ -49,6 +50,7 @@ class CollectionFormTable extends Component {
         };
     }
 
+    // TODO move this into Collection page
     handleChange = e => {
         let { id, value } = e.target;
 
@@ -73,6 +75,7 @@ class CollectionFormTable extends Component {
         const { classes, products } = this.props,
             { collection } = this.state;
 
+        // TODO more form into parent Collection page
         return (
             <div className={classes.wrapper}>
                 <form noValidate onSubmit={this.handleSubmit}>
@@ -94,6 +97,7 @@ class CollectionFormTable extends Component {
                                     productId = product.id || product._id,
                                     count = collection[productId] || 0;
 
+                                // TODO use onChange function property
                                 return (
                                     <TableRow key={rowKey}>
                                         <TableCell component="th" scope="row">
