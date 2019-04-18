@@ -4,7 +4,6 @@ import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -13,28 +12,16 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import { loadCollection, saveCollection } from './actions/collectionActions';
+import { loadCollection } from './actions/collectionActions';
 import { getProducts } from './actions/productActions';
 import CollectionFormTable from './CollectionFormTable';
 
 class Collection extends Component {
-    static getDerivedStateFromProps (props, state) {
-        let diff = _.difference(props.collection, state.collection);
-
-        if (diff.length > 0) {
-            return {
-                collection: props.collection
-            };
-        }
-
-        return null;
-    }
-
     constructor (props) {
         super(props);
 
         this.state = {
-            collection: this.props.collection.slice()
+            collection: {}
         };
     }
 
@@ -45,23 +32,11 @@ class Collection extends Component {
     };
 
     onChange = e => {
-        let product = e.target.id,
-            checked = e.target.checked,
-            { collection } = this.state;
-        
-        if (checked) {
-            collection.push(product);
-        } else {
-            _.pull(collection, product);
-        }
-
-        this.setState({ collection });
+        e.preventDefault();
     };
 
     onSubmit = e => {
         e.preventDefault();
-
-        this.props.saveCollection(this.state.collection);
     };
 
     componentDidMount () {
@@ -84,9 +59,8 @@ class Collection extends Component {
                         </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                        <CollectionFormTable products={cores} />
+                        <CollectionFormTable products={cores} collection={{}} />
                     </ExpansionPanelDetails>
-                    <Divider />
                     <ExpansionPanelActions>
                         <Button size="small" color="primary">Save</Button>
                     </ExpansionPanelActions>
@@ -98,9 +72,8 @@ class Collection extends Component {
                         </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                        <CollectionFormTable products={expansions} />
+                        <CollectionFormTable products={expansions} collection={{}} />
                     </ExpansionPanelDetails>
-                    <Divider />
                     <ExpansionPanelActions>
                         <Button size="small" color="primary">Save</Button>
                     </ExpansionPanelActions>
@@ -112,15 +85,13 @@ class Collection extends Component {
 
 const mapStateToProps = state => {
     return {
-        collection: _.get(state, 'collection.items', []),
         products: _.get(state, 'products.items', [])
     };
 };
 
 const mapDispatchToProps = {
     getProducts,
-    loadCollection,
-    saveCollection
+    loadCollection
 };
 
 const styles = theme => ({
