@@ -12,16 +12,20 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import { loadCollection } from './actions/collectionActions';
+import { loadCollection, saveCollection } from './actions/collectionActions';
 import { getProducts } from './actions/productActions';
-import CollectionFormTable from './CollectionFormTable';
+import CollectionTable from './CollectionTable';
 
 class Collection extends Component {
+    static getDerivedStateFromProps (props, state) {
+        return null;
+    }
+
     constructor (props) {
         super(props);
 
         this.state = {
-            collection: {}
+            collection: props.collection
         };
     }
 
@@ -33,6 +37,8 @@ class Collection extends Component {
 
     onChange = e => {
         e.preventDefault();
+
+        // let { id, value } = e.target;
     };
 
     onSubmit = e => {
@@ -41,7 +47,7 @@ class Collection extends Component {
 
     componentDidMount () {
         this.props.getProducts();
-        this.props.loadCollection();
+        this.props.load();
     }
 
     render () {
@@ -52,32 +58,34 @@ class Collection extends Component {
 
         return (
             <div className={classes.root}>
-                <ExpansionPanel expanded={expanded === 'core'} onChange={this.onExpand('core')}>
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                        <Typography className={classes.heading}>
-                            Core Sets
-                        </Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
-                        <CollectionFormTable products={cores} collection={{}} />
-                    </ExpansionPanelDetails>
-                    <ExpansionPanelActions>
-                        <Button size="small" color="primary">Save</Button>
-                    </ExpansionPanelActions>
-                </ExpansionPanel>
-                <ExpansionPanel expanded={expanded === 'xpacs'} onChange={this.onExpand('xpacs')}>
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                        <Typography className={classes.heading}>
-                            Expansions
-                        </Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
-                        <CollectionFormTable products={expansions} collection={{}} />
-                    </ExpansionPanelDetails>
-                    <ExpansionPanelActions>
-                        <Button size="small" color="primary">Save</Button>
-                    </ExpansionPanelActions>
-                </ExpansionPanel>
+                <form noValidate onSubmit={this.onSubmit}>
+                    <ExpansionPanel expanded={expanded === 'core'} onChange={this.onExpand('core')}>
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                            <Typography className={classes.heading}>
+                                Core Sets
+                            </Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                            <CollectionTable products={cores} />
+                        </ExpansionPanelDetails>
+                        <ExpansionPanelActions>
+                            <Button type="submit" size="small" color="primary">Save</Button>
+                        </ExpansionPanelActions>
+                    </ExpansionPanel>
+                    <ExpansionPanel expanded={expanded === 'xpacs'} onChange={this.onExpand('xpacs')}>
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                            <Typography className={classes.heading}>
+                                Expansions
+                            </Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                            <CollectionTable products={expansions} />
+                        </ExpansionPanelDetails>
+                        <ExpansionPanelActions>
+                            <Button type="submit" size="small" color="primary">Save</Button>
+                        </ExpansionPanelActions>
+                    </ExpansionPanel>
+                </form>
             </div>
         );
     }
@@ -85,13 +93,15 @@ class Collection extends Component {
 
 const mapStateToProps = state => {
     return {
-        products: _.get(state, 'products.items', [])
+        products: _.get(state, 'products.items', []),
+        collection: _.get(state, 'collection.item', {})
     };
 };
 
 const mapDispatchToProps = {
     getProducts,
-    loadCollection
+    load: loadCollection,
+    save: saveCollection
 };
 
 const styles = theme => ({

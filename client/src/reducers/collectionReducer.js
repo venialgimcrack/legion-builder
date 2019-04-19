@@ -8,7 +8,7 @@ import {
 } from '../actions/collectionActions';
 
 const INIT_STATE = {
-    items: [],
+    item: {},
     loading: false,
     errors: {}
 };
@@ -18,7 +18,7 @@ const collection = (state = INIT_STATE, action) => {
         case LOAD_COLLECTION_START:
             return Object.assign({}, state, {
                 loading: true,
-                items: [],
+                item: {},
                 errors: {}
             });
 
@@ -32,7 +32,7 @@ const collection = (state = INIT_STATE, action) => {
         case LOAD_COLLECTION_FINISH:
             return Object.assign({}, state, {
                 loading: false,
-                items: action.payload,
+                item: action.payload,
                 errors: {}
             });
 
@@ -40,7 +40,7 @@ const collection = (state = INIT_STATE, action) => {
         case LOAD_COLLECTION_ERROR:
             return Object.assign({}, state, {
                 loading: false,
-                items: [],
+                item: {},
                 errors: { ...action.payload }
             });
 
