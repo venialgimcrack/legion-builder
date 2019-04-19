@@ -13,7 +13,7 @@ router.post('/save', passport.authenticate('jwt', { session: false }), (req, res
     }
 
     const owner = req.user._id,
-        products = req.body.products[0];
+        { products, units, upgrades } = req.body;
 
     Collection.findOne({ owner })
         .then(collection => {
@@ -21,10 +21,9 @@ router.post('/save', passport.authenticate('jwt', { session: false }), (req, res
                 collection = new Collection({ owner });
             }
 
-            collection.products = Object.keys(products).map(productId => ({
-                product_id: productId,
-                count: products[productId]
-            }));
+            collection.products = Array.isArray(products) ? products[0] : [];
+            collection.units = Array.isArray(units) ? units[0] : [];
+            collection.upgrades = Array.isArray(upgrades) ? upgrades[0] : [];
 
             return collection.save()
                 .then(result => res.json(result));
@@ -48,7 +47,6 @@ router.get('/load', passport.authenticate('jwt', { session: false }), (req, res)
             return Promise.resolve(collection);
         })
         .then(owned => {
-
             return res.json(owned);
         })
         .catch(err => {
