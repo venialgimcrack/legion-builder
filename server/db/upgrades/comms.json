@@ -1,5 +1,6 @@
 [
     {
+        "id": "jammer",
         "title": "Comms Jammer",
         "effects": [
             {
@@ -9,15 +10,9 @@
             }
         ],
         "kind": "comms",
-        "points": 15,
-        "products": [
-            {
-                "product_id": "atrt"
-            }, {
-                "product_id": "t47"
-            }
-        ]
+        "points": 15
     }, {
+        "id": "relay",
         "title": "Comms Relay",
         "effects": [
             {
@@ -28,15 +23,9 @@
             }
         ],
         "kind": "comms",
-        "points": 5,
-        "products": [
-            {
-                "product_id": "reb_specials"
-            }, {
-                "product_id": "pathfinder"
-            }
-        ]
+        "points": 5
     }, {
+        "id": "uplink",
         "title": "HQ Uplink",
         "exhaust": true,
         "effects": [
@@ -47,15 +36,9 @@
             }
         ],
         "kind": "comms",
-        "points": 10,
-        "products": [
-            {
-                "product_id": "laser"
-            }, {
-                "product_id": "commando"
-            }
-        ]
+        "points": 10
     }, {
+        "id": "comlink",
         "title": "Long-Range Comlink",
         "effects": [
             {
@@ -65,16 +48,6 @@
             }
         ],
         "kind": "comms",
-        "points": 10,
-        "products": [
-            {
-                "product_id": "core",
-                "count": 2
-            }, {
-                "product_id": "atrt"
-            }, {
-                "product_id": "t47"
-            }
-        ]
+        "points": 10
     }
 ]

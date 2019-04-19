@@ -10,7 +10,16 @@
         "name": "Stormtroopers Unit Expansion",
         "category": "expansion",
         "wave": 1,
-        "faction": "empire"
+        "faction": "empire",
+        "contents": {
+            "upgrades": [
+                {
+                    "id": "dlt19"
+                }, {
+                    "id": "hh12"
+                }
+            ]
+        }
     }, {
         "id": "atst",
         "name": "AT-ST Unit Expansion",
@@ -34,7 +43,14 @@
         "name": "E-Web Heavy Blaster Team Unit Expansion",
         "category": "expansion",
         "wave": 3,
-        "faction": "empire"
+        "faction": "empire",
+        "contents": {
+            "upgrades": [
+                {
+                    "id": "barrage"
+                }
+            ]
+        }
     }, {
         "id": "boba",
         "name": "Boba Fett Operative Unit Expansion",

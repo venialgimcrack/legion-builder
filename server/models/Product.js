@@ -21,6 +21,32 @@ const schema = new Schema({
     faction: {
         type: String,
         enum: FACTIONS
+    },
+    contents: {
+        units: [
+            {
+                id: {
+                    type: String,
+                    required: true
+                },
+                count: {
+                    type: Number,
+                    default: 1
+                }
+            }
+        ],
+        upgrades: [
+            {
+                id: {
+                    type: String,
+                    required: true
+                },
+                count: {
+                    type: Number,
+                    default: 1
+                }
+            }
+        ]
     }
 }, { id: false });
 

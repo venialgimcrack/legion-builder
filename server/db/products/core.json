@@ -3,6 +3,70 @@
         "id": "core",
         "name": "Star Wars: Legion",
         "category": "core",
-        "wave": 1
+        "wave": 1,
+        "contents": {
+            "units": [
+                {
+                    "id": "atrt"
+                }, {
+                    "id": "luke"
+                }, {
+                    "id": "rebel_unit",
+                    "count": 2
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "comlink",
+                    "count": 2
+                }, {
+                    "id": "meditation",
+                    "count": 2
+                }, {
+                    "id": "choke"
+                }, {
+                    "id": "push",
+                    "count": 2
+                }, {
+                    "id": "reflexes",
+                    "count": 2
+                }, {
+                    "id": "mindtrick"
+                }, {
+                    "id": "saberthrow",
+                    "count": 2
+                }, {
+                    "id": "scopes",
+                    "count": 4
+                }, {
+                    "id": "concussion",
+                    "count": 4
+                }, {
+                    "id": "atrt_flame"
+                }, {
+                    "id": "atrt_laser"
+                }, {
+                    "id": "atrt_rotary"
+                }, {
+                    "id": "dlt19",
+                    "count": 2
+                }, {
+                    "id": "hh12",
+                    "count": 2
+                }, {
+                    "id": "stormtrooper",
+                    "count": 2
+                }, {
+                    "id": "mpl57ion",
+                    "count": 2
+                }, {
+                    "id": "z6trooper",
+                    "count": 2
+                }, {
+                    "id": "rebeltrooper",
+                    "count": 2
+                }
+            ]
+        }
     }
 ]

@@ -1,5 +1,6 @@
 [
     {
+        "id": "duckcover",
         "title": "Duck and Cover",
         "effects": [
             {
@@ -9,19 +10,9 @@
             }
         ],
         "kind": "training",
-        "points": 8,
-        "products": [
-            {
-                "product_id": "han"
-            }, {
-                "product_id": "commando"
-            }, {
-                "product_id": "jyn"
-            }, {
-                "product_id": "pathfinder"
-            }
-        ]
+        "points": 8
     }, {
+        "id": "hunter",
         "title": "Hunter",
         "effects": [
             {
@@ -31,15 +22,9 @@
             }
         ],
         "kind": "training",
-        "points": 6,
-        "products": [
-            {
-                "product_id": "chewbacca"
-            }, {
-                "product_id": "wookie"
-            }
-        ]
+        "points": 6
     }, {
+        "id": "overwatch",
         "title": "Overwatch",
         "keywords": [
             {
@@ -47,13 +32,9 @@
             }
         ],
         "kind": "training",
-        "points": 4,
-        "products": [
-            {
-                "product_id": "pathfinder"
-            }
-        ]
+        "points": 4
     }, {
+        "id": "tenacity",
         "title": "Tenacity",
         "effects": [
             {
@@ -63,13 +44,6 @@
             }
         ],
         "kind": "training",
-        "points": 4,
-        "products": [
-            {
-                "product_id": "chewbacca"
-            }, {
-                "product_id": "wookie"
-            }
-        ]
+        "points": 4
     }
 ]

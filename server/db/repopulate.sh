@@ -5,7 +5,7 @@ if [ $# -ne 1 ] ; then
     exit
 fi
 
-host = $1
+host=$1
 
 mongoimport --host=${host} -d legionbuilder -c products --jsonArray --file ./products/core.json --drop
 mongoimport --host=${host} -d legionbuilder -c products --jsonArray --file ./products/expansions-empire.json

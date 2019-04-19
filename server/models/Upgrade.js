@@ -6,6 +6,10 @@ const mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 const schema = new Schema({
+    id: {
+        type: String,
+        required: true
+    },
     title: {
         type: String,
         required: true
@@ -144,19 +148,7 @@ const schema = new Schema({
     points: {
         type: Number,
         required: true
-    },
-    products: [
-        {
-            product_id: {
-                type: String,
-                required: true
-            },
-            count: {
-                type: Number,
-                default: 1
-            }
-        }
-    ]
+    }
 });
 
 module.exports = {

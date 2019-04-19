@@ -22,11 +22,10 @@ const schema = new Schema({
     units: [
         {
             unit_id: {
-                type: Schema.Types.ObjectId,
-                ref: 'units',
+                type: String,
                 required: true
             },
-            count: {
+            modifier: {
                 type: Number,
                 default: 0
             }
@@ -35,11 +34,10 @@ const schema = new Schema({
     upgrades: [
         {
             upgrade_id: {
-                type: Schema.Types.ObjectId,
-                ref: 'upgrades',
+                type: String,
                 required: true
             },
-            count: {
+            modifier: {
                 type: Number,
                 default: 0
             }

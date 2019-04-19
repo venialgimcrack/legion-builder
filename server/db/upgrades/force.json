@@ -1,5 +1,6 @@
 [
     {
+        "id": "meditation",
         "title": "Battle Meditation",
         "effects": [
             {
@@ -9,14 +10,9 @@
             }
         ],
         "kind": "force",
-        "points": 10,
-        "products": [
-            {
-                "product_id": "core",
-                "count": 2
-            }
-        ]
+        "points": 10
     }, {
+        "id": "choke",
         "title": "Force Choke",
         "exhaust": true,
         "requirements": [
@@ -40,13 +36,9 @@
             }
         ],
         "kind": "force",
-        "points": 5,
-        "products": [
-            {
-                "product_id": "core"
-            }
-        ]
+        "points": 5
     }, {
+        "id": "push",
         "title": "Force Push",
         "exhaust": true,
         "effects": [
@@ -62,14 +54,9 @@
             }
         ],
         "kind": "force",
-        "points": 10,
-        "products": [
-            {
-                "product_id": "core",
-                "count": 2
-            }
-        ]
+        "points": 10
     }, {
+        "id": "reflexes",
         "title": "Force Reflexes",
         "exhaust": true,
         "effects": [
@@ -84,14 +71,9 @@
             }
         ],
         "kind": "force",
-        "points": 15,
-        "products": [
-            {
-                "product_id": "core",
-                "count": 2
-            }
-        ]
+        "points": 15
     }, {
+        "id": "mindtrick",
         "title": "Jedi Mind Trick",
         "exhaust": true,
         "requirements": [
@@ -115,13 +97,9 @@
             }
         ],
         "kind": "force",
-        "points": 5,
-        "products": [
-            {
-                "product_id": "core"
-            }
-        ]
+        "points": 5
     }, {
+        "id": "saberthrow",
         "title": "Saber Throw",
         "effects": [
             {
@@ -136,12 +114,6 @@
             }
         ],
         "kind": "force",
-        "points": 10,
-        "products": [
-            {
-                "product_id": "core",
-                "count": 2
-            }
-        ]
+        "points": 10
     }
 ]

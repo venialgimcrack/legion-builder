@@ -1,5 +1,6 @@
 [
     {
+        "id": "medical",
         "title": "2-1B Medical Droid",
         "keywords": [
             {
@@ -33,13 +34,9 @@
             }
         ],
         "kind": "personnel",
-        "points": 18,
-        "products": [
-            {
-                "product_id": "reb_specials"
-            }
-        ]
+        "points": 18
     }, {
+        "id": "fleettrooper",
         "title": "Fleet Trooper",
         "requirements": [
             {
@@ -55,13 +52,9 @@
             }
         ],
         "kind": "personnel",
-        "points": 11,
-        "products": [
-            {
-                "product_id": "fleet"
-            }
-        ]
+        "points": 11
     }, {
+        "id": "astromech",
         "title": "R5 Astromech Droid",
         "keywords": [
             {
@@ -95,13 +88,9 @@
             }
         ],
         "kind": "personnel",
-        "points": 8,
-        "products": [
-            {
-                "product_id": "reb_specials"
-            }
-        ]
+        "points": 8
     }, {
+        "id": "commstech",
         "title": "Rebel Comms Technician",
         "adds": [
             {
@@ -125,13 +114,9 @@
             }
         ],
         "kind": "personnel",
-        "points": 9,
-        "products": [
-            {
-                "product_id": "reb_specials"
-            }
-        ]
+        "points": 9
     }, {
+        "id": "rebofficer",
         "title": "Rebel Officer",
         "keywords": [
             {
@@ -159,13 +144,9 @@
             }
         ],
         "kind": "personnel",
-        "points": 19,
-        "products": [
-            {
-                "product_id": "reb_specials"
-            }
-        ]
+        "points": 19
     }, {
+        "id": "rebeltrooper",
         "title": "Rebel Trooper",
         "requirements": [
             {
@@ -181,15 +162,9 @@
             }
         ],
         "kind": "personnel",
-        "points": 10,
-        "products": [
-            {
-                "product_id": "core"
-            }, {
-                "product_id": "rebel"
-            }
-        ]
+        "points": 10
     }, {
+        "id": "stormtrooper",
         "title": "Stormtrooper",
         "requirements": [
             {
@@ -205,13 +180,6 @@
             }
         ],
         "kind": "personnel",
-        "points": 11,
-        "products": [
-            {
-                "product_id": "core"
-            }, {
-                "product_id": "storm"
-            }
-        ]
+        "points": 11
     }
 ]

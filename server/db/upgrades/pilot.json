@@ -1,5 +1,6 @@
 [
     {
+        "id": "wedge",
         "title": "Wedge Antilles",
         "unique": true,
         "keywords": [
@@ -26,11 +27,6 @@
             }
         ],
         "kind": "pilot",
-        "points": 5,
-        "products": [
-            {
-                "product_id": "t47"
-            }
-        ]
+        "points": 5
     }
 ]

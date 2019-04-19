@@ -4,78 +4,332 @@
         "name": "AT-RT Unit Expansion",
         "category": "expansion",
         "wave": 1,
-        "faction": "rebel"
+        "faction": "rebel",
+        "contents": {
+            "units": [
+                {
+                    "id": "atrt"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "jammer"
+                }, {
+                    "id": "comlink"
+                }, {
+                    "id": "atrt_flame"
+                }, {
+                    "id": "atrt_laser"
+                }, {
+                    "id": "atrt_rotary"
+                }, {
+                    "id": "mpl57ion"
+                }
+            ]
+        }
     }, {
         "id": "rebel",
         "name": "Rebel Troopers Unit Expansion",
         "category": "expansion",
         "wave": 1,
-        "faction": "rebel"
+        "faction": "rebel",
+        "contents": {
+            "units": [
+                {
+                    "id": "rebel_unit"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "grappling"
+                }, {
+                    "id": "impact"
+                }, {
+                    "id": "mpl57ion"
+                }, {
+                    "id": "z6trooper"
+                }, {
+                    "id": "rebeltrooper"
+                }
+            ]
+        }
     }, {
         "id": "t47",
         "name": "T-47 Airspeeder Unit Expansion",
         "category": "expansion",
         "wave": 1,
-        "faction": "rebel"
+        "faction": "rebel",
+        "contents": {
+            "units": [
+                {
+                    "id": "t47"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "jammer"
+                }, {
+                    "id": "comlink"
+                }, {
+                    "id": "buzzer"
+                }, {
+                    "id": "harpoon"
+                }, {
+                    "id": "wedge"
+                }
+            ]
+        }
     }, {
         "id": "leia",
         "name": "Leia Organa Commander Expansion",
         "category": "expansion",
         "wave": 2,
-        "faction": "rebel"
+        "faction": "rebel",
+        "contents": {
+            "units": [
+                {
+                    "id": "leia"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "commanding"
+                }, {
+                    "id": "esteemed"
+                }, {
+                    "id": "environmental"
+                }
+            ]
+        }
     }, {
         "id": "fleet",
         "name": "Fleet Troopers Unit Expansion",
         "category": "expansion",
         "wave": 2,
-        "faction": "rebel"
+        "faction": "rebel",
+        "contents": {
+            "units": [
+                {
+                    "id": "fleet_unit"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "grappling"
+                }, {
+                    "id": "impact"
+                }, {
+                    "id": "mpl57barrage"
+                }, {
+                    "id": "scatter"
+                }, {
+                    "id": "fleettrooper"
+                }
+            ]
+        }
     }, {
         "id": "laser",
         "name": "1.4 FD Laser Cannon Team Unit Expansion",
         "category": "expansion",
         "wave": 3,
-        "faction": "rebel"
+        "faction": "rebel",
+        "contents": {
+            "units": [
+                {
+                    "id": "laser_unit"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "uplink"
+                }, {
+                    "id": "overcharged"
+                }
+            ]
+        }
     }, {
         "id": "han",
         "name": "Han Solo Commander Expansion",
         "category": "expansion",
         "wave": 3,
-        "faction": "rebel"
+        "faction": "rebel",
+        "contents": {
+            "units": [
+                {
+                    "id": "han"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "improvised"
+                }, {
+                    "id": "estims"
+                }, {
+                    "id": "duckcover"
+                }
+            ]
+        }
     }, {
         "id": "commando",
         "name": "Rebel Commandos Unit Expansion",
         "category": "expansion",
         "wave": 3,
-        "faction": "rebel"
+        "faction": "rebel",
+        "contents": {
+            "units": [
+                {
+                    "id": "rebelcommando"
+                }, {
+                    "id": "rebelstrike"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "uplink"
+                }, {
+                    "id": "estims"
+                }, {
+                    "id": "sniper"
+                }, {
+                    "id": "proton"
+                }, {
+                    "id": "duckcover"
+                }
+            ]
+        }
     }, {
         "id": "chewbacca",
         "name": "Chewbacca Operative Expansion",
         "category": "expansion",
         "wave": 4,
-        "faction": "rebel"
+        "faction": "rebel",
+        "contents": {
+            "units": [
+                {
+                    "id": "chewie"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "estims"
+                }, {
+                    "id": "hunter"
+                }, {
+                    "id": "tenacity"
+                }
+            ]
+        }
     }, {
         "id": "wookie",
         "name": "Wookie Warriors Unit Expansion",
         "category": "expansion",
         "wave": 4,
-        "faction": "rebel"
+        "faction": "rebel",
+        "contents": {
+            "units": [
+                {
+                    "id": "wookies"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "reconintel"
+                }, {
+                    "id": "fragmentation"
+                }, {
+                    "id": "bowcaster"
+                }, {
+                    "id": "hunter"
+                }, {
+                    "id": "tenacity"
+                }
+            ]
+        }
     }, {
         "id": "reb_specials",
         "name": "Rebel Specialists Personnel Expansion",
         "category": "expansion",
         "wave": 5,
-        "faction": "rebel"
+        "faction": "rebel",
+        "contents": {
+            "units": [
+                {
+                    "id": "officer_unit"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "commanding"
+                }, {
+                    "id": "relay"
+                }, {
+                    "id": "reconintel"
+                }, {
+                    "id": "medical"
+                }, {
+                    "id": "astromech"
+                }, {
+                    "id": "commstech"
+                }, {
+                    "id": "rebelofficer"
+                }
+            ]
+        }
     }, {
         "id": "jyn",
         "name": "Jyn Erso Commander Expansion",
         "category": "expansion",
         "wave": 5,
-        "faction": "rebel"
+        "faction": "rebel",
+        "contents": {
+            "units": [
+                {
+                    "id": "jyn"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "a180pistol"
+                }, {
+                    "id": "a180rifle"
+                }, {
+                    "id": "strictorders"
+                }, {
+                    "id": "duckcover"
+                }
+            ]
+        }
     }, {
         "id": "pathfinder",
         "name": "Rebel Pathfinders Unit Expansion",
         "category": "expansion",
         "wave": 5,
-        "faction": "rebel"
+        "faction": "rebel",
+        "contents": {
+            "units": [
+                {
+                    "id": "rebelpathfinder"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "a300long"
+                }, {
+                    "id": "a300short"
+                }, {
+                    "id": "relay"
+                }, {
+                    "id": "fragmentation"
+                }, {
+                    "id": "bistan"
+                }, {
+                    "id": "pao"
+                }, {
+                    "id": "duckcover"
+                }, {
+                    "id": "overwatch"
+                }
+            ]
+        }
     }
 ]

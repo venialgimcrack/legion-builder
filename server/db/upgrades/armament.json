@@ -1,5 +1,6 @@
 [
     {
+        "id": "a180pistol",
         "title": "A-180 Pistol Config",
         "weapon": {
             "range": "1-2",
@@ -27,13 +28,9 @@
             }
         ],
         "kind": "armament",
-        "points": 0,
-        "products": [
-            {
-                "product_id": "jyn"
-            }
-        ]
+        "points": 0
     }, {
+        "id": "a180rifle",
         "title": "A-180 Rifle Config",
         "weapon": {
             "range": "1-3",
@@ -61,13 +58,9 @@
             }
         ],
         "kind": "armament",
-        "points": 0,
-        "products": [
-            {
-                "product_id": "jyn"
-            }
-        ]
+        "points": 0
     }, {
+        "id": "a300long",
         "title": "A-300 Long Range Config",
         "weapon": {
             "range": "1-4",
@@ -89,13 +82,9 @@
             }
         ],
         "kind": "armament",
-        "points": 6,
-        "products": [
-            {
-                "product_id": "pathfinder"
-            }
-        ]
+        "points": 6
     }, {
+        "id": "a300short",
         "title": "A-300 Short Range Config",
         "weapon": {
             "range": "1-2",
@@ -117,11 +106,6 @@
             }
         ],
         "kind": "armament",
-        "points": 6,
-        "products": [
-            {
-                "product_id": "pathfinder"
-            }
-        ]
+        "points": 6
     }
 ]

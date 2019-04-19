@@ -1,5 +1,6 @@
 [
     {
+        "id": "estims",
         "title": "Emergency Stims",
         "exhaust": true,
         "effects": [
@@ -11,43 +12,25 @@
             }
         ],
         "kind": "gear",
-        "points": 8,
-        "products": [
-            {
-                "product_id": "han"
-            }, {
-                "product_id": "commando"
-            }, {
-                "product_id": "chewbacca"
-            }
-        ]
+        "points": 8
     }, {
+        "id": "environmental",
         "title": "Environmental Gear",
         "keywords": [
             { "text": "Unhindered" }
         ],
         "kind": "gear",
-        "points": 3,
-        "products": [
-            {
-                "product_id": "leia"
-            }
-        ]
+        "points": 3
     }, {
+        "id": "grappling",
         "title": "Grappling Hooks",
         "keywords": [
             { "text": "Expert Climber" }
         ],
         "kind": "gear",
-        "points": 3,
-        "products": [
-            {
-                "product_id": "rebel"
-            }, {
-                "product_id": "fleet"
-            }
-        ]
+        "points": 3
     }, {
+        "id": "reconintel",
         "title": "Recon Intel",
         "keywords": [
             {
@@ -56,15 +39,9 @@
             }
         ],
         "kind": "gear",
-        "points": 2,
-        "products": [
-            {
-                "product_id": "wookie"
-            }, {
-                "product_id": "reb_specials"
-            }
-        ]
+        "points": 2
     }, {
+        "id": "scopes",
         "title": "Targeting Scopes",
         "keywords": [
             {
@@ -73,12 +50,6 @@
             }
         ],
         "kind": "gear",
-        "points": 6,
-        "products": [
-            {
-                "product_id": "core",
-                "count": 4
-            }
-        ]
+        "points": 6
     }
 ]

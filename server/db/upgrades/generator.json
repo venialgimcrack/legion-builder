@@ -1,29 +1,21 @@
 [
     {
+        "id": "barrage",
         "title": "Barrage Generator",
         "exhaust": true,
         "effects": [
             "While performing a ranged attack with a weapon that has \"Fixed\", add 2 white attack dice and apply \"Suppressive\" to your attack pool."
         ],
         "kind": "generator",
-        "points": 10,
-        "products": [
-            {
-                "product_id": "eweb"
-            }
-        ]
+        "points": 10
     }, {
+        "id": "overcharged",
         "title": "Overcharged Generator",
         "exhaust": true,
         "effects": [
             "While performing a ranged attack with a weapon that has \"Fixed\", add 1 black attack die and apply \"Impact 1\" to your attack pool."
         ],
         "kind": "generator",
-        "points": 10,
-        "products": [
-            {
-                "product_id": "laser"
-            }
-        ]
+        "points": 10
     }
 ]

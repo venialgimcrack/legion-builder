@@ -1,5 +1,6 @@
 [
     {
+        "id": "commanding",
         "title": "Commanding Presence",
         "effects": [
             {
@@ -9,15 +10,9 @@
             }
         ],
         "kind": "command",
-        "points": 10,
-        "products": [
-            {
-                "product_id": "leia"
-            }, {
-                "product_id": "reb_specials"
-            }
-        ]
+        "points": 10
     }, {
+        "id": "esteemed",
         "title": "Esteemed Leader",
         "effects": [
             {
@@ -27,13 +22,9 @@
             }
         ],
         "kind": "command",
-        "points": 5,
-        "products": [
-            {
-                "product_id": "leia"
-            }
-        ]
+        "points": 5
     }, {
+        "id": "improvised",
         "title": "Improvised Orders",
         "exhaust": true,
         "effects": [
@@ -45,13 +36,9 @@
             }
         ],
         "kind": "command",
-        "points": 10,
-        "products": [
-            {
-                "product_id": "han"
-            }
-        ]
+        "points": 10
     }, {
+        "id": "strictorders",
         "title": "Strict Orders",
         "effects": [
             {
@@ -61,11 +48,6 @@
             }
         ],
         "kind": "command",
-        "points": 5,
-        "products": [
-            {
-                "product_id": "jyn"
-            }
-        ]
+        "points": 5
     }
 ]

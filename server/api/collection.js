@@ -21,7 +21,10 @@ router.post('/save', passport.authenticate('jwt', { session: false }), (req, res
                 collection = new Collection({ owner });
             }
 
-            // TODO reconcile products against collection
+            collection.products = Object.keys(products).map(productId => ({
+                product_id: productId,
+                count: products[productId]
+            }));
 
             return collection.save()
                 .then(result => res.json(result));
@@ -38,7 +41,13 @@ router.get('/load', passport.authenticate('jwt', { session: false }), (req, res)
 
     Collection.findOne({ owner })
         .then(collection => {
-            let owned = collection || {};
+            if (!collection) {
+                return new Collection({ owner }).save();
+            }
+
+            return Promise.resolve(collection);
+        })
+        .then(owned => {
 
             return res.json(owned);
         })
