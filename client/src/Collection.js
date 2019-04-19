@@ -18,6 +18,26 @@ import CollectionTable from './CollectionTable';
 
 class Collection extends Component {
     static getDerivedStateFromProps (props, state) {
+        const groups = [ 'products', 'units', 'upgrades' ];
+
+        let propChange = false;
+
+        groups.forEach(group => {
+            let propItems = _.get(props, `collection.${group}`, []),
+                stateItems = _.get(state, `collection.${group}`, []);
+            
+            if (_.isEqual(propItems, stateItems)) {
+                propChange = true;
+                return false;
+            }
+        });
+
+        if (propChange) {
+            return {
+                collection: props.collection
+            };
+        }
+
         return null;
     }
 
@@ -25,6 +45,7 @@ class Collection extends Component {
         super(props);
 
         this.state = {
+            expanded: 'products',
             collection: props.collection
         };
     }
@@ -35,14 +56,46 @@ class Collection extends Component {
         });
     };
 
-    onChange = e => {
-        e.preventDefault();
+    handleChange = group => e => {
+        let { id, value } = e.target;
 
-        // let { id, value } = e.target;
+        console.log(`updating ${group}: ${id} = ${value}`);
+
+        this.setState(state => {
+            let { collection } = state,
+                owned = collection[group] || [];
+
+            switch (group) {
+                case 'products':
+                    if (value > 0) {
+                        let item = owned.find(item => item.id === id);                            
+
+                        if (item) {
+                            item.count = value;
+                        } else {
+                            owned.push({ id, count: value });
+                        }
+                    } else {
+                        owned.splice(owned.findIndex(item => item.id === id), 1);
+                    }
+                    break;
+
+                // TODO maths to figure out correct modifier attrs
+                case 'units':
+                case 'upgrades':
+                default:
+            }
+
+            collection[group] = owned;
+
+            return { collection };
+        });
     };
 
     onSubmit = e => {
         e.preventDefault();
+
+        this.props.save(this.state.collection);
     };
 
     componentDidMount () {
@@ -52,34 +105,45 @@ class Collection extends Component {
 
     render () {
         const { classes, products } = this.props,
-            { expanded } = this.state,
-            cores = products.filter(prod => prod.category === 'core'),
-            expansions = products.filter(prod => prod.category === 'expansion');
+            { expanded, collection } = this.state;
 
         return (
             <div className={classes.root}>
                 <form noValidate onSubmit={this.onSubmit}>
-                    <ExpansionPanel expanded={expanded === 'core'} onChange={this.onExpand('core')}>
+                    <ExpansionPanel expanded={expanded === 'products'} onChange={this.onExpand('products')}>
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography className={classes.heading}>
-                                Core Sets
+                                Products
                             </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
-                            <CollectionTable products={cores} />
+                            <CollectionTable items={products} owned={collection.products} onChange={this.handleChange('products')} />
                         </ExpansionPanelDetails>
                         <ExpansionPanelActions>
                             <Button type="submit" size="small" color="primary">Save</Button>
                         </ExpansionPanelActions>
                     </ExpansionPanel>
-                    <ExpansionPanel expanded={expanded === 'xpacs'} onChange={this.onExpand('xpacs')}>
+                    <ExpansionPanel expanded={expanded === 'units'} onChange={this.onExpand('units')}>
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography className={classes.heading}>
-                                Expansions
+                                Units
                             </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
-                            <CollectionTable products={expansions} />
+                            <Typography>TODO: Unit table</Typography>
+                        </ExpansionPanelDetails>
+                        <ExpansionPanelActions>
+                            <Button type="submit" size="small" color="primary">Save</Button>
+                        </ExpansionPanelActions>
+                    </ExpansionPanel>
+                    <ExpansionPanel expanded={expanded === 'upgrades'} onChange={this.onExpand('upgrades')}>
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                            <Typography className={classes.heading}>
+                                Upgrades
+                            </Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                            <Typography>TODO: Upgrades table</Typography>
                         </ExpansionPanelDetails>
                         <ExpansionPanelActions>
                             <Button type="submit" size="small" color="primary">Save</Button>
@@ -92,9 +156,12 @@ class Collection extends Component {
 }
 
 const mapStateToProps = state => {
+    let products = _.get(state, 'products.items'),
+        collection = _.get(state, 'collection.item');
+
     return {
-        products: _.get(state, 'products.items', []),
-        collection: _.get(state, 'collection.item', {})
+        products,
+        collection
     };
 };
 

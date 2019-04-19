@@ -7,18 +7,23 @@ import {
     SAVE_COLLECTION_ERROR
 } from '../actions/collectionActions';
 
-const INIT_STATE = {
-    item: {},
-    loading: false,
-    errors: {}
-};
+const EMPTY_COLLECTION = {
+        products: [],
+        units: [],
+        upgrades: []
+    },
+        INIT_STATE = {
+        item: EMPTY_COLLECTION,
+        loading: false,
+        errors: {}
+    };
 
 const collection = (state = INIT_STATE, action) => {
     switch (action.type) {
         case LOAD_COLLECTION_START:
             return Object.assign({}, state, {
                 loading: true,
-                item: {},
+                item: EMPTY_COLLECTION,
                 errors: {}
             });
 
@@ -40,7 +45,7 @@ const collection = (state = INIT_STATE, action) => {
         case LOAD_COLLECTION_ERROR:
             return Object.assign({}, state, {
                 loading: false,
-                item: {},
+                item: EMPTY_COLLECTION,
                 errors: { ...action.payload }
             });
 

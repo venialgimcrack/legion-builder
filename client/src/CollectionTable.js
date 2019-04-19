@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 
-const CollectionTable = ({ classes, products }) => {
+const CollectionTable = ({ classes, items, owned, onChange }) => {
     return (
         <div className={classes.wrapper}>
             <Table padding="none">
@@ -24,17 +24,19 @@ const CollectionTable = ({ classes, products }) => {
                 </TableHead>
                 <TableBody>
                 {
-                    products.map((product, index) => {
-                        let rowKey = `prod_${product.category}_${index}`,
-                            productId = product.id;
+                    items.map((item, index) => {
+                        let itemId = item.id,
+                            rowKey = `item_${itemId}_${index}`,
+                            ownedItem = owned.find(thing => thing.id === itemId),
+                            value = ownedItem ? ownedItem.count : 0;
 
                         return (
                             <TableRow key={rowKey}>
                                 <TableCell component="th" scope="row">
-                                    {product.name}
+                                    {item.name}
                                 </TableCell>
                                 <TableCell>
-                                    <TextField type="number" id={productId} defaultValue={0} />
+                                    <TextField type="number" id={itemId} value={value} onChange={onChange} />
                                 </TableCell>
                             </TableRow>
                         );

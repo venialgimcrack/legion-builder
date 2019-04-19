@@ -9,8 +9,9 @@ export const saveCollectionStart = () => ({
     type: SAVE_COLLECTION_START
 });
 
-export const saveCollectionFinish = () => ({
-    type: SAVE_COLLECTION_FINISH
+export const saveCollectionFinish = saved => ({
+    type: SAVE_COLLECTION_FINISH,
+    payload: saved
 });
 
 export const saveCollectionError = errors => ({
@@ -22,11 +23,11 @@ export const saveCollection = collection => {
     return dispatch => {
         dispatch(saveCollectionStart());
 
-        axios.post('/api/collection/save', { products: collection })
+        axios.post('/api/collection/save', collection)
             .then(res => {
-                let collection = res.data;
+                let saved = res.data;
 
-                dispatch(saveCollectionFinish(collection));
+                dispatch(saveCollectionFinish(saved));
             })
             .catch(err => {
                 console.error(err);

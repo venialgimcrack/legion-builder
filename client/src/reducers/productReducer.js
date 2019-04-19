@@ -4,18 +4,19 @@ import {
     GET_PRODUCTS_ERROR
 } from '../actions/productActions';
 
-const INIT_STATE = {
-    items: [],
-    loading: false,
-    errors: {}
-};
+const EMPTY_LIST = [],
+    INIT_STATE = {
+        items: EMPTY_LIST,
+        loading: false,
+        errors: {}
+    };
 
 const products = (state = INIT_STATE, action) => {
     switch (action.type) {
         case GET_PRODUCTS_START:
             return Object.assign({}, state, {
                 loading: true,
-                items: [],
+                items: EMPTY_LIST,
                 errors: {}
             });
 
@@ -29,7 +30,7 @@ const products = (state = INIT_STATE, action) => {
         case GET_PRODUCTS_ERROR:
             return Object.assign({}, state, {
                 loading: false,
-                items: [],
+                items: EMPTY_LIST,
                 errors: { ...action.payload }
             });
 
