@@ -59,8 +59,6 @@ class Collection extends Component {
     handleChange = group => e => {
         let { id, value } = e.target;
 
-        console.log(`updating ${group}: ${id} = ${value}`);
-
         this.setState(state => {
             let { collection } = state,
                 owned = collection[group] || [];
