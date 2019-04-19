@@ -25,7 +25,7 @@ class Collection extends Component {
         groups.forEach(group => {
             let propItems = _.get(props, `collection.${group}`, []),
                 stateItems = _.get(state, `collection.${group}`, []);
-            
+
             if (_.isEqual(propItems, stateItems)) {
                 propChange = true;
                 return false;
