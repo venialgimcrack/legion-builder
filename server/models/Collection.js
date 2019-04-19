@@ -9,7 +9,7 @@ const schema = new Schema({
     },
     products: [
         {
-            product_id: {
+            id: {
                 type: String,
                 required: true
             },
@@ -21,7 +21,7 @@ const schema = new Schema({
     ],
     units: [
         {
-            unit_id: {
+            id: {
                 type: String,
                 required: true
             },
@@ -33,7 +33,7 @@ const schema = new Schema({
     ],
     upgrades: [
         {
-            upgrade_id: {
+            id: {
                 type: String,
                 required: true
             },

@@ -21,9 +21,9 @@ router.post('/save', passport.authenticate('jwt', { session: false }), (req, res
                 collection = new Collection({ owner });
             }
 
-            collection.products = Array.isArray(products) ? products[0] : [];
-            collection.units = Array.isArray(units) ? units[0] : [];
-            collection.upgrades = Array.isArray(upgrades) ? upgrades[0] : [];
+            collection.set('products', products);
+            collection.set('units', units);
+            collection.set('upgrades', upgrades);
 
             return collection.save()
                 .then(result => res.json(result));
