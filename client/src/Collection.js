@@ -108,12 +108,19 @@ class Collection extends Component {
             <div className={classes.root}>
                 <form noValidate onSubmit={this.onSubmit}>
                     <ExpansionPanel expanded={expanded === 'products'} onChange={this.onExpand('products')}>
-                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon fontSize="small" />}>
-                            <Typography className={classes.heading}>
+                        <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon fontSize="small" />}
+                            classes={{
+                                root: classes.summaryRoot,
+                                content: classes.summaryContent,
+                                expanded: 'expanded'
+                            }}
+                        >
+                            <Typography>
                                 Products
                             </Typography>
                         </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
+                        <ExpansionPanelDetails className={classes.panelDetail}>
                             <CollectionTable items={products} owned={collection.products} onChange={this.handleChange('products')} />
                         </ExpansionPanelDetails>
                         <ExpansionPanelActions>
@@ -121,8 +128,15 @@ class Collection extends Component {
                         </ExpansionPanelActions>
                     </ExpansionPanel>
                     <ExpansionPanel expanded={expanded === 'units'} onChange={this.onExpand('units')}>
-                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon fontSize="small" />}>
-                            <Typography className={classes.heading}>
+                        <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon fontSize="small" />}
+                            classes={{
+                                root: classes.summaryRoot,
+                                content: classes.summaryContent,
+                                expanded: 'expanded'
+                            }}
+                        >
+                            <Typography>
                                 Units
                             </Typography>
                         </ExpansionPanelSummary>
@@ -134,8 +148,15 @@ class Collection extends Component {
                         </ExpansionPanelActions>
                     </ExpansionPanel>
                     <ExpansionPanel expanded={expanded === 'upgrades'} onChange={this.onExpand('upgrades')}>
-                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon fontSize="small" />}>
-                            <Typography className={classes.heading}>
+                        <ExpansionPanelSummary
+                            expandIcon={<ExpandMoreIcon fontSize="small" />}
+                            classes={{
+                                root: classes.summaryRoot,
+                                content: classes.summaryContent,
+                                expanded: 'expanded'
+                            }}
+                        >
+                            <Typography>
                                 Upgrades
                             </Typography>
                         </ExpansionPanelSummary>
@@ -185,6 +206,25 @@ const styles = theme => ({
             marginLeft: 'auto',
             marginRight: 'auto'
         }
+    },
+    // TODO media queries to calculate based on screen size
+    summaryRoot: {
+        padding: '8px 16px 8px',
+        minHeight: 32,
+        '&.expanded': {
+            minHeight: 32
+        },
+        // this was responsible for the weird staggered transition effect
+        transition: 'none'
+    },
+    summaryContent: {
+        margin: 0,
+        '&.expanded': {
+            margin: 0
+        }
+    },
+    panelDetail: {
+        padding: theme.spacing.unit
     }
 });
 
