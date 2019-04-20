@@ -8,7 +8,6 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -109,7 +108,7 @@ class Collection extends Component {
             <div className={classes.root}>
                 <form noValidate onSubmit={this.onSubmit}>
                     <ExpansionPanel expanded={expanded === 'products'} onChange={this.onExpand('products')}>
-                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon fontSize="small" />}>
                             <Typography className={classes.heading}>
                                 Products
                             </Typography>
@@ -122,7 +121,7 @@ class Collection extends Component {
                         </ExpansionPanelActions>
                     </ExpansionPanel>
                     <ExpansionPanel expanded={expanded === 'units'} onChange={this.onExpand('units')}>
-                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon fontSize="small" />}>
                             <Typography className={classes.heading}>
                                 Units
                             </Typography>
@@ -135,7 +134,7 @@ class Collection extends Component {
                         </ExpansionPanelActions>
                     </ExpansionPanel>
                     <ExpansionPanel expanded={expanded === 'upgrades'} onChange={this.onExpand('upgrades')}>
-                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon fontSize="small" />}>
                             <Typography className={classes.heading}>
                                 Upgrades
                             </Typography>

@@ -8,6 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 
+// import FilterToolbar from './FilterToolbar';
+
 const CollectionTable = ({ classes, items, owned, onChange }) => {
     return (
         <div className={classes.wrapper}>
@@ -18,7 +20,7 @@ const CollectionTable = ({ classes, items, owned, onChange }) => {
                 </colgroup>
                 <TableHead>
                     <TableRow>
-                        <TableCell>Product Name</TableCell>
+                        <TableCell>Name</TableCell>
                         <TableCell align="center"># Owned</TableCell>
                     </TableRow>
                 </TableHead>
@@ -31,7 +33,7 @@ const CollectionTable = ({ classes, items, owned, onChange }) => {
                             value = ownedItem ? ownedItem.count : 0;
 
                         return (
-                            <TableRow key={rowKey}>
+                            <TableRow key={rowKey} className={classes.row}>
                                 <TableCell component="th" scope="row">
                                     {item.name}
                                 </TableCell>
@@ -48,10 +50,15 @@ const CollectionTable = ({ classes, items, owned, onChange }) => {
     );
 }
 
-const styles = {
+const styles = theme => ({
     wrapper: {
         width: '100%'
+    },
+    row: {
+        '&:nth-of-type(odd)': {
+            backgroundColor: theme.palette.background.default
+        }
     }
-};
+});
 
 export default withStyles(styles)(CollectionTable);
