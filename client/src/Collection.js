@@ -219,7 +219,9 @@ const styles = theme => ({
         '&.expanded': {
             minHeight: 32
         },
-        // this was responsible for the weird staggered transition effect
+        // This was responsible for the weird staggered transition effect. It
+        // was a transition on min-width, which made the panel appear to
+        // shrink before collapsing.
         transition: 'none'
     },
     summaryContent: {
