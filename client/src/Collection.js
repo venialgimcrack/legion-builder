@@ -56,7 +56,8 @@ class Collection extends Component {
     };
 
     handleChange = group => e => {
-        let { id, value } = e.target;
+        let { id, value } = e.target,
+            count = Number(value);
 
         this.setState(state => {
             let { collection } = state,
@@ -64,16 +65,20 @@ class Collection extends Component {
 
             switch (group) {
                 case 'products':
-                    if (value > 0) {
+                    if (count > 0) {
                         let item = owned.find(item => item.id === id);                            
 
                         if (item) {
-                            item.count = value;
+                            item.count = count;
                         } else {
-                            owned.push({ id, count: value });
+                            owned.push({ id, count });
                         }
                     } else {
-                        owned.splice(owned.findIndex(item => item.id === id), 1);
+                        let index = owned.findIndex(item => item.id === id);
+
+                        if (index >= 0) {
+                            owned.splice(index, 1);
+                        }
                     }
                     break;
 

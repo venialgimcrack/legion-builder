@@ -30,7 +30,7 @@ const CollectionTable = ({ classes, items, owned, onChange }) => {
                         let itemId = item.id,
                             rowKey = `item_${itemId}_${index}`,
                             ownedItem = owned.find(thing => thing.id === itemId),
-                            value = ownedItem ? ownedItem.count : 0;
+                            value = ownedItem ? ownedItem.count : '';
 
                         return (
                             <TableRow key={rowKey} className={classes.row}>
