@@ -63,29 +63,21 @@ class Collection extends Component {
             let { collection } = state,
                 owned = collection[group] || [];
 
-            switch (group) {
-                case 'products':
-                    if (count > 0) {
-                        let item = owned.find(item => item.id === id);                            
+            if (count > 0) {
+                let item = owned.find(item => item.id === id);                            
 
-                        if (item) {
-                            item.count = count;
-                        } else {
-                            owned.push({ id, count });
-                        }
-                    } else {
-                        let index = owned.findIndex(item => item.id === id);
+                if (item) {
+                    item.count = count;
+                } else {
+                    owned.push({ id, count });
+                }
 
-                        if (index >= 0) {
-                            owned.splice(index, 1);
-                        }
-                    }
-                    break;
+            } else {
+                let index = owned.findIndex(item => item.id === id);
 
-                // TODO maths to figure out correct modifier attrs
-                case 'units':
-                case 'upgrades':
-                default:
+                if (index >= 0) {
+                    owned.splice(index, 1);
+                }
             }
 
             collection[group] = owned;
@@ -102,12 +94,15 @@ class Collection extends Component {
 
     componentDidMount () {
         this.props.getProducts();
+        // TODO actions to get units, upgrades
         this.props.load();
     }
 
     render () {
         const { classes, products } = this.props,
             { expanded, collection } = this.state;
+            // TODO pull unit, upgrade lists out of props
+            // TODO compose "owned" list for units, upgrades
 
         return (
             <div className={classes.root}>
