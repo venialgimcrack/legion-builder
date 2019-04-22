@@ -13,6 +13,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { loadCollection, saveCollection } from './actions/collectionActions';
 import { getProducts } from './actions/productActions';
+import { getContent } from './actions/contentActions';
 import CollectionTable from './CollectionTable';
 
 class Collection extends Component {
@@ -94,14 +95,13 @@ class Collection extends Component {
 
     componentDidMount () {
         this.props.getProducts();
-        // TODO actions to get units, upgrades
+        this.props.getContent();
         this.props.load();
     }
 
     render () {
-        const { classes, products } = this.props,
+        const { classes, products, units, upgrades } = this.props,
             { expanded, collection } = this.state;
-            // TODO pull unit, upgrade lists out of props
             // TODO compose "owned" list for units, upgrades
 
         return (
@@ -140,8 +140,8 @@ class Collection extends Component {
                                 Units
                             </Typography>
                         </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
-                            <Typography>TODO: Unit table</Typography>
+                        <ExpansionPanelDetails className={classes.panelDetail}>
+                            <CollectionTable items={units} owned={[]} onChange={_.noop} />
                         </ExpansionPanelDetails>
                         <ExpansionPanelActions>
                             <Button type="submit" size="small" color="primary">Save</Button>
@@ -160,8 +160,8 @@ class Collection extends Component {
                                 Upgrades
                             </Typography>
                         </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
-                            <Typography>TODO: Upgrades table</Typography>
+                        <ExpansionPanelDetails className={classes.panelDetail}>
+                            <CollectionTable items={upgrades} itemLabelKey="title" owned={[]} onChange={_.noop} />
                         </ExpansionPanelDetails>
                         <ExpansionPanelActions>
                             <Button type="submit" size="small" color="primary">Save</Button>
@@ -175,16 +175,21 @@ class Collection extends Component {
 
 const mapStateToProps = state => {
     let products = _.get(state, 'products.items'),
+        units = _.get(state, 'content.units'),
+        upgrades = _.get(state, 'content.upgrades'),
         collection = _.get(state, 'collection.item');
 
     return {
         products,
+        units,
+        upgrades,
         collection
     };
 };
 
 const mapDispatchToProps = {
     getProducts,
+    getContent,
     load: loadCollection,
     save: saveCollection
 };
@@ -214,9 +219,6 @@ const styles = theme => ({
         '&.expanded': {
             minHeight: 32
         },
-        // This was responsible for the weird staggered transition effect. It
-        // was a transition on min-width, which made the panel appear to
-        // shrink before collapsing.
         transition: 'none'
     },
     summaryContent: {

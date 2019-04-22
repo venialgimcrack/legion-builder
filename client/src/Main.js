@@ -38,6 +38,7 @@ if (!!localStorage[JWT_TOKEN_KEY]) {
     }
 }
 
+// TODO need a default route to display 404s
 const Main = ({ history }) => (
     <React.Fragment>
         <CssBaseline />

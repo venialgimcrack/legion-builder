@@ -10,7 +10,7 @@ import TextField from '@material-ui/core/TextField';
 
 // import FilterToolbar from './FilterToolbar';
 
-const CollectionTable = ({ classes, items, owned, onChange }) => {
+const CollectionTable = ({ classes, items, itemLabelKey, owned, onChange }) => {
     return (
         <div className={classes.wrapper}>
             <Table padding="none">
@@ -35,7 +35,7 @@ const CollectionTable = ({ classes, items, owned, onChange }) => {
                         return (
                             <TableRow key={rowKey} className={classes.row}>
                                 <TableCell component="th" scope="row">
-                                    {item.name}
+                                    {item[itemLabelKey || 'name']}
                                 </TableCell>
                                 <TableCell>
                                     <TextField type="number" id={itemId} value={value} onChange={onChange} />
