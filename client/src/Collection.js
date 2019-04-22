@@ -3,17 +3,12 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { loadCollection, saveCollection } from './actions/collectionActions';
 import { getProducts } from './actions/productActions';
 import { getContent } from './actions/contentActions';
+import CollectionPanel from './CollectionPanel';
 import CollectionTable from './CollectionTable';
 
 class Collection extends Component {
@@ -179,66 +174,49 @@ class Collection extends Component {
         return (
             <div className={classes.root}>
                 <form noValidate onSubmit={this.onSubmit}>
-                    <ExpansionPanel expanded={expanded === 'products'} onChange={this.onExpand('products')}>
-                        <ExpansionPanelSummary
-                            expandIcon={<ExpandMoreIcon fontSize="small" />}
-                            classes={{
-                                root: classes.summaryRoot,
-                                content: classes.summaryContent,
-                                expanded: 'expanded'
-                            }}
-                        >
-                            <Typography>
-                                Products
-                            </Typography>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails className={classes.panelDetail}>
-                            <CollectionTable items={products} owned={products.length > 0 ? this.getOwnedList('products') : []} onChange={this.handleChange('products')} />
-                        </ExpansionPanelDetails>
-                        <ExpansionPanelActions>
-                            <Button type="submit" size="small" color="primary">Save</Button>
-                        </ExpansionPanelActions>
-                    </ExpansionPanel>
-                    <ExpansionPanel expanded={expanded === 'units'} onChange={this.onExpand('units')}>
-                        <ExpansionPanelSummary
-                            expandIcon={<ExpandMoreIcon fontSize="small" />}
-                            classes={{
-                                root: classes.summaryRoot,
-                                content: classes.summaryContent,
-                                expanded: 'expanded'
-                            }}
-                        >
-                            <Typography>
-                                Units
-                            </Typography>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails className={classes.panelDetail}>
-                            <CollectionTable items={units} owned={units.length > 0 ? this.getOwnedList('units') : []} onChange={this.handleChange('units')} />
-                        </ExpansionPanelDetails>
-                        <ExpansionPanelActions>
-                            <Button type="submit" size="small" color="primary">Save</Button>
-                        </ExpansionPanelActions>
-                    </ExpansionPanel>
-                    <ExpansionPanel expanded={expanded === 'upgrades'} onChange={this.onExpand('upgrades')}>
-                        <ExpansionPanelSummary
-                            expandIcon={<ExpandMoreIcon fontSize="small" />}
-                            classes={{
-                                root: classes.summaryRoot,
-                                content: classes.summaryContent,
-                                expanded: 'expanded'
-                            }}
-                        >
-                            <Typography>
-                                Upgrades
-                            </Typography>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails className={classes.panelDetail}>
-                            <CollectionTable items={upgrades} itemLabelKey="title" owned={upgrades.length > 0 ? this.getOwnedList('upgrades') : []} onChange={this.handleChange('upgrades')} />
-                        </ExpansionPanelDetails>
-                        <ExpansionPanelActions>
-                            <Button type="submit" size="small" color="primary">Save</Button>
-                        </ExpansionPanelActions>
-                    </ExpansionPanel>
+                    <CollectionPanel
+                        expanded={expanded === 'products'}
+                        onExpand={this.onExpand('products')}
+                        label={
+                            <Typography>Products</Typography>
+                        }
+                        details={
+                            <CollectionTable
+                                items={products}
+                                owned={products.length > 0 ? this.getOwnedList('products') : []}
+                                onChange={this.handleChange('products')}
+                            />
+                        }
+                    />
+                    <CollectionPanel
+                        expanded={expanded === 'units'}
+                        onExpand={this.onExpand('units')}
+                        label={
+                            <Typography>Units</Typography>
+                        }
+                        details={
+                            <CollectionTable
+                                items={units}
+                                owned={units.length > 0 ? this.getOwnedList('units') : []}
+                                onChange={this.handleChange('units')}
+                            />
+                        }
+                    />
+                    <CollectionPanel
+                        expanded={expanded === 'upgrades'}
+                        onExpand={this.onExpand('upgrades')}
+                        label={
+                            <Typography>Upgrades</Typography>
+                        }
+                        details={
+                            <CollectionTable
+                                items={upgrades}
+                                itemLabelKey="title"
+                                owned={upgrades.length > 0 ? this.getOwnedList('upgrades') : []}
+                                onChange={this.handleChange('upgrades')}
+                            />
+                        }
+                    />
                 </form>
             </div>
         );
@@ -283,24 +261,6 @@ const styles = theme => ({
             marginLeft: 'auto',
             marginRight: 'auto'
         }
-    },
-    // TODO media queries to calculate based on screen size
-    summaryRoot: {
-        padding: '8px 16px 8px',
-        minHeight: 32,
-        '&.expanded': {
-            minHeight: 32
-        },
-        transition: 'none'
-    },
-    summaryContent: {
-        margin: 0,
-        '&.expanded': {
-            margin: 0
-        }
-    },
-    panelDetail: {
-        padding: theme.spacing.unit
     }
 });
 
