@@ -50,19 +50,29 @@ class Collection extends Component {
         };
     }
 
-    onExpand = panel => (event, expanded) => {
-        this.setState({
-            expanded: expanded ? panel : false
-        });
+    handleChange = group => e => {
+        let { id, value, defaultValue } = e.target,
+            count = Number(value),
+            prevCount = Number(defaultValue);
+
+        switch (group) {
+            case 'products':
+                this.handleProductChange(id, count);
+                break;
+            
+            case 'units':
+            case 'upgrades':
+                this.handleOtherChange(group, id, count - prevCount);
+                break;
+
+            default:
+        }
     };
 
-    handleChange = group => e => {
-        let { id, value } = e.target,
-            count = Number(value);
-
+    handleProductChange = (id, count) => {
         this.setState(state => {
             let { collection } = state,
-                owned = collection[group] || [];
+                owned = collection.products;
 
             if (count > 0) {
                 let item = owned.find(item => item.id === id);                            
@@ -81,6 +91,25 @@ class Collection extends Component {
                 }
             }
 
+            collection.products = owned;
+
+            return { collection };
+        });
+    };
+
+    handleOtherChange = (group, id, delta) => {
+        this.setState(state => {
+            let { collection } = state,
+                owned = collection[group];
+
+            let item = owned.find(item => item.id === id);
+
+            if (item) {
+                item.modifier += delta;
+            } else {
+                owned.push({ id, modifier: delta });
+            }
+
             collection[group] = owned;
 
             return { collection };
@@ -93,6 +122,49 @@ class Collection extends Component {
         this.props.save(this.state.collection);
     };
 
+    onExpand = panel => (event, expanded) => {
+        this.setState({
+            expanded: expanded ? panel : false
+        });
+    };
+
+    getOwnedList = group => {
+        switch (group) {
+            case 'products':
+                return this.state.collection.products;
+
+            case 'units':
+            case 'upgrades':
+                let ownedProducts = this.state.collection.products.map(product => this.props.products.find(prod => prod.id === product.id)),
+                    modifiers = this.state.collection[group],
+                    result = [];
+
+                ownedProducts.forEach(product => {
+                    let contents = product.contents[group];
+
+                    contents.forEach(item => {
+                        let existing = result.find(res => res.id === item.id),
+                            modder = modifiers.find(mod => mod.id === item.id),
+                            modifier = modder ? modder.modifier : 0;
+
+                        if (existing) {
+                            existing.count += modifier;
+                        } else {
+                            result.push({
+                                id: item.id,
+                                count: item.count + modifier
+                            });
+                        }
+                    });
+                });
+
+                return result;
+
+            default:
+                return [];
+        }
+    };
+
     componentDidMount () {
         this.props.getProducts();
         this.props.getContent();
@@ -101,8 +173,7 @@ class Collection extends Component {
 
     render () {
         const { classes, products, units, upgrades } = this.props,
-            { expanded, collection } = this.state;
-            // TODO compose "owned" list for units, upgrades
+            { expanded } = this.state;
 
         return (
             <div className={classes.root}>
@@ -121,7 +192,7 @@ class Collection extends Component {
                             </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails className={classes.panelDetail}>
-                            <CollectionTable items={products} owned={collection.products} onChange={this.handleChange('products')} />
+                            <CollectionTable items={products} owned={this.getOwnedList('products')} onChange={this.handleChange('products')} />
                         </ExpansionPanelDetails>
                         <ExpansionPanelActions>
                             <Button type="submit" size="small" color="primary">Save</Button>
@@ -141,7 +212,7 @@ class Collection extends Component {
                             </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails className={classes.panelDetail}>
-                            <CollectionTable items={units} owned={[]} onChange={_.noop} />
+                            <CollectionTable items={units} owned={this.getOwnedList('units')} onChange={this.handleChange('units')} />
                         </ExpansionPanelDetails>
                         <ExpansionPanelActions>
                             <Button type="submit" size="small" color="primary">Save</Button>
@@ -161,7 +232,7 @@ class Collection extends Component {
                             </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails className={classes.panelDetail}>
-                            <CollectionTable items={upgrades} itemLabelKey="title" owned={[]} onChange={_.noop} />
+                            <CollectionTable items={upgrades} itemLabelKey="title" owned={this.getOwnedList('upgrades')} onChange={this.handleChange('upgrades')} />
                         </ExpansionPanelDetails>
                         <ExpansionPanelActions>
                             <Button type="submit" size="small" color="primary">Save</Button>
