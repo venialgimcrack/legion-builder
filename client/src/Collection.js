@@ -193,7 +193,7 @@ class Collection extends Component {
                             </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails className={classes.panelDetail}>
-                            <CollectionTable items={products} owned={this.getOwnedList('products')} onChange={this.handleChange('products')} />
+                            <CollectionTable items={products} owned={products.length > 0 ? this.getOwnedList('products') : []} onChange={this.handleChange('products')} />
                         </ExpansionPanelDetails>
                         <ExpansionPanelActions>
                             <Button type="submit" size="small" color="primary">Save</Button>
@@ -213,7 +213,7 @@ class Collection extends Component {
                             </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails className={classes.panelDetail}>
-                            <CollectionTable items={units} owned={this.getOwnedList('units')} onChange={this.handleChange('units')} />
+                            <CollectionTable items={units} owned={units.length > 0 ? this.getOwnedList('units') : []} onChange={this.handleChange('units')} />
                         </ExpansionPanelDetails>
                         <ExpansionPanelActions>
                             <Button type="submit" size="small" color="primary">Save</Button>
@@ -233,7 +233,7 @@ class Collection extends Component {
                             </Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails className={classes.panelDetail}>
-                            <CollectionTable items={upgrades} itemLabelKey="title" owned={this.getOwnedList('upgrades')} onChange={this.handleChange('upgrades')} />
+                            <CollectionTable items={upgrades} itemLabelKey="title" owned={upgrades.length > 0 ? this.getOwnedList('upgrades') : []} onChange={this.handleChange('upgrades')} />
                         </ExpansionPanelDetails>
                         <ExpansionPanelActions>
                             <Button type="submit" size="small" color="primary">Save</Button>
