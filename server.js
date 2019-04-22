@@ -5,8 +5,7 @@ const express = require('express'),
     collection = require('./server/api/collection'),
     users = require('./server/api/users'),
     products = require('./server/api/products'),
-    units = require('./server/api/units'),
-    upgrades = require('./server/api/upgrades');
+    content = require('./server/api/content');
 
 const backend = express();
 
@@ -28,7 +27,6 @@ require('./server/config/passport')(passport);
 backend.use('/api/collection', collection);
 backend.use('/api/users', users);
 backend.use('/api/products', products);
-backend.use('/api/units', units);
-backend.use('/api/upgrades', upgrades);
+backend.use('/api/content', content);
 
 backend.listen(3001, () => console.log('lb-server listening on port 3001'));
