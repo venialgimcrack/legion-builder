@@ -13,6 +13,7 @@ import TextField from '@material-ui/core/TextField';
 const CollectionTable = ({ classes, items, itemLabelKey, owned, onChange }) => {
     return (
         <div className={classes.wrapper}>
+            {/* <FilterToolbar /> */}
             <Table padding="none">
                 <colgroup>
                     <col />

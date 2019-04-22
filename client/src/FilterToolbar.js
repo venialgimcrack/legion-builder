@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
+import Chip from '@material-ui/core/Chip';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import IconButton from '@material-ui/core/IconButton';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Toolbar from '@material-ui/core/Toolbar';
-// import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 
 class FilterToolbar extends Component {
@@ -14,7 +15,8 @@ class FilterToolbar extends Component {
         super(props);
 
         this.state = {
-            menuAnchor: null
+            menuAnchor: null,
+            filters: []
         };
     }
 
@@ -30,24 +32,50 @@ class FilterToolbar extends Component {
         });
     };
 
+    handleClick = filter => () => {
+        this.setState(state => ({
+            menuAnchor: null,
+            filters: state.filters.concat(filter)
+        }));
+    };
+
+    handleDelete = filter => () => {
+        this.setState(state => {
+            let { filters } = state,
+                index = filters.indexOf(filter);
+
+            if (index >= 0) {
+                filters.splice(index, 1);
+            }
+
+            return { filters };
+        });
+    };
+
+    componentDidUpdate () {
+        // TODO invoke onFilterChange prop
+    }
+
     render () {
         const { classes } = this.props;
-        const { menuAnchor } = this.state;
+        const { menuAnchor, filters } = this.state;
 
-        let isOpen = !!menuAnchor;
+        let isOpen = !!menuAnchor,
+            filterChips = filters.length > 0 ?
+                filters.map((filter, index) => <Chip key={`${filter}_${index}`} label={filter} onDelete={this.handleDelete(filter)} /> ) : <Typography>Filters: None</Typography>;
 
         return (
-            <Toolbar>
+            <Toolbar disableGutters={true} variant="dense">
                 <div className={classes.chips}>
-                    <Typography>Filters: None</Typography>
+                    {filterChips}
                 </div>
-                <div className={classes.spacer} />
                 <div className={classes.action}>
                     <IconButton onClick={this.handleOpen}>
                         <FilterListIcon fontSize="small" />
                     </IconButton>
                     <Menu
                         id="menu-filters"
+                        disableAutoFocusItem={true}
                         anchorEl={menuAnchor}
                         anchorOrigin={{
                             vertical: 'top',
@@ -59,9 +87,12 @@ class FilterToolbar extends Component {
                         }}
                         open={isOpen}
                         onClose={this.handleClose}
+                        MenuListProps={{
+                            subheader: <ListSubheader>Filter By</ListSubheader>
+                        }}
                     >
-                        <MenuItem onClick={this.handleClose}>Core/Expansion</MenuItem>
-                        <MenuItem onClick={this.handleClose}>Rebel/Empire</MenuItem>
+                        <MenuItem onClick={this.handleClick('core')}>Core Sets</MenuItem>
+                        <MenuItem onClick={this.handleClick('expansion')}>Expansions</MenuItem>
                     </Menu>
                 </div>
             </Toolbar>
@@ -71,10 +102,9 @@ class FilterToolbar extends Component {
 
 const styles = {
     chips: {
-        flex: '0 0 auto'
     },
-    spacer: {
-        flex: '1 1 100%'
+    action: {
+        marginLeft: 'auto'
     }
 };
 
