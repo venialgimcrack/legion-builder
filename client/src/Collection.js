@@ -52,20 +52,15 @@ class Collection extends Component {
 
     handleChange = group => e => {
         let { id, value, defaultValue } = e.target,
-            count = Number(value),
-            prevCount = Number(defaultValue);
+            count = Number(value);
 
-        switch (group) {
-            case 'products':
-                this.handleProductChange(id, count);
-                break;
-            
-            case 'units':
-            case 'upgrades':
-                this.handleOtherChange(group, id, count - prevCount);
-                break;
+        if (group === 'products') {
+            this.handleProductChange(id, count);
 
-            default:
+        } else {
+            let prevCount = Number(defaultValue);
+
+            this.handleOtherChange(group, id, count - prevCount);
         }
     };
 
@@ -110,6 +105,8 @@ class Collection extends Component {
                 owned.push({ id, modifier: delta });
             }
 
+            // TODO remove items with '0' modifier?
+
             collection[group] = owned;
 
             return { collection };
@@ -129,48 +126,43 @@ class Collection extends Component {
     };
 
     getOwnedList = group => {
-        switch (group) {
-            case 'products':
-                return this.state.collection.products;
+        if (group === 'products') {
+            return this.state.collection.products;
 
-            case 'units':
-            case 'upgrades':
-                let results = [],
-                    modifiers = this.state.collection[group];
+        } else {
+            let results = [],
+                modifiers = this.state.collection[group];
 
-                // Compose list with raw counts first
-                this.state.collection.products.forEach(product => {
-                    let fullProd = this.props.products.find(prod => prod.id === product.id),
-                        contents = fullProd.contents[group],
-                        count = product.count;
+            // Compose list with raw counts first
+            this.state.collection.products.forEach(product => {
+                let fullProd = this.props.products.find(prod => prod.id === product.id),
+                    prodContents = fullProd.contents[group],
+                    prodCount = product.count;
 
-                    contents.forEach(item => {
-                        let result = results.find(res => res.id === item.id);
+                prodContents.forEach(item => {
+                    let result = results.find(res => res.id === item.id);
 
-                        if (result) {
-                            result.count += (item.count * count);
-                        } else {
-                            results.push({
-                                id: item.id,
-                                count: item.count * count
-                            });
-                        }
-                    });
-                });
-
-                // Iterate over and apply modifier values
-                modifiers.forEach(modder => {
-                    let item = results.find(res => res.id === modder.id);
-
-                    if (item && modder.modifier !== 0) {
-                        item.count += modder.modifier;
+                    if (result) {
+                        result.count += (item.count * prodCount);
+                    } else {
+                        results.push({
+                            id: item.id,
+                            count: item.count * prodCount
+                        });
                     }
                 });
+            });
 
-                return results;
+            // Iterate over and apply modifier values
+            modifiers.forEach(modder => {
+                let item = results.find(res => res.id === modder.id);
 
-            default:
-                return [];
+                if (item && modder.modifier !== 0) {
+                    item.count += modder.modifier;
+                }
+            });
+
+            return results;
         }
     };
 
