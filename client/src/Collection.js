@@ -135,30 +135,39 @@ class Collection extends Component {
 
             case 'units':
             case 'upgrades':
-                let ownedProducts = this.state.collection.products.map(product => this.props.products.find(prod => prod.id === product.id)),
-                    modifiers = this.state.collection[group],
-                    result = [];
+                let results = [],
+                    modifiers = this.state.collection[group];
 
-                ownedProducts.forEach(product => {
-                    let contents = product.contents[group];
+                // Compose list with raw counts first
+                this.state.collection.products.forEach(product => {
+                    let fullProd = this.props.products.find(prod => prod.id === product.id),
+                        contents = fullProd.contents[group],
+                        count = product.count;
 
                     contents.forEach(item => {
-                        let existing = result.find(res => res.id === item.id),
-                            modder = modifiers.find(mod => mod.id === item.id),
-                            modifier = modder ? modder.modifier : 0;
+                        let result = results.find(res => res.id === item.id);
 
-                        if (existing) {
-                            existing.count += modifier;
+                        if (result) {
+                            result.count += (item.count * count);
                         } else {
-                            result.push({
+                            results.push({
                                 id: item.id,
-                                count: item.count + modifier
+                                count: item.count * count
                             });
                         }
                     });
                 });
 
-                return result;
+                // Iterate over and apply modifier values
+                modifiers.forEach(modder => {
+                    let item = results.find(res => res.id === modder.id);
+
+                    if (item && modder.modifier !== 0) {
+                        item.count += modder.modifier;
+                    }
+                });
+
+                return results;
 
             default:
                 return [];
