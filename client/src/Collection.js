@@ -168,7 +168,7 @@ class Collection extends Component {
         this.props.load();
     }
 
-    CustomCollectionPanel = ({ group, label }) => {
+    CustomCollectionPanel = ({ group, label, itemLabelKey }) => {
         const { classes } = this.props;
         const { expanded } = this.state;
 
@@ -177,6 +177,7 @@ class Collection extends Component {
             details = showTable ?
                 <CollectionTable
                     items={items}
+                    itemLabelKey={itemLabelKey}
                     owned={this.getOwnedList(group)}
                     onChange={this.handleChange(group)}
                 /> :
@@ -215,6 +216,7 @@ class Collection extends Component {
                     <CustomPanel
                         group="upgrades"
                         label="Upgrades"
+                        itemLabelKey="title"
                     />
                 </form>
             </div>
