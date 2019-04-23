@@ -11,11 +11,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Toolbar from '@material-ui/core/Toolbar';
 // import Typography from '@material-ui/core/Typography';
 
+/*
 class FilterToolbar extends Component {
     constructor (props) {
         super(props);
-
-        console.log(props);
 
         this.state = {
             menuAnchor: null,
@@ -112,10 +111,127 @@ class FilterToolbar extends Component {
         );
     }
 }
+*/
+
+class FilterToolbar extends Component {
+    constructor (props) {
+        super(props);
+
+        this.state = {
+            menuAnchor: null
+        };
+    }
+
+    handleOpen = e => {
+        this.setState({
+            menuAnchor: e.currentTarget
+        });
+    };
+
+    handleClose = () => {
+        this.setState({
+            menuAnchor: null
+        });
+    };
+
+    handleClick = filterId => () => {
+        this.setState({
+            menuAnchor: null
+        });
+
+        this.props.onChange(filterId);
+    };
+
+    handleDelete = filterId => () => {
+        this.props.onChange(filterId);
+    };
+
+    getChips = () => {
+        const { filters, active } = this.props;
+
+        let chips = [];
+
+        active.forEach((filterId, index) => {
+            let filter = filters.find(filter => filter.id === filterId),
+                { label } = filter;
+
+            chips.push(
+                <Chip
+                    key={`chip_${filterId}_${index}`}
+                    label={label}
+                    onDelete={this.handleDelete(filterId)}
+                />
+            );
+        });
+
+        return chips;
+    };
+
+    getMenuItems = () => {
+        const { headings, filters, active } = this.props;
+
+        let items = [];
+
+        headings.forEach((heading, idx) => {
+            let { field, text } = heading,
+                // list of non-active filters
+                menuFilters = filters.filter(fltr => fltr.field === field && active.indexOf(fltr.id) === -1);
+
+            items.push(
+                <MenuItem key={`head_${heading}_${idx}`} disabled divider>{text}</MenuItem>
+            );
+
+            items.push(
+                ...menuFilters.map((filter, i) => (
+                    <MenuItem key={`item_${filter.id}_${i}`} onClick={this.handleClick(filter.id)}>{filter.label}</MenuItem>
+                ))
+            );
+        });
+
+        return items;
+    };
+
+    render () {
+        const { classes } = this.props,
+            { menuAnchor } = this.state;
+
+        let isOpen = !!menuAnchor,
+            chips = this.getChips(),
+            items = this.getMenuItems();
+
+        return (
+            <Toolbar disableGutters={true} variant="dense">
+                <div>
+                    { chips.length > 0 ? chips : null }
+                </div>
+                <div className={classes.action}>
+                    <IconButton onClick={this.handleOpen}>
+                        <FilterListIcon fontSize="small" />
+                    </IconButton>
+                    <Menu
+                        id="prodFilterMenu"
+                        disableAutoFocusItem={true}
+                        anchorEl={menuAnchor}
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right'
+                        }}
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right'
+                        }}
+                        open={isOpen}
+                        onClose={this.handleClose}
+                    >
+                        { items.length > 0 ? items : null }
+                    </Menu>
+                </div>
+            </Toolbar>
+        );
+    }
+}
 
 const styles = {
-    chips: {
-    },
     action: {
         marginLeft: 'auto'
     }
