@@ -8,7 +8,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-const CollectionPanel = ({ classes, expanded, onExpand, label, details }) => (
+const CollectionPanel = ({ classes, expanded, onExpand, label, details, disableSave }) => (
     <ExpansionPanel expanded={expanded} onChange={onExpand}>
         <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon fontSize="small" />}
@@ -24,7 +24,7 @@ const CollectionPanel = ({ classes, expanded, onExpand, label, details }) => (
             {details}
         </ExpansionPanelDetails>
         <ExpansionPanelActions>
-            <Button type="submit" size="small" color="primary">Save</Button>
+            <Button type="submit" size="small" color="primary" disabled={disableSave}>Save</Button>
         </ExpansionPanelActions>
     </ExpansionPanel>
 );

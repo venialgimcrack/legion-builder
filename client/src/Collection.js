@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
 
 import { loadCollection, saveCollection } from './actions/collectionActions';
@@ -167,55 +168,55 @@ class Collection extends Component {
         this.props.load();
     }
 
+    CustomCollectionPanel = ({ labelText, groupKey, items }) => {
+        const { classes } = this.props;
+        const { expanded } = this.state;
+
+        let showTable = items.length > 0,
+            details = showTable ?
+                <CollectionTable
+                    items={items}
+                    owned={items.length > 0 ? this.getOwnedList(groupKey) : []}
+                    onChange={this.handleChange(groupKey)}
+                /> :
+                <div className={classes.wrapper}>
+                    <CircularProgress className={classes.progress} />
+                </div>;
+
+        return (
+            <CollectionPanel
+                expanded={expanded === groupKey}
+                onExpand={this.onExpand(groupKey)}
+                label={
+                    <Typography>{labelText}</Typography>
+                }
+                details={details}
+                disableSave={!showTable}
+            />
+        );
+    };
+
     render () {
-        const { classes, products, units, upgrades } = this.props,
-            { expanded } = this.state;
+        const CustomPanel = this.CustomCollectionPanel,
+            { classes, products, units, upgrades } = this.props;
 
         return (
             <div className={classes.root}>
                 <form noValidate onSubmit={this.onSubmit}>
-                    <CollectionPanel
-                        expanded={expanded === 'products'}
-                        onExpand={this.onExpand('products')}
-                        label={
-                            <Typography>Products</Typography>
-                        }
-                        details={
-                            <CollectionTable
-                                items={products}
-                                owned={products.length > 0 ? this.getOwnedList('products') : []}
-                                onChange={this.handleChange('products')}
-                            />
-                        }
+                    <CustomPanel
+                        labelText="Products"
+                        groupKey="products"
+                        items={products}
                     />
-                    <CollectionPanel
-                        expanded={expanded === 'units'}
-                        onExpand={this.onExpand('units')}
-                        label={
-                            <Typography>Units</Typography>
-                        }
-                        details={
-                            <CollectionTable
-                                items={units}
-                                owned={units.length > 0 ? this.getOwnedList('units') : []}
-                                onChange={this.handleChange('units')}
-                            />
-                        }
+                    <CustomPanel
+                        labelText="Units"
+                        groupKey="units"
+                        items={units}
                     />
-                    <CollectionPanel
-                        expanded={expanded === 'upgrades'}
-                        onExpand={this.onExpand('upgrades')}
-                        label={
-                            <Typography>Upgrades</Typography>
-                        }
-                        details={
-                            <CollectionTable
-                                items={upgrades}
-                                itemLabelKey="title"
-                                owned={upgrades.length > 0 ? this.getOwnedList('upgrades') : []}
-                                onChange={this.handleChange('upgrades')}
-                            />
-                        }
+                    <CustomPanel
+                        labelText="Upgrades"
+                        groupKey="upgrades"
+                        items={upgrades}
                     />
                 </form>
             </div>
@@ -263,7 +264,12 @@ const styles = theme => ({
         }
     },
     wrapper: {
-        width: '100%'
+        display: 'flex',
+        width: '100%',
+        justifyContent: 'center'
+    },
+    progress: {
+        margin: theme.spacing.unit * 2
     }
 });
 
