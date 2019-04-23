@@ -8,12 +8,15 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 
+// import FilterControlPanel from './FilterControlPanel';
+
 class CollectionTable extends Component {
     render () {
         const { classes, items, itemLabelKey, owned, onChange } = this.props;
 
         return (
             <div className={classes.wrapper}>
+                {/* <FilterControlPanel /> */}
                 <Table padding="none">
                     <colgroup>
                         <col />
