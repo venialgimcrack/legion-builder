@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
 
 import { loadCollection, saveCollection } from './actions/collectionActions';
@@ -169,29 +168,25 @@ class Collection extends Component {
     }
 
     CustomCollectionPanel = ({ group, label, itemLabelKey }) => {
-        const { classes } = this.props;
         const { expanded } = this.state;
 
         let items = this.props[group],
             showTable = items.length > 0,
+            panelLabel =
+                <Typography>{label}</Typography>,
             details = showTable ?
                 <CollectionTable
                     items={items}
                     itemLabelKey={itemLabelKey}
                     owned={this.getOwnedList(group)}
                     onChange={this.handleChange(group)}
-                /> :
-                <div className={classes.wrapper}>
-                    <CircularProgress className={classes.progress} />
-                </div>;
+                /> : <div />;
 
         return (
             <CollectionPanel
                 expanded={expanded === group}
                 onExpand={this.onExpand(group)}
-                label={
-                    <Typography>{label}</Typography>
-                }
+                label={panelLabel}
                 details={details}
                 disableSave={!showTable}
             />
@@ -262,14 +257,6 @@ const styles = theme => ({
             marginLeft: 'auto',
             marginRight: 'auto'
         }
-    },
-    wrapper: {
-        display: 'flex',
-        width: '100%',
-        justifyContent: 'center'
-    },
-    progress: {
-        margin: theme.spacing.unit * 2
     }
 });
 
