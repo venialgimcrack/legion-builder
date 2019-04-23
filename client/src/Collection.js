@@ -41,7 +41,12 @@ class Collection extends Component {
 
         this.state = {
             expanded: 'products',
-            collection: props.collection
+            collection: props.collection,
+            filters: {
+                products: [],
+                units: [],
+                upgrades: []
+            }
         };
     }
 
@@ -161,6 +166,31 @@ class Collection extends Component {
         }
     };
 
+    handleFilter = group => filter => {
+        this.setState(state => {
+            let filters = _.get(state, `filters[${group}]`, []);
+
+            if (filters.length === 0) {
+                filters.push(filter);
+
+            } else {
+                let index = filters.findIndex(fltr => fltr.field === filter.field && fltr.value === filter.value);
+
+                if (index >= 0) {
+                    filters.splice(index, 1);
+                } else {
+                    filters.push(filter);
+                }
+            }
+
+            return {
+                filters: {
+                    [ group ]: filters
+                }
+            };
+        });
+    };
+
     componentDidMount () {
         this.props.getProducts();
         this.props.getContent();
@@ -169,7 +199,7 @@ class Collection extends Component {
 
     render () {
         const { classes, products, units, upgrades } = this.props,
-            { expanded } = this.state;
+            { expanded, filters } = this.state;
 
         return (
             <div className={classes.root}>
@@ -185,6 +215,8 @@ class Collection extends Component {
                                 items={products}
                                 owned={products.length > 0 ? this.getOwnedList('products') : []}
                                 onChange={this.handleChange('products')}
+                                filters={filters['products']}
+                                onFilterChange={this.handleFilter('products')}
                             />
                         }
                     />
