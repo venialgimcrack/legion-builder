@@ -11,12 +11,64 @@ import TextField from '@material-ui/core/TextField';
 // import FilterControlPanel from './FilterControlPanel';
 
 class CollectionTable extends Component {
+    constructor (props) {
+        super(props);
+
+        this.state = {
+            filters: []
+        };
+    }
+
+    handleFilterChange = active => {
+        this.setState({
+            filters: active
+        });
+    };
+
+    FilteredTableBody = () => {
+        const { classes, items, itemLabelKey, owned, onChange } = this.props,
+            { filters } = this.state;
+
+        let filteredItems = items.slice();
+
+        filters.forEach(filter => {
+            filteredItems = filteredItems.filter(item => item[filter.field] === filter.value);
+        });
+
+        return (
+            <TableBody>
+            {
+                filteredItems.map((item, index) => {
+                    let itemId = item.id,
+                        rowKey = `item_${itemId}_${index}`,
+                        ownedItem = owned.find(thing => thing.id === itemId),
+                        value = ownedItem ? ownedItem.count : '';
+
+                    return (
+                        <TableRow key={rowKey} className={classes.row}>
+                            <TableCell component="th" scope="row">
+                                {item[itemLabelKey || 'name']}
+                            </TableCell>
+                            <TableCell>
+                                <TextField type="number" id={itemId} value={value} onChange={onChange} />
+                            </TableCell>
+                        </TableRow>
+                    );
+                })
+            }
+            </TableBody>
+        );
+    };
+
     render () {
-        const { classes, items, itemLabelKey, owned, onChange } = this.props;
+        const FilteredTableBody = this.FilteredTableBody,
+            { classes } = this.props;
 
         return (
             <div className={classes.wrapper}>
-                {/* <FilterControlPanel /> */}
+                {/* <FilterControlPanel
+                    onChange={this.handleFilterChange}
+                /> */}
                 <Table padding="none">
                     <colgroup>
                         <col />
@@ -28,27 +80,7 @@ class CollectionTable extends Component {
                             <TableCell align="center"># Owned</TableCell>
                         </TableRow>
                     </TableHead>
-                    <TableBody>
-                    {
-                        items.map((item, index) => {
-                            let itemId = item.id,
-                                rowKey = `item_${itemId}_${index}`,
-                                ownedItem = owned.find(thing => thing.id === itemId),
-                                value = ownedItem ? ownedItem.count : '';
-
-                            return (
-                                <TableRow key={rowKey} className={classes.row}>
-                                    <TableCell component="th" scope="row">
-                                        {item[itemLabelKey || 'name']}
-                                    </TableCell>
-                                    <TableCell>
-                                        <TextField type="number" id={itemId} value={value} onChange={onChange} />
-                                    </TableCell>
-                                </TableRow>
-                            );
-                        })
-                    }
-                    </TableBody>
+                    <FilteredTableBody />
                 </Table>
             </div>
         );

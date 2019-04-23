@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
-// import Chip from '@material-ui/core/Chip';
-// import Divider from '@material-ui/core/Divider';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import IconButton from '@material-ui/core/IconButton';
 import ListSubheader from '@material-ui/core/ListSubheader';
@@ -98,8 +97,8 @@ class FilterControlPanel extends Component {
     };
 
     FilterControls = () => {
-        const { classes } = this.props;
-        const { filters } = this.state;
+        const { classes } = this.props,
+            { filters } = this.state;
 
         let activeFilters = filters.filter(f => f.active),
             controls = activeFilters.map((props, idx) => (
