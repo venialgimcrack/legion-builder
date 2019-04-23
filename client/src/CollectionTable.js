@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -9,33 +8,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 
-// import FilterToolbar from './FilterToolbar';
-
 class CollectionTable extends Component {
-    
-    getFilteredItems = () => {
-        const { items, filters } = this.props;
-
-        if (!_.isArray(filters) || filters.length === 0) {
-            return items;
-        }
-
-        let result = items.slice();
-
-        filters.forEach(filter => {
-            let { field, value } = filter;
-
-            result = result.filter(res => res[field] === value);
-        });
-
-        return result;
-    };
-
     render () {
-        const { classes, itemLabelKey, owned, onChange } = this.props;
-
-        let items = this.getFilteredItems();
-
+        const { classes, items, itemLabelKey, owned, onChange } = this.props;
         return (
             <div className={classes.wrapper}>
                 <Table padding="none">
