@@ -168,16 +168,17 @@ class Collection extends Component {
         this.props.load();
     }
 
-    CustomCollectionPanel = ({ labelText, groupKey, items }) => {
+    CustomCollectionPanel = ({ group, label }) => {
         const { classes } = this.props;
         const { expanded } = this.state;
 
-        let showTable = items.length > 0,
+        let items = this.props[group],
+            showTable = items.length > 0,
             details = showTable ?
                 <CollectionTable
                     items={items}
-                    owned={items.length > 0 ? this.getOwnedList(groupKey) : []}
-                    onChange={this.handleChange(groupKey)}
+                    owned={this.getOwnedList(group)}
+                    onChange={this.handleChange(group)}
                 /> :
                 <div className={classes.wrapper}>
                     <CircularProgress className={classes.progress} />
@@ -185,10 +186,10 @@ class Collection extends Component {
 
         return (
             <CollectionPanel
-                expanded={expanded === groupKey}
-                onExpand={this.onExpand(groupKey)}
+                expanded={expanded === group}
+                onExpand={this.onExpand(group)}
                 label={
-                    <Typography>{labelText}</Typography>
+                    <Typography>{label}</Typography>
                 }
                 details={details}
                 disableSave={!showTable}
@@ -198,25 +199,22 @@ class Collection extends Component {
 
     render () {
         const CustomPanel = this.CustomCollectionPanel,
-            { classes, products, units, upgrades } = this.props;
+            { classes } = this.props;
 
         return (
             <div className={classes.root}>
                 <form noValidate onSubmit={this.onSubmit}>
                     <CustomPanel
-                        labelText="Products"
-                        groupKey="products"
-                        items={products}
+                        group="products"
+                        label="Products"
                     />
                     <CustomPanel
-                        labelText="Units"
-                        groupKey="units"
-                        items={units}
+                        group="units"
+                        label="Units"
                     />
                     <CustomPanel
-                        labelText="Upgrades"
-                        groupKey="upgrades"
-                        items={upgrades}
+                        group="upgrades"
+                        label="Upgrades"
                     />
                 </form>
             </div>

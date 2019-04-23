@@ -11,6 +11,7 @@ import TextField from '@material-ui/core/TextField';
 class CollectionTable extends Component {
     render () {
         const { classes, items, itemLabelKey, owned, onChange } = this.props;
+
         return (
             <div className={classes.wrapper}>
                 <Table padding="none">
