@@ -177,6 +177,7 @@ class FilterToolbar extends Component {
                 // list of non-active filters
                 menuFilters = filters.filter(fltr => fltr.field === field && active.indexOf(fltr.id) === -1);
 
+            // acts as a kind of subheading
             items.push(
                 <MenuItem key={`head_${heading}_${idx}`} disabled divider>{text}</MenuItem>
             );
