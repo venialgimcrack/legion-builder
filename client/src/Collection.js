@@ -261,6 +261,9 @@ const styles = theme => ({
             marginLeft: 'auto',
             marginRight: 'auto'
         }
+    },
+    wrapper: {
+        width: '100%'
     }
 });
 

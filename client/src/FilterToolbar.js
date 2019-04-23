@@ -2,21 +2,24 @@ import React, { Component } from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
+// import Divider from '@material-ui/core/Divider';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import IconButton from '@material-ui/core/IconButton';
-import ListSubheader from '@material-ui/core/ListSubheader';
+// import ListSubheader from '@material-ui/core/ListSubheader';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 
 class FilterToolbar extends Component {
     constructor (props) {
         super(props);
 
+        console.log(props);
+
         this.state = {
             menuAnchor: null,
-            filters: []
+            active: []
         };
     }
 
@@ -35,34 +38,47 @@ class FilterToolbar extends Component {
     handleClick = filter => () => {
         this.setState(state => ({
             menuAnchor: null,
-            filters: state.filters.concat(filter)
+            active: state.active.concat(filter)
         }));
     };
 
     handleDelete = filter => () => {
         this.setState(state => {
-            let { filters } = state,
-                index = filters.indexOf(filter);
+            let { active } = state,
+                index = active.indexOf(filter);
 
             if (index >= 0) {
-                filters.splice(index, 1);
+                active.splice(index, 1);
             }
 
-            return { filters };
+            return { active };
         });
     };
 
     componentDidUpdate () {
-        // TODO invoke onFilterChange prop
+        // TODO invoke onFilterChange prop?
     }
 
     render () {
-        const { classes } = this.props;
-        const { menuAnchor, filters } = this.state;
+        const { classes } = this.props,
+            { menuAnchor, active } = this.state;
 
         let isOpen = !!menuAnchor,
-            filterChips = filters.length > 0 ?
-                filters.map((filter, index) => <Chip key={`${filter}_${index}`} label={filter} onDelete={this.handleDelete(filter)} /> ) : <Typography>Filters: None</Typography>;
+            items = [{ id: 'core', text: 'Core Sets' }, { id: 'expansion', text: 'Expansions' }],
+            inactive = items.filter(item => active.indexOf(item.id) === -1),
+            menuItems = inactive.map((item, idx) => (
+                <MenuItem
+                    key={`${item.id}_${idx}`}
+                    onClick={this.handleClick(item.id)}
+                >
+                    {item.text}
+                </MenuItem>
+            )),
+            filterChips = null;
+
+        if (active.length > 0) {
+            filterChips = active.map((filter, index) => <Chip key={`${filter}_${index}`} label={filter} onDelete={this.handleDelete(filter)} /> );
+        }
 
         return (
             <Toolbar disableGutters={true} variant="dense">
@@ -74,7 +90,7 @@ class FilterToolbar extends Component {
                         <FilterListIcon fontSize="small" />
                     </IconButton>
                     <Menu
-                        id="menu-filters"
+                        id="prodFilterMenu"
                         disableAutoFocusItem={true}
                         anchorEl={menuAnchor}
                         anchorOrigin={{
@@ -87,12 +103,9 @@ class FilterToolbar extends Component {
                         }}
                         open={isOpen}
                         onClose={this.handleClose}
-                        MenuListProps={{
-                            subheader: <ListSubheader>Filter By</ListSubheader>
-                        }}
                     >
-                        <MenuItem onClick={this.handleClick('core')}>Core Sets</MenuItem>
-                        <MenuItem onClick={this.handleClick('expansion')}>Expansions</MenuItem>
+                        <MenuItem disabled divider>Categories</MenuItem>
+                        { menuItems.length > 0 ? menuItems : null }
                     </Menu>
                 </div>
             </Toolbar>
