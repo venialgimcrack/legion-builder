@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
 import FilterListIcon from '@material-ui/icons/FilterList';
@@ -12,36 +11,27 @@ import Typography from '@material-ui/core/Typography';
 
 import FilterControl from './FilterControl';
 
+import filterSpecs from './filters.json';
+
 class FilterControlPanel extends Component {
     constructor (props) {
         super(props);
 
+        let filters = props.filters.map((f, i) => {
+                const filterState = {
+                        id: `filter${i}`,
+                        value: '',
+                        active: false
+                    },
+                    filterSpec = filterSpecs[f];
+
+                return Object.assign({}, filterSpec, filterState);
+            });
+
         this.state = {
             menuAnchor: null,
-            // TODO need to pull this out, supply as props
-            filters: [
-                {
-                    id: 'cat1',
-                    field: 'category',
-                    value: '',
-                    options: [
-                        { label: 'Core Sets', value: 'core' },
-                        { label: 'Expansions', value: 'expansions' }
-                    ],
-                    label: 'Category',
-                    active: false
-                }, {
-                    id: 'fac1',
-                    field: 'faction',
-                    value: '',
-                    options: [
-                        { label: 'Rebel Alliance', value: 'rebel' },
-                        { label: 'Galactic Empire', value: 'empire' }
-                    ],
-                    label: 'Faction',
-                    active: false
-                }
-            ]
+            nofity: false,
+            filters
         };
     }
 
@@ -66,7 +56,10 @@ class FilterControlPanel extends Component {
 
             filter.value = value;
 
-            return { filters };
+            return {
+                notify: true,
+                filters
+            };
         });
     };
 
@@ -77,7 +70,10 @@ class FilterControlPanel extends Component {
 
             filter.active = false;
 
-            return { filters };
+            return {
+                notify: true,
+                filters
+            };
         });
     };
 
@@ -91,6 +87,7 @@ class FilterControlPanel extends Component {
 
             return {
                 menuAnchor,
+                notify: true,
                 filters
             };
         });
@@ -161,6 +158,20 @@ class FilterControlPanel extends Component {
             </React.Fragment>
         );
     };
+
+    componentDidUpdate () {
+        const { notify, filters } = this.state;
+
+        if (notify) {
+            let active = filters.filter(f => f.active && f.value !== ''),
+                activeFilterValues = active.map(f => ({
+                    field: f.field,
+                    value: f.value
+                }));
+
+            this.setState({ notify: false }, () => this.props.onChange(activeFilterValues));
+        }
+    }
 
     render () {
         const FilterControls = this.FilterControls,

@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 
-// import FilterControlPanel from './FilterControlPanel';
+import FilterControlPanel from './FilterControlPanel';
 
 class CollectionTable extends Component {
     constructor (props) {
@@ -62,13 +62,14 @@ class CollectionTable extends Component {
 
     render () {
         const FilteredTableBody = this.FilteredTableBody,
-            { classes } = this.props;
+            { classes, filterKeys } = this.props;
 
         return (
             <div className={classes.wrapper}>
-                {/* <FilterControlPanel
+                <FilterControlPanel
                     onChange={this.handleFilterChange}
-                /> */}
+                    filters={filterKeys}
+                />
                 <Table padding="none">
                     <colgroup>
                         <col />

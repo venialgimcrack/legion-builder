@@ -11,13 +11,18 @@ import { getContent } from './actions/contentActions';
 import CollectionPanel from './CollectionPanel';
 import CollectionTable from './CollectionTable';
 
+const FILTER_KEYS = {
+        products: [ 'category', 'faction' ],
+        units: [ 'faction', 'rank' ],
+        upgrades: [ 'kind' ]
+    },
+    GROUPS = _.keys(FILTER_KEYS);
+
 class Collection extends Component {
     static getDerivedStateFromProps (props, state) {
-        const groups = [ 'products', 'units', 'upgrades' ];
-
         let propChange = false;
 
-        groups.forEach(group => {
+        GROUPS.forEach(group => {
             let propItems = _.get(props, `collection.${group}`, []),
                 stateItems = _.get(state, `collection.${group}`, []);
 
@@ -162,13 +167,15 @@ class Collection extends Component {
     };
 
     componentDidMount () {
+        // TODO need some kind of busy indicator
         this.props.getProducts();
         this.props.getContent();
         this.props.load();
     }
 
-    CustomCollectionPanel = ({ group, label, itemLabelKey }) => {
-        const { expanded } = this.state;
+    GroupCollectionPanel = ({ group, label, ...props }) => {
+        const { expanded } = this.state,
+            filterKeys = FILTER_KEYS[group];
 
         let items = this.props[group],
             showTable = items.length > 0,
@@ -177,9 +184,10 @@ class Collection extends Component {
             details = showTable ?
                 <CollectionTable
                     items={items}
-                    itemLabelKey={itemLabelKey}
                     owned={this.getOwnedList(group)}
                     onChange={this.handleChange(group)}
+                    filterKeys={filterKeys}
+                    { ...props }
                 /> : <div />;
 
         return (
@@ -194,21 +202,21 @@ class Collection extends Component {
     };
 
     render () {
-        const CustomPanel = this.CustomCollectionPanel,
+        const GroupCollectionPanel = this.GroupCollectionPanel,
             { classes } = this.props;
 
         return (
             <div className={classes.root}>
                 <form noValidate onSubmit={this.onSubmit}>
-                    <CustomPanel
+                    <GroupCollectionPanel
                         group="products"
                         label="Products"
                     />
-                    <CustomPanel
+                    <GroupCollectionPanel
                         group="units"
                         label="Units"
                     />
-                    <CustomPanel
+                    <GroupCollectionPanel
                         group="upgrades"
                         label="Upgrades"
                         itemLabelKey="title"

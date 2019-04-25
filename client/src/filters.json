@@ -1,0 +1,96 @@
+{
+    "category": {
+        "label": "Category",
+        "field": "category",
+        "options": [
+            {
+                "value": "core",
+                "label": "Core Sets"
+            }, {
+                "value": "expansion",
+                "label": "Expansions"
+            }
+        ]
+    },
+    "faction": {
+        "label": "Faction",
+        "field": "faction",
+        "options": [
+            {
+                "value": "rebel",
+                "label": "Rebel Alliance"
+            }, {
+                "value": "empire",
+                "label": "Galactic Empire"
+            }
+        ]
+    },
+    "kind": {
+        "label": "Upgrade Type",
+        "field": "kind",
+        "options": [
+            {
+                "value": "armament",
+                "label": "Armament"
+            }, {
+                "value": "command",
+                "label": "Command"
+            }, {
+                "value": "comms",
+                "label": "Comms"
+            }, {
+                "value": "force",
+                "label": "Force"
+            }, {
+                "value": "gear",
+                "label": "Gear"
+            }, {
+                "value": "generator",
+                "label": "Generator"
+            }, {
+                "value": "grenades",
+                "label": "Grenades"
+            }, {
+                "value": "hardpoint",
+                "label": "Hardpoint"
+            }, {
+                "value": "heavy",
+                "label": "Heavy Weapon"
+            }, {
+                "value": "personnel",
+                "label": "Personnel"
+            }, {
+                "value": "pilot",
+                "label": "Pilot"
+            }, {
+                "value": "training",
+                "label": "Training"
+            }
+        ]
+    },
+    "rank": {
+        "label": "Unit Rank",
+        "field": "rank",
+        "options": [
+            {
+                "value": "commander",
+                "label": "Commander"
+            }, {
+                "value": "corps",
+                "label": "Corps"
+            }, {
+                "value": "heavy",
+                "label": "Heavy"
+            }, {
+                "value": "operative",
+                "label": "Operative"
+            }, {
+                "value": "special",
+                "label": "Special Forces"
+            }, {
+                "value": "support",
+                "label": "Support"
+            }
+        ]
+    }
+}
