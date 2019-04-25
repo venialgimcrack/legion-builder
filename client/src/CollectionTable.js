@@ -42,12 +42,17 @@ class CollectionTable extends Component {
                     let itemId = item.id,
                         rowKey = `item_${itemId}_${index}`,
                         ownedItem = owned.find(thing => thing.id === itemId),
-                        value = ownedItem ? ownedItem.count : '';
+                        value = ownedItem ? ownedItem.count : '',
+                        cellText = item[itemLabelKey || 'name'];
+
+                    if (item['subtitle']) {
+                        cellText = `${cellText} (${item['subtitle']})`;
+                    }
 
                     return (
                         <TableRow key={rowKey} className={classes.row}>
                             <TableCell component="th" scope="row">
-                                {item[itemLabelKey || 'name']}
+                                {cellText}
                             </TableCell>
                             <TableCell>
                                 <TextField type="number" id={itemId} value={value} onChange={onChange} />
