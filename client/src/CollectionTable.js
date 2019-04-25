@@ -39,7 +39,7 @@ class CollectionTable extends Component {
                 filteredItems = filteredItems.filter(item => {
                     let itemValue = item[field];
 
-                    if (Array.isArray(itemValue)) {
+                    if (_.isArray(itemValue)) {
                         return !!itemValue.find(itemVal => _.isEqual(itemVal, value));
                     } else {
                         return _.isEqual(itemValue, value);
