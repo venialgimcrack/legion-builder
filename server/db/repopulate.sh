@@ -12,6 +12,7 @@ mongoimport --host=${host} -d legionbuilder -c products --jsonArray --file ./pro
 mongoimport --host=${host} -d legionbuilder -c products --jsonArray --file ./products/expansions-rebel.json
 
 mongoimport --host=${host} -d legionbuilder -c units --jsonArray --file ./units/rebel.json --drop
+mongoimport --host=${host} -d legionbuilder -c units --jsonArray --file ./units/empire.json
 
 mongoimport --host=${host} -d legionbuilder -c upgrades --jsonArray --file ./upgrades/armament.json --drop
 mongoimport --host=${host} -d legionbuilder -c upgrades --jsonArray --file ./upgrades/command.json

@@ -53,7 +53,7 @@
             "white"
         ],
         "wounds": 6,
-        "resilience": 2,
+        "courage": 2,
         "surges": {
             "attack": "hit",
             "defense": "block"
@@ -166,7 +166,7 @@
             "white"
         ],
         "wounds": 9,
-        "resilience": 2,
+        "courage": 2,
         "surges": {
             "attack": "crit"
         },
@@ -223,7 +223,7 @@
             "white"
         ],
         "wounds": 1,
-        "resilience": 1,
+        "courage": 1,
         "surges": {
             "attack": "hit",
             "defense": "block"
@@ -283,7 +283,7 @@
             "white"
         ],
         "wounds": 6,
-        "resilience": 2,
+        "courage": 2,
         "surges": {
             "attack": "crit",
             "defense": "block"
@@ -342,7 +342,7 @@
             "white"
         ],
         "wounds": 6,
-        "resilience": 3,
+        "courage": 3,
         "surges": {
             "attack": "crit",
             "defense": "block"
@@ -406,7 +406,7 @@
             "white"
         ],
         "wounds": 6,
-        "resilience": 2,
+        "courage": 2,
         "surges": {
             "attack": "crit",
             "defense": "block"
@@ -482,7 +482,7 @@
             "red"
         ],
         "wounds": 6,
-        "resilience": 3,
+        "courage": 3,
         "surges": {
             "attack": "crit"
         },
@@ -534,7 +534,7 @@
             "white"
         ],
         "wounds": 1,
-        "resilience": 2,
+        "courage": 2,
         "surges": {
             "attack": "hit",
             "defense": "block"
@@ -593,7 +593,7 @@
             "white"
         ],
         "wounds": 1,
-        "resilience": 2,
+        "courage": 2,
         "surges": {
             "attack": "hit",
             "defense": "block"
@@ -648,7 +648,7 @@
             "white"
         ],
         "wounds": 4,
-        "resilience": 2,
+        "courage": 2,
         "surges": {
             "attack": "hit",
             "defense": "block"
@@ -701,7 +701,7 @@
             "white"
         ],
         "wounds": 1,
-        "resilience": 2,
+        "courage": 2,
         "surges": {
             "attack": "hit",
             "defense": "block"
@@ -750,7 +750,7 @@
             "white"
         ],
         "wounds": 1,
-        "resilience": 1,
+        "courage": 1,
         "surges": {
             "defense": "block"
         },
@@ -862,7 +862,7 @@
             "white"
         ],
         "wounds": 3,
-        "resilience": 2,
+        "courage": 2,
         "surges": {
             "attack": "hit"
         },

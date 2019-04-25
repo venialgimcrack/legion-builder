@@ -1,0 +1,882 @@
+[
+    {
+        "id": "atst_unit",
+        "name": "AT-ST",
+        "faction": "empire",
+        "points": 195,
+        "upgrades": [
+            { "kind": "pilot" },
+            { "kind": "hardpoint" },
+            { "kind": "hardpoint" },
+            { "kind": "hardpoint" },
+            { "kind": "comms" }
+        ],
+        "keywords": [
+            {
+                "text": "Armor"
+            }, {
+                "text": "Arsenal",
+                "value": 2
+            }, {
+                "text": "Weak Point",
+                "value": 1,
+                "qualifiers": [
+                    { "text": "Rear" }
+                ]
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Fence-cutting Blades",
+                "range": "melee",
+                "dice": [
+                    "red", "red", "red", "red"
+                ]
+            }, {
+                "name": "MS-4 Twin Blaster Cannon",
+                "range": "1-4",
+                "dice": [
+                    "red", "red", "black", "black",
+                    "white", "white"
+                ],
+                "keywords": [
+                    {
+                        "text": "Fixed",
+                        "qualifiers": [
+                            { "text": "Front" }
+                        ]
+                    }, {
+                        "text": "Impact",
+                        "value": 3
+                    }
+                ]
+            }
+        ],
+        "rank": "heavy",
+        "types": [
+            "ground", "vehicle"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 11,
+        "resilience": 8,
+        "surges": {
+            "defense": "block"
+        },
+        "speed": 2
+    }, {
+        "id": "74z_unit",
+        "name": "74-Z Speeder Bikes",
+        "faction": "empire",
+        "points": 90,
+        "upgrades": [
+            { "kind": "comms" }
+        ],
+        "keywords": [
+            {
+                "text": "Cover",
+                "value": 1
+            }, {
+                "text": "Speeder",
+                "value": 1
+            }
+        ],
+        "weapons": [
+            {
+                "name": "EC-17 Hold-out Blaster",
+                "range": "1-2",
+                "dice": [
+                    "black", "black"
+                ]
+            }, {
+                "name": "Ax-20 Blaster Cannon",
+                "range": "1-3",
+                "dice": [
+                    "red", "black", "white"
+                ],
+                "keywords": [
+                    {
+                        "text": "Fixed",
+                        "qualifiers": [
+                            { "text": "Front" }
+                        ]
+                    }, {
+                        "text": "Impact",
+                        "value": 1
+                    }
+                ]
+            }
+        ],
+        "rank": "support",
+        "types": [
+            "repulsor", "vehicle"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 3,
+        "surges": {
+            "attack": "hit",
+            "defense": "block"
+        },
+        "speed": 3
+    }, {
+        "id": "eweb_unit",
+        "name": "E-Web Heavy Blaster Team",
+        "faction": "empire",
+        "points": 55,
+        "upgrades": [
+            { "kind": "comms" },
+            { "kind": "generator" }
+        ],
+        "keywords": [
+            {
+                "text": "Full Pivot"
+            }, {
+                "text": "Plodding"
+            }, {
+                "text": "Reposition"
+            }, {
+                "text": "Sentinel"
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Unarmed",
+                "range": "melee",
+                "dice": [
+                    "black", "black"
+                ]
+            }, {
+                "name": "E-11 Blaster Rifles",
+                "range": "1-3",
+                "dice": [
+                    "white", "white"
+                ]
+            }, {
+                "name": "E-Web Heavy Blaster",
+                "range": "1-3",
+                "dice": [
+                    "red", "black", "black",
+                    "white", "white"
+                ],
+                "keywords": [
+                    {
+                        "text": "Cumbersome"
+                    }, {
+                        "text": "Fixed",
+                        "qualifiers": [
+                            { "text": "Front" }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "rank": "support",
+        "types": [
+            "emplacement", "trooper"
+        ],
+        "defense": [
+            "red"
+        ],
+        "wounds": 4,
+        "courage": 2,
+        "surges": {
+            "attack": "crit"
+        },
+        "speed": 1
+    }, {
+        "id": "boba",
+        "name": "Boba Fett",
+        "subtitle": "Infamous Bounty Hunter",
+        "unique": true,
+        "faction": "empire",
+        "points": 140,
+        "upgrades": [
+            { "kind": "training" },
+            { "kind": "training" },
+            { "kind": "gear" },
+            { "kind": "gear" }
+        ],
+        "keywords": [
+            {
+                "text": "Jump",
+                "value": 2,
+                "perform": {
+                    "action": true
+                }
+            }, {
+                "text": "Arsenal",
+                "value": 2
+            }, {
+                "text": "Bounty"
+            }, {
+                "text": "Impervious"
+            }, {
+                "text": "Sharpshooter",
+                "value": 2
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Boot Spikes",
+                "range": "melee",
+                "dice": [
+                    "red", "red"
+                ],
+                "keywords": [
+                    {
+                        "text": "Impact",
+                        "value": 3
+                    }, {
+                        "text": "Pierce",
+                        "value": 3
+                    }
+                ]
+            }, {
+                "name": "Wrist Rockets",
+                "range": "1-2",
+                "dice": [
+                    "black", "black"
+                ],
+                "keywords": [
+                    {
+                        "text": "Impact",
+                        "value": 1
+                    }
+                ]
+            }, {
+                "name": "Fett's E-3 Carbine",
+                "range": "1-3",
+                "dice": [
+                    "black", "black"
+                ],
+                "keywords": [
+                    {
+                        "text": "Pierce",
+                        "value": 1
+                    }
+                ]
+            }
+        ],
+        "rank": "operative",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "red"
+        ],
+        "wounds": 5,
+        "courage": 3,
+        "surges": {
+            "attack": "crit",
+            "defense": "block"
+        },
+        "speed": 3
+    }, {
+        "id": "vader",
+        "name": "Darth Vader",
+        "subtitle": "Dark Lord of the Sith",
+        "unique": true,
+        "faction": "empire",
+        "align": "dark",
+        "points": 200,
+        "upgrades": [
+            { "kind": "force" },
+            { "kind": "force" },
+            { "kind": "force" }
+        ],
+        "keywords": [
+            {
+                "text": "Deflect"
+            }, {
+                "text": "Immune",
+                "qualifiers": [
+                    { "text": "Pierce" }
+                ]
+            }, {
+                "text": "Master of the Force",
+                "value": 1
+            }, {
+                "text": "Relentless"
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Vader's Lightsaber",
+                "range": "melee",
+                "dice": [
+                    "red", "red", "red",
+                    "red", "red", "red"
+                ],
+                "keywords": [
+                    {
+                        "text": "Impact",
+                        "value": 3
+                    }, {
+                        "text": "Pierce",
+                        "value": 3
+                    }
+                ]
+            }
+        ],
+        "rank": "commander",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "red"
+        ],
+        "wounds": 8,
+        "surges": {},
+        "speed": 1
+    }, {
+        "id": "orson",
+        "name": "Director Orson Krennic",
+        "subtitle": "Architect of Terror",
+        "unique": true,
+        "faction": "empire",
+        "points": 90,
+        "upgrades": [
+            { "kind": "command" },
+            { "kind": "command" },
+            { "kind": "gear" }
+        ],
+        "keywords": [
+            {
+                "text": "Compel"
+            }, {
+                "text": "Cunning"
+            }, {
+                "text": "Entourage",
+                "qualifiers": [
+                    { "text": "Imperial Death Troopers" }
+                ]
+            }, {
+                "text": "Sharpshooter",
+                "value": 1
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Unarmed",
+                "range": "melee",
+                "dice": [
+                    "black"
+                ]
+            }, {
+                "name": "Krennic's DT-29 Blaster Pistol",
+                "range": "1-2",
+                "dice": [
+                    "red", "black", "white"
+                ]
+            }
+        ],
+        "rank": "commander",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 6,
+        "courage": 2,
+        "surges": {
+            "attack": "crit",
+            "defense": "block"
+        },
+        "speed": 2
+    }, {
+        "id": "sheev",
+        "name": "Emperor Palpatine",
+        "subtitle": "Ruler of the Galactic Empire",
+        "unique": true,
+        "faction": "empire",
+        "align": "dark",
+        "points": 210,
+        "upgrades": [
+            { "kind": "force" },
+            { "kind": "force" },
+            { "kind": "force" },
+            { "kind": "command" }
+        ],
+        "keywords": [
+            {
+                "text": "Pulling the Strings",
+                "perform": {
+                    "action": true
+                }
+            }, {
+                "text": "Entourage",
+                "qualifiers": [
+                    { "text": "Imperial Royal Guards" }
+                ]
+            }, {
+                "text": "Master of the Force",
+                "value": 2
+            }, {
+                "text": "Immune",
+                "qualifiers": [
+                    { "text": "Pierce" }
+                ]
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Force Lightning",
+                "range": "melee,1-2",
+                "dice": [
+                    "red", "black", "white",
+                    "red", "black", "white"
+                ],
+                "keywords": [
+                    {
+                        "text": "Pierce",
+                        "value": 2
+                    }, {
+                        "text": "Suppressive"
+                    }
+                ]
+            }
+        ],
+        "rank": "commander",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "red"
+        ],
+        "wounds": 5,
+        "courage": 4,
+        "surges": {
+            "attack": "crit",
+            "defense": "block"
+        },
+        "speed": 1
+    }, {
+        "id": "maximilian",
+        "name": "General Veers",
+        "subtitle": "Master Tactician",
+        "unique": true,
+        "faction": "empire",
+        "points": 80,
+        "upgrades": [
+            { "kind": "command" },
+            { "kind": "command" },
+            { "kind": "gear" }
+        ],
+        "keywords": [
+            {
+                "text": "Spotter",
+                "value": 2,
+                "perform": {
+                    "action": true
+                }
+            }, {
+                "text": "Inspire",
+                "value": 1
+            }, {
+                "text": "Precise",
+                "value": 1
+            }, {
+                "text": "Sharpshooter",
+                "value": 1
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Combat Expertise",
+                "range": "melee",
+                "dice": [
+                    "black", "black"
+                ]
+            }, {
+                "name": "Veers' E-11 Blaster Rifle",
+                "range": "1-3",
+                "dice": [
+                    "white", "white", "white"
+                ],
+                "keywords": [
+                    {
+                        "text": "Pierce",
+                        "value": 1
+                    }
+                ]
+            }
+        ],
+        "rank": "commander",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "red"
+        ],
+        "wounds": 5,
+        "courage": 2,
+        "surges": {
+            "attack": "crit"
+        },
+        "speed": 2
+    }, {
+        "id": "death_unit",
+        "name": "Imperial Death Troopers",
+        "faction": "empire",
+        "points": 76,
+        "upgrades": [
+            { "kind": "heavy" },
+            { "kind": "training" },
+            { "kind": "comms" },
+            { "kind": "gear" },
+            { "kind": "armament" },
+            { "kind": "grenades" }
+        ],
+        "keywords": [
+            {
+                "text": "Disciplined",
+                "value": 1
+            }, {
+                "text": "Precise",
+                "value": 2
+            }, {
+                "text": "Ready",
+                "value": 1
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Close Quarters Combat",
+                "range": "melee",
+                "dice": [
+                    "red"
+                ]
+            }, {
+                "name": "SE-14r Light Blaster",
+                "range": "1-2",
+                "dice": [
+                    "white", "white"
+                ]
+            }, {
+                "name": "E-11D Blaster Rifle",
+                "range": "1-3",
+                "dice": [
+                    "black"
+                ]
+            }
+        ],
+        "rank": "special",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "red"
+        ],
+        "wounds": 1,
+        "courage": 2,
+        "surges": {
+            "attack": "hit",
+            "defense": "block"
+        },
+        "speed": 2
+    }, {
+        "id": "royal_unit",
+        "name": "Imperial Royal Guards",
+        "faction": "empire",
+        "points": 75,
+        "upgrades": [
+            { "kind": "heavy" },
+            { "kind": "training" },
+            { "kind": "training" },
+            { "kind": "gear" },
+            { "kind": "grenades" }
+        ],
+        "keywords": [
+            {
+                "text": "Charge"
+            }, {
+                "text": "Disciplined",
+                "value": 2
+            }, {
+                "text": "Guardian",
+                "value": 2
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Force Pike",
+                "range": "melee",
+                "dice": [
+                    "red", "black"
+                ]
+            }, {
+                "name": "EC-17 Hold-out Blaster",
+                "range": "1-2",
+                "dice": [
+                    "black", "black"
+                ]
+            }
+        ],
+        "rank": "special",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "red"
+        ],
+        "wounds": 2,
+        "courage": 2,
+        "surges": {},
+        "speed": 2
+    }, {
+        "id": "imp_scout",
+        "name": "Scout Troopers",
+        "faction": "empire",
+        "points": 60,
+        "upgrades": [
+            { "kind": "heavy" },
+            { "kind": "training" },
+            { "kind": "comms" },
+            { "kind": "gear" },
+            { "kind": "grenades" }
+        ],
+        "keywords": [
+            {
+                "text": "Low Profile"
+            }, {
+                "text": "Scout",
+                "value": 1
+            }, {
+                "text": "Sharpshooter",
+                "value": 1
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Unarmed",
+                "range": "melee",
+                "dice": [
+                    "black"
+                ]
+            }, {
+                "name": "EC-17 Hold-out Blaster",
+                "range": "1-2",
+                "dice": [
+                    "black", "black"
+                ]
+            }
+        ],
+        "rank": "special",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 1,
+        "courage": 2,
+        "surges": {
+            "defense": "block"
+        },
+        "speed": 2
+    }, {
+        "id": "imp_strike",
+        "name": "Scout Troopers",
+        "subtitle": "Strike Team",
+        "faction": "empire",
+        "points": 16,
+        "upgrades": [
+            { "kind": "heavy" },
+            { "kind": "training" },
+            { "kind": "comms" },
+            { "kind": "gear" },
+            { "kind": "grenades" }
+        ],
+        "keywords": [
+            {
+                "text": "Heavy Weapon Team",
+                "requires": [
+                    "heavy"
+                ]
+            }, {
+                "text": "Low Profile"
+            }, {
+                "text": "Scout",
+                "value": 1
+            }, {
+                "text": "Sharpshooter",
+                "value": 1
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Unarmed",
+                "range": "melee",
+                "dice": [
+                    "black"
+                ]
+            }, {
+                "name": "EC-17 Hold-out Blaster",
+                "range": "1-2",
+                "dice": [
+                    "black", "black"
+                ]
+            }
+        ],
+        "rank": "special",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "white"
+        ],
+        "wounds": 1,
+        "courage": 2,
+        "surges": {
+            "defense": "block"
+        },
+        "speed": 2
+    }, {
+        "id": "officer",
+        "name": "Imperial Officer",
+        "subtitle": "Ruthless Commander",
+        "faction": "empire",
+        "points": 50,
+        "upgrades": [
+            { "kind": "command" },
+            { "kind": "gear" }
+        ],
+        "keywords": [
+            {
+                "text": "Spotter",
+                "value": 1,
+                "perform": {
+                    "action": true
+                }
+            }, {
+                "text": "Inspire",
+                "value": 1
+            }, {
+                "text": "Sharpshooter",
+                "value": 1
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Unarmed",
+                "range": "melee",
+                "dice": [
+                    "black"
+                ]
+            }, {
+                "name": "Officer's RK-3 Blaster Pistol",
+                "range": "1-2",
+                "dice": [
+                    "black", "white"
+                ]
+            }
+        ],
+        "rank": "commander",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "red"
+        ],
+        "wounds": 4,
+        "courage": 2,
+        "surges": {
+            "attack": "hit",
+            "defense": "block"
+        },
+        "speed": 2
+    }, {
+        "id": "snow_unit",
+        "name": "Snowtroopers",
+        "faction": "empire",
+        "points": 48,
+        "upgrades": [
+            { "kind": "heavy" },
+            { "kind": "personnel" },
+            { "kind": "gear" },
+            { "kind": "grenades" }
+        ],
+        "keywords": [
+            {
+                "text": "Steady"
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Unarmed",
+                "range": "melee",
+                "dice": [
+                    "black"
+                ]
+            }, {
+                "name": "E-11 Blaster Rifle",
+                "range": "1-3",
+                "dice": [
+                    "white"
+                ]
+            }
+        ],
+        "rank": "corps",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "red"
+        ],
+        "wounds": 1,
+        "courage": 1,
+        "surges": {
+            "attack": "hit"
+        },
+        "speed": 1
+    }, {
+        "id": "storm_unit",
+        "name": "Stormtroopers",
+        "faction": "empire",
+        "points": 44,
+        "upgrades": [
+            { "kind": "heavy" },
+            { "kind": "personnel" },
+            { "kind": "gear" },
+            { "kind": "grenades" }
+        ],
+        "keywords": [
+            {
+                "text": "Precise",
+                "value": 1
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Unarmed",
+                "range": "melee",
+                "dice": [
+                    "black"
+                ]
+            }, {
+                "name": "E-11 Blaster Rifle",
+                "range": "1-3",
+                "dice": [
+                    "white"
+                ]
+            }
+        ],
+        "rank": "corps",
+        "types": [
+            "trooper"
+        ],
+        "defense": [
+            "red"
+        ],
+        "wounds": 1,
+        "courage": 1,
+        "surges": {
+            "attack": "hit"
+        },
+        "speed": 2
+    }
+]
