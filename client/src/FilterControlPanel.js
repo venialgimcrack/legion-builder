@@ -99,6 +99,7 @@ class FilterControlPanel extends Component {
 
         let activeFilters = filters.filter(f => f.active),
             controls = activeFilters.map((props, idx) => (
+                // TODO outline style for the individual controls?
                 <FilterControl
                     key={`filterControl${idx}`}
                     onChange={this.handleFilterChange(props.id)}
@@ -198,7 +199,8 @@ const styles = theme => ({
     },
     filters: {
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'row',
+        flexWrap: 'wrap'
     },
     noFilters: {
         marginLeft: theme.spacing.unit

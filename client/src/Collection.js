@@ -211,15 +211,18 @@ class Collection extends Component {
                     <GroupCollectionPanel
                         group="products"
                         label="Products"
+                        identLabel="Name"
                     />
                     <GroupCollectionPanel
                         group="units"
                         label="Units"
+                        identLabel="Name"
                     />
                     <GroupCollectionPanel
                         group="upgrades"
                         label="Upgrades"
-                        itemLabelKey="title"
+                        identColumn="title"
+                        identLabel="Title"
                     />
                 </form>
             </div>

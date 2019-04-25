@@ -7,8 +7,10 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
 import TextField from '@material-ui/core/TextField';
 
+import { stableSort, getSorting } from './utils/sorting';
 import FilterControlPanel from './FilterControlPanel';
 
 class CollectionTable extends Component {
@@ -16,7 +18,9 @@ class CollectionTable extends Component {
         super(props);
 
         this.state = {
-            filters: []
+            filters: [],
+            order: 'asc',
+            orderBy: props.identColumn
         };
     }
 
@@ -26,9 +30,39 @@ class CollectionTable extends Component {
         });
     };
 
+    handleRequestSort = column => () => {
+        this.setState(state => {
+            const { order, orderBy } = state,
+                isDesc = orderBy === column && order === 'desc';
+
+            return {
+                order: isDesc ? 'asc' : 'desc',
+                orderBy: column
+            };
+        });
+    };
+
+    SortableTableHead = () => {
+        const { identColumn, identLabel } = this.props,
+            { order, orderBy } = this.state;
+
+        return (
+            <TableHead>
+                <TableRow>
+                    <TableCell sortDirection={orderBy === identColumn ? order : false}>
+                        <TableSortLabel active={orderBy === identColumn} direction={order} onClick={this.handleRequestSort(identColumn)}>
+                            {identLabel}
+                        </TableSortLabel>
+                    </TableCell>
+                    <TableCell align="center"># Owned</TableCell>
+                </TableRow>
+            </TableHead>
+        );
+    };
+
     FilteredTableBody = () => {
-        const { classes, items, itemLabelKey, owned, onChange } = this.props,
-            { filters } = this.state;
+        const { classes, items, identColumn, owned, onChange } = this.props,
+            { filters, order, orderBy } = this.state;
 
         let filteredItems = items.slice();
 
@@ -51,12 +85,12 @@ class CollectionTable extends Component {
         return (
             <TableBody>
             {
-                filteredItems.map((item, index) => {
+                stableSort(filteredItems, getSorting(order, orderBy)).map((item, index) => {
                     let itemId = item.id,
                         rowKey = `item_${itemId}_${index}`,
                         ownedItem = owned.find(thing => thing.id === itemId),
                         value = ownedItem ? ownedItem.count : '',
-                        cellText = item[itemLabelKey || 'name'];
+                        cellText = item[identColumn];
 
                     if (item['subtitle']) {
                         cellText = `${cellText} (${item['subtitle']})`;
@@ -79,7 +113,8 @@ class CollectionTable extends Component {
     };
 
     render () {
-        const FilteredTableBody = this.FilteredTableBody,
+        const SortableTableHead = this.SortableTableHead,
+            FilteredTableBody = this.FilteredTableBody,
             { classes, filterKeys } = this.props;
 
         return (
@@ -93,18 +128,17 @@ class CollectionTable extends Component {
                         <col />
                         <col width="50px" />
                     </colgroup>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Name</TableCell>
-                            <TableCell align="center"># Owned</TableCell>
-                        </TableRow>
-                    </TableHead>
+                    <SortableTableHead />
                     <FilteredTableBody />
                 </Table>
             </div>
         );
     }
 }
+
+CollectionTable.defaultProps = {
+    identColumn: 'name'
+};
 
 const styles = theme => ({
     row: {
