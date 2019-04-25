@@ -107,5 +107,59 @@
         ],
         "kind": "armament",
         "points": 6
+    }, {
+        "id": "e11d_grenade",
+        "title": "E-11D Grenade Launcher Config",
+        "weapon": {
+            "range": "1-2",
+            "dice": [
+                "red"
+            ]
+        },
+        "exhaust": true,
+        "keywords": [
+            {
+                "text": "Blast"
+            }, {
+                "text": "Reconfigure"
+            }
+        ],
+        "requirements": [
+            {
+                "field": "name",
+                "values": [
+                    "Imperial Death Troopers"
+                ]
+            }
+        ],
+        "kind": "armament",
+        "points": 8
+    }, {
+        "id": "e11d_focus",
+        "title": "E-11D Focused Fire Config",
+        "weapon": {
+            "range": "1-4",
+            "dice": [
+                "black"
+            ]
+        },
+        "exhaust": true,
+        "keywords": [
+            {
+                "text": "Reconfigure"
+            }, {
+                "text": "Suppressive"
+            }
+        ],
+        "requirements": [
+            {
+                "field": "name",
+                "values": [
+                    "Imperial Death Troopers"
+                ]
+            }
+        ],
+        "kind": "armament",
+        "points": 8
     }
 ]

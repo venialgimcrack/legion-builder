@@ -28,5 +28,32 @@
         ],
         "kind": "pilot",
         "points": 5
+    }, {
+        "id": "weiss",
+        "title": "General Weiss",
+        "unique": true,
+        "exhaust": true,
+        "effects": [
+            {
+                "text": [
+                    "Until the end of your activation, you gain Arsenal 2."
+                ]
+            }
+        ],
+        "requirements": [
+            {
+                "field": "faction",
+                "values": [
+                    "empire"
+                ]
+            }, {
+                "field": "types",
+                "values": [
+                    "ground", "vehicle"
+                ]
+            }
+        ],
+        "kind": "pilot",
+        "points": 10
     }
 ]

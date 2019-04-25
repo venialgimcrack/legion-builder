@@ -370,5 +370,249 @@
         ],
         "kind": "heavy",
         "points": 22
+    }, {
+        "id": "flame",
+        "title": "Flametrooper",
+        "weapon": {
+            "range": "1",
+            "dice": [
+                "black"
+            ],
+            "keywords": [
+                {
+                    "text": "Blast"
+                }, {
+                    "text": "Spray"
+                }
+            ]
+        },
+        "requirements": [
+            {
+                "field": "name",
+                "values": [ "Snowtroopers" ]
+            }
+        ],
+        "effects": [
+            {
+                "text": [
+                    "Add 1 flametrooper mini."
+                ]
+            }
+        ],
+        "kind": "heavy",
+        "points": 20
+    }, {
+        "id": "t7ion",
+        "title": "T-7 Ion Snowtrooper",
+        "weapon": {
+            "range": "1-2",
+            "dice": [
+                "black", "white", "white"
+            ],
+            "keywords": [
+                {
+                    "text": "Impact",
+                    "value": 1
+                }, {
+                    "text": "Ion",
+                    "value": 1
+                }
+            ]
+        },
+        "exhaust": true,
+        "requirements": [
+            {
+                "field": "name",
+                "values": [ "Snowtroopers" ]
+            }
+        ],
+        "effects": [
+            {
+                "text": [
+                    "Add 1 T-7 ion snowtrooper mini."
+                ]
+            }
+        ],
+        "kind": "heavy",
+        "points": 34
+    }, {
+        "id": "sonic",
+        "title": "Sonic Charge Saboteur",
+        "weapon": {
+            "range": "1",
+            "dice": [
+                "red", "black"
+            ],
+            "keywords": [
+                {
+                    "text": "Blast"
+                }, {
+                    "text": "Suppressive"
+                }
+            ]
+        },
+        "keywords": [
+            {
+                "text": "Arm",
+                "value": 1,
+                "qualifiers": [
+                    { "text": "Sonic Charge" }
+                ],
+                "perform": {
+                    "action": true
+                }
+            }, {
+                "text": "Detonate",
+                "value": 1,
+                "qualifiers": [
+                    { "text": "Sonic Charge" }
+                ]
+            }
+        ],
+        "surges": {
+            "attack": "crit"
+        },
+        "requirements": [
+            {
+                "field": "name",
+                "values": [ "Scout Troopers" ]
+            }
+        ],
+        "effects": [
+            {
+                "text": [
+                    "Add 1 sonic charge saboteur mini."
+                ]
+            }
+        ],
+        "kind": "heavy",
+        "points": 26
+    }, {
+        "id": "dlt19x",
+        "title": "DLT-19 Sniper",
+        "weapon": {
+            "range": "1+",
+            "dice": [
+                "black", "black"
+            ],
+            "keywords": [
+                {
+                    "text": "High Velocity"
+                }, {
+                    "text": "Pierce",
+                    "value": 1
+                }
+            ]
+        },
+        "requirements": [
+            {
+                "field": "name",
+                "values": [ "Scout Troopers" ]
+            }
+        ],
+        "effects": [
+            {
+                "title": [
+                    "Add 1 DLT-19x sniper mini."
+                ]
+            }
+        ],
+        "kind": "heavy",
+        "points": 28
+    }, {
+        "id": "electrostaff",
+        "title": "Electrostaff Guard",
+        "weapon": {
+            "range": "melee",
+            "dice": [
+                "black", "black"
+            ]
+        },
+        "keywords": [
+            {
+                "text": "Sidearm",
+                "qualifiers": [
+                    { "text": "Melee" }
+                ]
+            }
+        ],
+        "requirements": [
+            {
+                "field": "name",
+                "values": [ "Imperial Royal Guards" ]
+            }
+        ],
+        "effects": [
+            {
+                "text": [
+                    "Add 1 electrostaff guard mini.",
+                    "While defending against a melee attack, you gain Immune: Pierce."
+                ]
+            }
+        ],
+        "kind": "heavy",
+        "points": 25
+    }, {
+        "id": "dtf16",
+        "title": "DT-F16",
+        "unique": true,
+        "weapon": {
+            "range": "1-3",
+            "dice": [
+                "black", "white"
+            ],
+            "keywords": [
+                {
+                    "text": "Compel"
+                }, {
+                    "text": "leader"
+                }
+            ]
+        },
+        "requirements": [
+            {
+                "field": "name",
+                "values": [ "Imperial Death Troopers" ]
+            }
+        ],
+        "effects": [
+            {
+                "text": [
+                    "Add 1 DT-F16 mini."
+                ]
+            }
+        ],
+        "kind": "heavy",
+        "points": 22
+    }, {
+        "id": "dlt19d",
+        "title": "DLT-19D Trooper",
+        "weapon": {
+            "range": "1-4",
+            "dice": [
+                "red", "red", "white"
+            ],
+            "keywords": [
+                {
+                    "text": "Impact",
+                    "value": 1
+                }
+            ]
+        },
+        "requirements": [
+            {
+                "field": "name",
+                "values": [ "Imperial Death Troopers" ]
+            }
+        ],
+        "effects": [
+            {
+                "text": [
+                    "Add 1 DLT-19D trooper mini."
+                ]
+            }
+        ],
+        "kind": "heavy",
+        "points": 34
     }
 ]

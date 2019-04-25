@@ -164,6 +164,24 @@
         "kind": "personnel",
         "points": 10
     }, {
+        "id": "snowtrooper",
+        "title": "Snowtrooper",
+        "requirements": [
+            {
+                "field": "name",
+                "values": [ "Snowtroopers" ]
+            }
+        ],
+        "effects": [
+            {
+                "text": [
+                    "Add 1 snowtrooper mini."
+                ]
+            }
+        ],
+        "kind": "personnel",
+        "points": 12
+    }, {
         "id": "stormtrooper",
         "title": "Stormtrooper",
         "requirements": [
@@ -181,5 +199,133 @@
         ],
         "kind": "personnel",
         "points": 11
+    }, {
+        "id": "impofficer",
+        "title": "Imperial Officer",
+        "keywords": [
+            {
+                "text": "Inspire",
+                "value": 1
+            }, {
+                "text": "Leader"
+            }
+        ],
+        "requirements": [
+            {
+                "field": "faction",
+                "values": [ "empire" ]
+            }
+        ],
+        "effects": [
+            {
+                "text": [
+                    "Add 1 Imperial officer mini."
+                ]
+            }, {
+                "text": [
+                    "Your courage is increased by 1."
+                ]
+            }
+        ],
+        "kind": "personnel",
+        "points": 20
+    }, {
+        "id": "imp_comms",
+        "title": "Imperial Comms Technician",
+        "adds": [
+            {
+                "upgrade": "comms",
+                "requires": [
+                    "comms"
+                ]
+            }
+        ],
+        "requirements": [
+            {
+                "field": "faction",
+                "values": [ "empire" ]
+            }
+        ],
+        "effects": [
+            {
+                "text": [
+                    "Adds 1 Imperial comms technician mini."
+                ]
+            }
+        ],
+        "kind": "personnel",
+        "points": 10
+    }, {
+        "id": "r4astro",
+        "title": "R4 Astromech Droid",
+        "keywords": [
+            {
+                "text": "Repair",
+                "value": 1,
+                "qualifiers": [
+                    {
+                        "text": "Capacity",
+                        "value": 2
+                    }
+                ],
+                "perform": {
+                    "action": true,
+                    "free": true
+                }
+            }, {
+                "text": "Noncombatant"
+            }
+        ],
+        "requirements": [
+            {
+                "field": "faction",
+                "values": [ "empire" ]
+            }
+        ],
+        "effects": [
+            {
+                "text": [
+                    "Add 1 R4 astromech droid mini."
+                ]
+            }
+        ],
+        "kind": "personnel",
+        "points": 9
+    }, {
+        "id": "imp_medical",
+        "title": "FX-9 Medical Droid",
+        "keywords": [
+            {
+                "text": "Treat",
+                "value": 1,
+                "qualifiers": [
+                    {
+                        "text": "Capacity",
+                        "value": 2
+                    }
+                ],
+                "perform": {
+                    "action": true,
+                    "free": true
+                }
+            }, {
+                "text": "Noncombatant"
+            }
+        ],
+        "requirements": [
+            {
+                "field": "faction",
+                "values": [ "empire" ]
+            }
+        ],
+        "effects": [
+            {
+                "text": [
+                    "Add 1 FX-9 medical droid mini."
+                ]
+            }
+        ],
+        "kind": "personnel",
+        "points": 19
     }
 ]

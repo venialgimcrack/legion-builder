@@ -4,7 +4,22 @@
         "name": "74-Z Speeder Bikes Unit Expansion",
         "category": "expansion",
         "wave": 1,
-        "faction": "empire"
+        "faction": "empire",
+        "contents": {
+            "units": [
+                {
+                    "id": "74z_unit"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "jammer",
+                    "count": 2
+                }, {
+                    "id": "comlink"
+                }
+            ]
+        }
     }, {
         "id": "storm",
         "name": "Stormtroopers Unit Expansion",
@@ -12,8 +27,19 @@
         "wave": 1,
         "faction": "empire",
         "contents": {
+            "units": [
+                {
+                    "id": "storm_unit"
+                }
+            ],
             "upgrades": [
                 {
+                    "id": "grappling"
+                }, {
+                    "id": "impact"
+                }, {
+                    "id": "stormtrooper"
+                }, {
                     "id": "dlt19"
                 }, {
                     "id": "hh12"
@@ -25,19 +51,73 @@
         "name": "AT-ST Unit Expansion",
         "category": "expansion",
         "wave": 1,
-        "faction": "empire"
+        "faction": "empire",
+        "contents": {
+            "units": [
+                {
+                    "id": "atst_unit"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "twin"
+                }, {
+                    "id": "mortar"
+                }, {
+                    "id": "dw3"
+                }, {
+                    "id": "weiss"
+                }
+            ]
+        }
     }, {
         "id": "veers",
         "name": "General Veers Commander Expansion",
         "category": "expansion",
         "wave": 2,
-        "faction": "empire"
+        "faction": "empire",
+        "contents": {
+            "units": [
+                {
+                    "id": "maximilian"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "esteemed"
+                }, {
+                    "id": "commanding"
+                }, {
+                    "id": "environmental"
+                }
+            ]
+        }
     }, {
         "id": "snow",
         "name": "Snowtroopers Unit Expansion",
         "category": "expansion",
         "wave": 2,
-        "faction": "empire"
+        "faction": "empire",
+        "contents": {
+            "units": [
+                {
+                    "id": "snow_unit"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "grappling"
+                }, {
+                    "id": "impact"
+                }, {
+                    "id": "snowtrooper"
+                }, {
+                    "id": "flame"
+                }, {
+                    "id": "t7ion"
+                }
+            ]
+        }
     }, {
         "id": "eweb",
         "name": "E-Web Heavy Blaster Team Unit Expansion",
@@ -45,9 +125,18 @@
         "wave": 3,
         "faction": "empire",
         "contents": {
+            "units": [
+                {
+                    "id": "eweb_unit"
+                }
+            ],
             "upgrades": [
                 {
+                    "id": "uplink"
+                }, {
                     "id": "barrage"
+                }, {
+                    "id": "overcharged"
                 }
             ]
         }
@@ -56,42 +145,184 @@
         "name": "Boba Fett Operative Unit Expansion",
         "category": "expansion",
         "wave": 3,
-        "faction": "empire"
+        "faction": "empire",
+        "contents": {
+            "units": [
+                {
+                    "id": "boba_unit"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "estims"
+                }, {
+                    "id": "hunter"
+                }, {
+                    "id": "duckcover"
+                }
+            ]
+        }
     }, {
         "id": "scout",
         "name": "Scout Troopers Unit Expansion",
         "category": "expansion",
         "wave": 3,
-        "faction": "empire"
+        "faction": "empire",
+        "contents": {
+            "units": [
+                {
+                    "id": "imp_scount"
+                }, {
+                    "id": "imp_strike"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "uplink"
+                }, {
+                    "id": "estims"
+                }, {
+                    "id": "sonic"
+                }, {
+                    "id": "dlt19x"
+                }, {
+                    "id": "duckcover"
+                }
+            ]
+        }
     }, {
         "id": "palpatine",
         "name": "Emperor Palpatine Commander Unit Expansion",
         "category": "expansion",
         "wave": 4,
-        "faction": "empire"
+        "faction": "empire",
+        "contents": {
+            "units": [
+                {
+                    "id": "sheev"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "anger"
+                }, {
+                    "id": "choke"
+                }, {
+                    "id": "improvised"
+                }
+            ]
+        }
     }, {
         "id": "royal",
         "name": "Imperial Royal Guards Unit Expansion",
         "category": "expansion",
         "wave": 4,
-        "faction": "empire"
+        "faction": "empire",
+        "contents": {
+            "units": [
+                {
+                    "id": "royal_unit"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "reconintel"
+                }, {
+                    "id": "fragmentation"
+                }, {
+                    "id": "electrostaff"
+                }, {
+                    "id": "hunter"
+                }, {
+                    "id": "tenacity"
+                }
+            ]
+        }
     }, {
         "id": "imp_specials",
         "name": "Imperial Specialists Personnel Expansion",
         "category": "expansion",
         "wave": 5,
-        "faction": "empire"
+        "faction": "empire",
+        "contents": {
+            "units": [
+                {
+                    "id": "officer"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "commanding"
+                }, {
+                    "id": "relay"
+                }, {
+                    "id": "reconintel"
+                }, {
+                    "id": "impofficer"
+                }, {
+                    "id": "imp_comms"
+                }, {
+                    "id": "r4astro"
+                }, {
+                    "id": "imp_medical"
+                }
+            ]
+        }
     }, {
         "id": "krennic",
         "name": "Director Orson Krennic Commander Expansion",
         "category": "expansion",
         "wave": 5,
-        "faction": "empire"
+        "faction": "empire",
+        "contents": {
+            "units": [
+                {
+                    "id": "orson"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "strictorders"
+                }, {
+                    "id": "esteemed"
+                }, {
+                    "id": "reconintel"
+                }
+            ]
+        }
     }, {
         "id": "death",
         "name": "Imperial Death Troopers Unit Expansion",
         "category": "expansion",
         "wave": 5,
-        "faction": "empire"
+        "faction": "empire",
+        "contents": {
+            "units": [
+                {
+                    "id": "death_unit"
+                }
+            ],
+            "upgrades": [
+                {
+                    "id": "e11d_grenade"
+                }, {
+                    "id": "e11d_focus"
+                }, {
+                    "id": "relay"
+                }, {
+                    "id": "environmental"
+                }, {
+                    "id": "fragmentation"
+                }, {
+                    "id": "dtf16"
+                }, {
+                    "id": "dlt19d"
+                }, {
+                    "id": "duckcover"
+                }, {
+                    "id": "overwatch"
+                }
+            ]
+        }
     }
 ]

@@ -12,6 +12,26 @@
         "kind": "force",
         "points": 10
     }, {
+        "id": "anger",
+        "title": "Anger",
+        "requirements": [
+            {
+                "field": "align",
+                "values": [
+                    "dark"
+                ]
+            }
+        ],
+        "effects": [
+            {
+                "text": [
+                    "After you suffer 1 or more wounds, gain 1 aim token."
+                ]
+            }
+        ],
+        "kind": "force",
+        "points": 5
+    }, {
         "id": "choke",
         "title": "Force Choke",
         "exhaust": true,
