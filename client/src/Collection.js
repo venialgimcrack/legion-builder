@@ -14,7 +14,7 @@ import CollectionTable from './CollectionTable';
 const FILTER_KEYS = {
         products: [ 'category', 'faction' ],
         units: [ 'faction', 'rank' ],
-        upgrades: [ 'kind' ]
+        upgrades: [ 'kind', 'align' ]
     },
     GROUPS = [ 'products', 'units', 'upgrades' ];
 

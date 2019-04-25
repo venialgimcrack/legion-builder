@@ -1,4 +1,23 @@
 {
+    "align": {
+        "label": "Alignment",
+        "field": "requirements",
+        "options": [
+            {
+                "value": {
+                    "field": "align",
+                    "values": [ "light" ]
+                },
+                "label": "Light Side"
+            }, {
+                "value": {
+                    "field": "align",
+                    "values": [ "dark" ]
+                },
+                "label": "Dark Side"
+            }
+        ]
+    },
     "category": {
         "label": "Category",
         "field": "category",

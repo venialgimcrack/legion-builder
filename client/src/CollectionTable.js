@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -32,7 +33,19 @@ class CollectionTable extends Component {
         let filteredItems = items.slice();
 
         filters.forEach(filter => {
-            filteredItems = filteredItems.filter(item => item[filter.field] === filter.value);
+            let { field, value } = filter;
+
+            if (field && value) {
+                filteredItems = filteredItems.filter(item => {
+                    let itemValue = item[field];
+
+                    if (Array.isArray(itemValue)) {
+                        return !!itemValue.find(itemVal => _.isEqual(itemVal, value));
+                    } else {
+                        return _.isEqual(itemValue, value);
+                    }
+                });
+            }
         });
 
         return (
