@@ -545,8 +545,11 @@
         "effects": [
             {
                 "text": [
-                    "Add 1 electrostaff guard mini.",
-                    "While defending against a melee attack, you gain Immune: Pierce."
+                    "Add 1 electrostaff guard mini."
+                ]
+            }, {
+                "text": [
+                    "While defending against a melee attack, you gain \"Immune: Pierce\"."
                 ]
             }
         ],
