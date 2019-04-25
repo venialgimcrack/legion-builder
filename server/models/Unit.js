@@ -147,10 +147,8 @@ const schema = new Schema({
         type: Number,
         required: true
     },
-    resilience: {
-        type: Number,
-        required: true
-    },
+    courage: Number,
+    resilience: Number,
     surges: {
         attack: {
             type: String,
