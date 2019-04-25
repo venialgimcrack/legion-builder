@@ -16,7 +16,7 @@ const FILTER_KEYS = {
         units: [ 'faction', 'rank' ],
         upgrades: [ 'kind' ]
     },
-    GROUPS = _.keys(FILTER_KEYS);
+    GROUPS = [ 'products', 'units', 'upgrades' ];
 
 class Collection extends Component {
     static getDerivedStateFromProps (props, state) {
