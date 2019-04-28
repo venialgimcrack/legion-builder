@@ -1,6 +1,8 @@
 import axios from 'axios';
 import _ from 'lodash';
 
+import { showSuccessSnackbar, showErrorSnackbar } from './snackbarActions';
+
 export const SAVE_COLLECTION_START = 'SAVE_COLLECTION_START';
 export const SAVE_COLLECTION_FINISH = 'SAVE_COLLECTION_FINISH';
 export const SAVE_COLLECTION_ERROR = 'SAVE_COLLECTION_ERROR';
@@ -28,6 +30,7 @@ export const saveCollection = collection => {
                 let saved = res.data;
 
                 dispatch(saveCollectionFinish(saved));
+                dispatch(showSuccessSnackbar('Successfully saved collection!'));
             })
             .catch(err => {
                 console.error(err);
@@ -35,6 +38,7 @@ export const saveCollection = collection => {
                 let errors = _.get(err, 'response.data', {});
 
                 dispatch(saveCollectionError(errors));
+                dispatch(showErrorSnackbar('Failed to save collection.'));
             });
     };
 };

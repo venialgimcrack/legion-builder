@@ -12,6 +12,7 @@ import Lists from './Lists';
 import LoginPage from './LoginPage';
 import PrivateRoute from './PrivateRoute';
 import Register from './Register';
+import SnackbarProvider from './SnackbarProvider';
 
 import store from './store';
 import { loginFinish, logout } from './actions/loginActions';
@@ -50,6 +51,7 @@ const Main = ({ history }) => (
             <PrivateRoute path="/lists" component={Lists} />
             <PrivateRoute path="/collection" component={Collection} />
         </ConnectedRouter>
+        <SnackbarProvider />
     </React.Fragment>
 );
 

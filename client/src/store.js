@@ -8,6 +8,7 @@ import content from './reducers/contentReducer';
 import login from './reducers/loginReducer';
 import products from './reducers/productReducer';
 import register from './reducers/registerReducer';
+import snackbar from './reducers/snackbarReducer';
 
 export const history = createBrowserHistory();
 
@@ -17,7 +18,8 @@ const reducers = combineReducers({
     content,
     login,
     products,
-    register
+    register,
+    snackbar
 });
 
 const enhancers = compose(applyMiddleware(routerMiddleware(history), thunk));
