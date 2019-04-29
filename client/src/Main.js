@@ -43,8 +43,8 @@ if (!!localStorage[JWT_TOKEN_KEY]) {
 const Main = ({ history }) => (
     <React.Fragment>
         <CssBaseline />
-        <HeaderBar />
         <ConnectedRouter history={history}>
+            <HeaderBar />
             <Route path="/" exact component={Home} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={Register} />
