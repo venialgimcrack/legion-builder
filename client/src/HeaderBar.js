@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import _ from 'lodash';
 
-import withStyles from '@material-ui/core/styles/withStyles';
+import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link as RouterLink, Redirect } from 'react-router-dom';
 import _ from 'lodash';
 
-import withStyles from '@material-ui/core/styles/withStyles';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
