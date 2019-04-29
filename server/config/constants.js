@@ -14,10 +14,6 @@ module.exports = {
         'republic',
         'separatist'
     ],
-    // GROUPS: [
-    //     'unit',
-    //     'upgrade'
-    // ],
     RANKS: [
         'commander',
         'operative',

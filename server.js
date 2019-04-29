@@ -3,6 +3,7 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     passport = require('passport'),
     collection = require('./server/api/collection'),
+    list = require('./server/api/list'),
     users = require('./server/api/users'),
     products = require('./server/api/products'),
     content = require('./server/api/content');
@@ -25,6 +26,7 @@ backend.use(passport.initialize());
 require('./server/config/passport')(passport);
 
 backend.use('/api/collection', collection);
+backend.use('/api/list', list);
 backend.use('/api/users', users);
 backend.use('/api/products', products);
 backend.use('/api/content', content);
