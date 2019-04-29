@@ -14,15 +14,14 @@ import ChevronLeft from '@material-ui/icons/ChevronLeft';
 
 import { logout } from './actions/loginActions';
 
-const HomeLink = props => <RouterLink to="/" { ...props } />,
-    BackButton = () => (
-        <IconButton color="inherit" component={HomeLink}>
-            <ChevronLeft />
-        </IconButton>
-    );
-
 const HeaderBar = ({ classes, loggedIn, logout, location }) => {
-    const path = _.get(location, 'pathname', '/');
+    const path = _.get(location, 'pathname', '/'),
+        HomeLink = props => <RouterLink to="/" { ...props } />,
+        BackButton = () => (
+            <IconButton color="inherit" component={HomeLink} className={classes.back}>
+                <ChevronLeft />
+            </IconButton>
+        );
 
     return (
         <div className={classes.root}>
@@ -58,6 +57,9 @@ const styles = {
     },
     grow: {
         flexGrow: 1
+    },
+    back: {
+        marginLeft: -12
     }
 };
 
