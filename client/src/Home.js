@@ -1,27 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
-const LoggedIn = () => (
-    <div>
-        <ul>
-            <li><Link to="/lists">Lists</Link></li>
-            <li><Link to="/collection">Collection</Link></li>
-        </ul>
-    </div>
-);
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
-const LoggedOut = () => (
-    <div>
-        <ul>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/register">Register</Link></li>
-        </ul>
-    </div>
-);
+const HomeButton = ({ to, ...props }) => {
+    const Link = linkProps => <RouterLink to={to} { ...linkProps } />;
+    return <Button fullWidth variant="contained" component={Link} { ...props } />;
+};
 
-const Home = ({ isLoggedIn }) => {
-    return isLoggedIn ? <LoggedIn /> : <LoggedOut />;
+const Home = ({ classes, isLoggedIn }) => {
+    const LoggedIn = () => (
+            <React.Fragment>
+                <HomeButton to="/lists" className={classes.button}>New List</HomeButton>
+                <HomeButton to="/collection" className={classes.button}>View / Update Collection</HomeButton>
+            </React.Fragment>
+        ),
+        LoggedOut = () => (
+            <React.Fragment>
+                <HomeButton to="/login" className={classes.button}>Login</HomeButton>
+                <HomeButton to="/register" className={classes.button}>Register</HomeButton>
+            </React.Fragment>
+        );
+
+    const items = isLoggedIn ? <LoggedIn /> : <LoggedOut />
+
+    return (
+        <main className={classes.main}>
+            <div className={classes.paper}>
+                {items}
+            </div>
+        </main>
+    );
 };
 
 const mapStateToProps = state => {
@@ -32,4 +43,29 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+const styles = theme => ({
+    main: {
+        width: 'auto',
+        display: 'block',
+        marginLeft: theme.spacing.unit * 2,
+        marginRight: theme.spacing.unit * 2,
+        [ theme.breakpoints.up(400 + theme.spacing.unit * 4) ]: {
+            width: 400,
+            marginLeft: 'auto',
+            marginRight: 'auto'
+        }
+    },
+    paper: {
+        marginTop: theme.spacing.unit,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: theme.spacing.unit
+    },
+    button: {
+        margin: theme.spacing.unit
+    }
+});
+
+const connected = connect(mapStateToProps, mapDispatchToProps)(Home);
+export default withStyles(styles)(connected);
