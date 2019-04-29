@@ -1,4 +1,7 @@
 const mongoose = require('mongoose'),
+    {
+        FACTIONS
+    } = require('../config/constants'),
     Schema = mongoose.Schema;
 
 const schema = new Schema({
@@ -10,6 +13,11 @@ const schema = new Schema({
     name: {
         type: String,
         required: true
+    },
+    faction: {
+        type: String,
+        required: true,
+        enum: FACTIONS
     },
     description: String,
     units: [

@@ -5,7 +5,7 @@ const passport = require('passport'),
 
 router.post('/save', passport.authenticate('jwt', { session: false }), (req, res) => {
     const owner = req.user._id,
-        { id, name, description, units } = req.body;
+        { id, name, faction, description, units } = req.body;
 
     List.findById(id)
         .then(list => {
@@ -14,7 +14,7 @@ router.post('/save', passport.authenticate('jwt', { session: false }), (req, res
             }
 
             if (!list) {
-                list = new List({ owner });
+                list = new List({ owner, faction });
             }
 
             list.set('name', name);
