@@ -52,24 +52,22 @@ const SnackbarContentWrapper = ({ classes, className, message, variant, onClose,
     );
 };
 
-const SnackbarProvider = ({ show, onClose, ...others }) => {
-    return (
-        <Snackbar
-            anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left'
-            }}
-            open={show}
+const SnackbarProvider = ({ show, onClose, ...other }) => (
+    <Snackbar
+        anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left'
+        }}
+        open={show}
+        onClose={onClose}
+        autoHideDuration={6000}
+    >
+        <SnackbarContentWrapper
             onClose={onClose}
-            autoHideDuration={6000}
-        >
-            <SnackbarContentWrapper
-                onClose={onClose}
-                { ...others }
-            />
-        </Snackbar>
-    );
-};
+            { ...other }
+        />
+    </Snackbar>
+);
 
 const mapStateToProps = state => {
     let { snackbar } = state;

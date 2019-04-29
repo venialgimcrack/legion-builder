@@ -173,7 +173,7 @@ class Collection extends Component {
         this.props.load();
     }
 
-    GroupCollectionPanel = ({ group, label, ...props }) => {
+    GroupCollectionPanel = ({ group, label, ...other }) => {
         const { expanded } = this.state,
             filterKeys = FILTER_KEYS[group];
 
@@ -187,7 +187,7 @@ class Collection extends Component {
                     owned={this.getOwnedList(group)}
                     onChange={this.handleChange(group)}
                     filterKeys={filterKeys}
-                    { ...props }
+                    { ...other }
                 /> : <div />;
 
         return (
