@@ -13,7 +13,8 @@ const HomeButton = ({ to, ...props }) => {
 const Home = ({ classes, isLoggedIn }) => {
     const LoggedIn = () => (
             <React.Fragment>
-                <HomeButton to="/lists" className={classes.button}>New List</HomeButton>
+                <HomeButton to="/editor" className={classes.button}>New List</HomeButton>
+                <HomeButton to="/lists" className={classes.button}>View Lists</HomeButton>
                 <HomeButton to="/collection" className={classes.button}>View / Update Collection</HomeButton>
             </React.Fragment>
         ),
@@ -24,7 +25,7 @@ const Home = ({ classes, isLoggedIn }) => {
             </React.Fragment>
         );
 
-    const items = isLoggedIn ? <LoggedIn /> : <LoggedOut />
+    const items = isLoggedIn ? <LoggedIn /> : <LoggedOut />;
 
     return (
         <main className={classes.main}>
