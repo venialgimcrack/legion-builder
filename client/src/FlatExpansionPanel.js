@@ -48,16 +48,20 @@ const ExpansionPanelDetails = withStyles(theme => ({
     }
 }))(MuiExpansionPanelDetails);
 
-const FlatExpansionPanel = ({ expanded, onExpand, label, details, actions }) => (
-    <ExpansionPanel
-        square
-        expanded={expanded}
-        onChange={onExpand}
-    >
-        <ExpansionPanelSummary>{label}</ExpansionPanelSummary>
-        <ExpansionPanelDetails>{details}</ExpansionPanelDetails>
-        <ExpansionPanelActions>{actions}</ExpansionPanelActions>
-    </ExpansionPanel>
-);
+const FlatExpansionPanel = ({ expanded, onExpand, label, details, actions }) => {
+    let panelActions = actions ? <ExpansionPanelActions>{actions}</ExpansionPanelActions> : null;
+
+    return (
+        <ExpansionPanel
+            square
+            expanded={expanded}
+            onChange={onExpand}
+        >
+            <ExpansionPanelSummary>{label}</ExpansionPanelSummary>
+            <ExpansionPanelDetails>{details}</ExpansionPanelDetails>
+            {panelActions}
+        </ExpansionPanel>
+    );
+};
 
 export default FlatExpansionPanel;

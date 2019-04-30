@@ -174,7 +174,7 @@ class Collection extends Component {
         this.props.load();
     }
 
-    GroupCollectionPanel = ({ group, label, ...other }) => {
+    GroupExpansionPanel = ({ group, label, ...other }) => {
         const { expanded } = this.state,
             filterKeys = FILTER_KEYS[group];
 
@@ -205,23 +205,23 @@ class Collection extends Component {
     };
 
     render () {
-        const GroupCollectionPanel = this.GroupCollectionPanel,
+        const GroupExpansionPanel = this.GroupExpansionPanel,
             { classes } = this.props;
 
         return (
             <div className={classes.root}>
                 <form noValidate onSubmit={this.onSubmit}>
-                    <GroupCollectionPanel
+                    <GroupExpansionPanel
                         group="products"
                         label="Products"
                         identLabel="Name"
                     />
-                    <GroupCollectionPanel
+                    <GroupExpansionPanel
                         group="units"
                         label="Units"
                         identLabel="Name"
                     />
-                    <GroupCollectionPanel
+                    <GroupExpansionPanel
                         group="upgrades"
                         label="Upgrades"
                         identColumn="title"
@@ -254,6 +254,8 @@ const mapDispatchToProps = {
     save: saveCollection
 };
 
+const connected = connect(mapStateToProps, mapDispatchToProps)(Collection);
+
 const styles = theme => ({
     root: {
         width: 'auto',
@@ -271,5 +273,4 @@ const styles = theme => ({
     }
 });
 
-const connected = connect(mapStateToProps, mapDispatchToProps)(Collection);
 export default withStyles(styles)(connected);
