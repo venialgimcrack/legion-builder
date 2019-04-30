@@ -9,7 +9,7 @@ import Collection from './Collection';
 import HeaderBar from './HeaderBar';
 import Home from './Home';
 import ListEditor from './ListEditor';
-import Lists from './Lists';
+import ListViewer from './ListViewer';
 import LoginPage from './LoginPage';
 import PrivateRoute from './PrivateRoute';
 import Register from './Register';
@@ -49,7 +49,7 @@ const Main = ({ history }) => (
             <Route path="/" exact component={Home} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={Register} />
-            <PrivateRoute path="/lists" component={Lists} />
+            <PrivateRoute path="/lists" component={ListViewer} />
             <PrivateRoute path="/editor" component={ListEditor} />
             <PrivateRoute path="/collection" component={Collection} />
         </ConnectedRouter>
