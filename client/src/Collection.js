@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import { loadCollection, saveCollection } from './actions/collectionActions';
 import { getProducts } from './actions/productActions';
 import { getContent } from './actions/contentActions';
-import CollectionPanel from './CollectionPanel';
 import CollectionTable from './CollectionTable';
+import FlatExpansionPanel from './FlatExpansionPanel';
 
 const FILTER_KEYS = {
         products: [ 'category', 'faction' ],
@@ -188,15 +189,17 @@ class Collection extends Component {
                     onChange={this.handleChange(group)}
                     filterKeys={filterKeys}
                     { ...other }
-                /> : <div />;
+                /> : <div />,
+            action =
+                <Button type="submit" size="small" color="primary" disabled={!showTable}>Save</Button>;
 
         return (
-            <CollectionPanel
+            <FlatExpansionPanel
                 expanded={expanded === group}
                 onExpand={this.onExpand(group)}
                 label={panelLabel}
                 details={details}
-                disableSave={!showTable}
+                actions={action}
             />
         );
     };
@@ -254,10 +257,7 @@ const mapDispatchToProps = {
 const styles = theme => ({
     root: {
         width: 'auto',
-        marginTop: theme.spacing.unit * 2,
-        marginLeft: theme.spacing.unit * 2,
-        marginRight: theme.spacing.unit * 2,
-        marginBottom: theme.spacing.unit,
+        margin: theme.spacing.unit * 2,
         [ theme.breakpoints.down(320 + theme.spacing.unit * 4) ]: {
             width: 320,
             marginLeft: 'auto',
