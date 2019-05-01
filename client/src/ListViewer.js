@@ -4,8 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+// import ListItem from '@material-ui/core/ListItem';
+// import ListItemText from '@material-ui/core/ListItemText';
 import Paper from '@material-ui/core/Paper';
 
 class ListViewer extends Component {
@@ -45,8 +45,6 @@ class ListViewer extends Component {
 
 const styles = theme => ({
     root: {
-        display: 'flex',
-        flexDirection: 'column',
         width: 'auto',
         margin: theme.spacing.unit * 2,
         [ theme.breakpoints.down(320 + theme.spacing.unit * 4) ]: {
@@ -61,7 +59,6 @@ const styles = theme => ({
         }
     },
     list: {
-        flexGrow: 1
     },
     nav: {
         width: '100%'
