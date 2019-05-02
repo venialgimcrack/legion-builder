@@ -1,9 +1,9 @@
 import React from 'react';
-import { ConnectedRouter } from 'connected-react-router';
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
 
 import Collection from './Collection';
 import HeaderBar from './HeaderBar';
@@ -40,19 +40,26 @@ if (!!localStorage[JWT_TOKEN_KEY]) {
     }
 }
 
-// TODO need a default route to display 404s
-const Main = ({ history }) => (
+// TODO make a legit 404 page
+const NotFound = () => (
+    <Typography>Four. Oh, four.</Typography>
+);
+
+const Main = () => (
     <React.Fragment>
         <CssBaseline />
-        <ConnectedRouter history={history}>
+        <Router>
             <HeaderBar />
+            <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={Register} />
-            <PrivateRoute path="/lists" component={ListViewer} />
-            <PrivateRoute path="/editor" component={ListEditor} />
+            <PrivateRoute path="/lists" exact component={ListViewer} />
+            <PrivateRoute path="/lists/:id" component={ListEditor} />
             <PrivateRoute path="/collection" component={Collection} />
-        </ConnectedRouter>
+            <Route component={NotFound} />
+            </Switch>
+        </Router>
         <SnackbarProvider />
     </React.Fragment>
 );

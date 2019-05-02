@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link as RouterLink, Redirect } from 'react-router-dom';
+import { Link as RouterLink, Redirect, withRouter } from 'react-router-dom';
 import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -150,5 +150,5 @@ const styles = theme => ({
     }
 });
 
-const connected = connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+const connected = withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginPage));
 export default withStyles(styles)(connected);

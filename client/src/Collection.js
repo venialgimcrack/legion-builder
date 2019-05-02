@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -254,7 +255,7 @@ const mapDispatchToProps = {
     save: saveCollection
 };
 
-const connected = connect(mapStateToProps, mapDispatchToProps)(Collection);
+const connected = withRouter(connect(mapStateToProps, mapDispatchToProps)(Collection));
 
 const styles = theme => ({
     root: {

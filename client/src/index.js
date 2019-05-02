@@ -6,11 +6,11 @@ import 'typeface-roboto';
 
 import Main from './Main';
 import * as serviceWorker from './serviceWorker';
-import store, { history } from './store';
+import store from './store';
 
 ReactDOM.render(
     <Provider store={store}>
-        <Main history={history} />
+        <Main />
     </Provider>
 , document.getElementById('root'));
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, withRouter } from 'react-router-dom';
 import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -39,17 +39,18 @@ const HeaderBar = ({ classes, loggedIn, logout, location }) => {
 };
 
 const mapStateToProps = state => {
-    const { login, router } = state;
+    const { login } = state;
 
     return {
-        loggedIn: login.auth,
-        location: router.location
+        loggedIn: login.auth
     };
 };
 
 const mapDispatchToProps = {
     logout
 };
+
+const connected = withRouter(connect(mapStateToProps, mapDispatchToProps)(HeaderBar));
 
 const styles = {
     root: {
@@ -63,5 +64,4 @@ const styles = {
     }
 };
 
-const connected = connect(mapStateToProps, mapDispatchToProps)(HeaderBar);
 export default withStyles(styles)(connected);

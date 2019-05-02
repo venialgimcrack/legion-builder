@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, withRouter } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -13,7 +13,7 @@ const HomeButton = ({ to, ...props }) => {
 const Home = ({ classes, isLoggedIn }) => {
     const LoggedIn = () => (
             <React.Fragment>
-                <HomeButton to="/editor" className={classes.button}>New List</HomeButton>
+                <HomeButton to="/lists/new" className={classes.button}>New List</HomeButton>
                 <HomeButton to="/lists" className={classes.button}>View Lists</HomeButton>
                 <HomeButton to="/collection" className={classes.button}>View / Update Collection</HomeButton>
             </React.Fragment>
@@ -44,6 +44,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {};
 
+const connected = withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
+
 const styles = theme => ({
     main: {
         width: 'auto',
@@ -68,5 +70,4 @@ const styles = theme => ({
     }
 });
 
-const connected = connect(mapStateToProps, mapDispatchToProps)(Home);
 export default withStyles(styles)(connected);
