@@ -81,3 +81,42 @@ export const loadList = () => {
             });
     };
 };
+
+export const GET_LISTS_START = 'GET_LISTS_START';
+export const GET_LISTS_FINISH = 'GET_LISTS_FINISH';
+export const GET_LISTS_ERROR = 'GET_LISTS_ERROR';
+
+export const getListsStart = () => ({
+    type: GET_LISTS_START
+});
+
+export const getListsFinish = lists => ({
+    type: GET_LISTS_FINISH,
+    payload: lists
+});
+
+export const getListsError = errors => ({
+    type: GET_LISTS_ERROR,
+    payload: errors
+});
+
+export const getLists = () => {
+    return dispatch => {
+        dispatch(getListsStart());
+
+        axios.get('/api/list/all')
+            .then(res => {
+                let lists = res.data;
+
+                dispatch(getListsFinish(lists));
+            })
+            .catch(err => {
+                console.error(err);
+
+                let errors = _.get(err, 'response.data', {});
+
+                dispatch(getListsError(errors));
+                dispatch(showErrorSnackbar('Failed to get lists.'));
+            });
+    };
+};

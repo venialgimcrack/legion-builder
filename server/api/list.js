@@ -53,4 +53,9 @@ router.get('/load', passport.authenticate('jwt', { session: false }), (req, res)
         });
 });
 
+router.get('/all', passport.authenticate('jwt', { session: false }), (req, res) => {
+    return List.find()
+        .then(lists => res.json(lists));
+});
+
 module.exports = router;
