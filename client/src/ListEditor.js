@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
-
-import { loadCollection } from './actions/collectionActions';
-import { getProducts } from './actions/productActions';
-import { getContent } from './actions/contentActions';
-import UnitPanel from './UnitPanel';
+import Typography from '@material-ui/core/Typography';
 
 class ListEditor extends Component {
     constructor (props) {
@@ -17,42 +15,26 @@ class ListEditor extends Component {
         };
     }
 
-    componentDidMount () {
-        // TODO need some kind of busy indicator
-        this.props.getProducts();
-        this.props.getContent();
-        this.props.load();
-    }
-
     render () {
-        const { classes } = this.props,
-            { faction } = this.state;
+        const { classes, match } = this.props;
+        
+        let listId = _.get(match, 'params.id', 'new');
 
-        // TODO panels for other ranks
         return (
             <div className={classes.root}>
-                <form noValidate>
-                    <UnitPanel
-                        faction={faction}
-                        rank="corps"
-                    />
-                </form>
+                <Typography>
+                    { listId === 'new' ? 'Creating a new list!' : `Editing list ${listId}` }
+                </Typography>
             </div>
         );
     }
 };
 
-const mapStateToProps = () => {
-    return {};
-};
+const mapStateToProps = () => ({});
 
-const mapDispatchToProps = {
-    getProducts,
-    getContent,
-    load: loadCollection
-};
+const mapDispatchToProps = {};
 
-const connected = connect(mapStateToProps, mapDispatchToProps)(ListEditor);
+const connected = withRouter(connect(mapStateToProps, mapDispatchToProps)(ListEditor));
 
 const styles = theme => ({
     root: {

@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import List from '@material-ui/core/List';
-// import ListItem from '@material-ui/core/ListItem';
-// import ListItemText from '@material-ui/core/ListItemText';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import Paper from '@material-ui/core/Paper';
+
+import { getLists } from './actions/listActions';
 
 class ListViewer extends Component {
     constructor (props) {
@@ -21,13 +26,57 @@ class ListViewer extends Component {
         this.setState({ value });
     };
 
+    handleClick = listId => event => {
+        console.log(event);
+        console.log(`Clicked on list with ID: ${listId}`);
+    };
+
+    componentDidMount () {
+        // TODO need some kind of busy indicator
+        this.props.load();
+    }
+
     render () {
-        const { classes } = this.props,
+        const { classes, lists } = this.props,
             { value } = this.state;
+
+        let filtered = lists.slice(),
+            listItems;
+
+        if (value !== 'all') {
+            filtered = filtered.filter(list => list.faction === value);
+        }
+
+        if (filtered.length > 0) {
+            listItems = filtered.map((list, index) => {
+                let key = `listItem${index}`,
+                    listItemProps = {
+                        primary: list.name
+                    };
+
+                if (list.description) {
+                    listItemProps.secondary = list.description;
+                }
+
+                return (
+                    <ListItem button key={key} onClick={this.handleClick(list._id)}>
+                        <ListItemText { ...listItemProps } />
+                    </ListItem>
+                );
+            });
+
+        } else {
+            listItems =
+                <ListItem>
+                    <ListItemText primary="No matching list(s) found." />
+                </ListItem>;
+        }
 
         return (
             <Paper className={classes.root}>
-                <List className={classes.list}></List>
+                <List component="nav" className={classes.list}>
+                    { listItems }
+                </List>
                 <BottomNavigation
                     value={value}
                     onChange={this.handleChange}
@@ -42,6 +91,18 @@ class ListViewer extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    let lists = _.get(state, 'list.all', []);
+
+    return { lists };
+};
+
+const mapDispatchToProps = {
+    load: getLists
+};
+
+const connected = withRouter(connect(mapStateToProps, mapDispatchToProps)(ListViewer));
 
 const styles = theme => ({
     root: {
@@ -65,4 +126,4 @@ const styles = theme => ({
     }
 });
 
-export default withStyles(styles)(ListViewer);
+export default withStyles(styles)(connected);
