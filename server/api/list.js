@@ -32,7 +32,7 @@ router.post('/save', passport.authenticate('jwt', { session: false }), (req, res
 });
 
 router.get('/load', passport.authenticate('jwt', { session: false }), (req, res) => {
-    const { id } = req.body;
+    const { id } = req.query;
 
     if (!id) {
         return res.status(400).json({ invalid: 'Missing id' });

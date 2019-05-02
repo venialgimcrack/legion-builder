@@ -61,11 +61,11 @@ export const loadListError = errors => ({
     payload: errors
 });
 
-export const loadList = () => {
+export const loadList = listId => {
     return dispatch => {
         dispatch(loadListStart());
 
-        axios.get('/api/list/load')
+        axios.get(`/api/list/load?id=${listId}`)
             .then(res => {
                 let list = res.data;
 
