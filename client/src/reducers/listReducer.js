@@ -7,7 +7,8 @@ import {
     SAVE_LIST_ERROR,
     GET_LISTS_START,
     GET_LISTS_FINISH,
-    GET_LISTS_ERROR
+    GET_LISTS_ERROR,
+    CREATE_NEW_LIST
 } from '../actions/listActions';
 
 const EMPTY_LIST = [],
@@ -48,6 +49,7 @@ const list = (state = INIT_STATE, action) => {
                 errors: {}
             });
 
+        case CREATE_NEW_LIST:
         case LOAD_LIST_FINISH:
         case SAVE_LIST_FINISH:
             return Object.assign({}, state, {
