@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -18,7 +18,8 @@ class ListViewer extends Component {
         super(props);
 
         this.state = {
-            value: 'all'
+            value: 'all',
+            selected: null
         };
     }
 
@@ -27,8 +28,7 @@ class ListViewer extends Component {
     };
 
     handleClick = listId => event => {
-        console.log(event);
-        console.log(`Clicked on list with ID: ${listId}`);
+        this.setState({ selected: listId });
     };
 
     componentDidMount () {
@@ -38,7 +38,11 @@ class ListViewer extends Component {
 
     render () {
         const { classes, lists } = this.props,
-            { value } = this.state;
+            { value, selected } = this.state;
+
+        if (selected) {
+            return <Redirect to={`/lists/${selected}`} />;
+        }
 
         let filtered = lists.slice(),
             listItems;

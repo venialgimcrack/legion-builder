@@ -6,6 +6,8 @@ import _ from 'lodash';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
+import { loadList } from './actions/listActions';
+
 class ListEditor extends Component {
     constructor (props) {
         super(props);
@@ -15,10 +17,14 @@ class ListEditor extends Component {
         };
     }
 
+    componentDidMount () {
+        if (this.props.listId !== 'new') {
+            this.props.load(this.props.listId);
+        }
+    }
+
     render () {
-        const { classes, match } = this.props;
-        
-        let listId = _.get(match, 'params.id', 'new');
+        const { classes, listId } = this.props;
 
         return (
             <div className={classes.root}>
@@ -30,9 +36,13 @@ class ListEditor extends Component {
     }
 };
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state, ownProps) => ({
+    listId: _.get(ownProps, 'match.params.id', 'new')
+});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+    load: loadList
+};
 
 const connected = withRouter(connect(mapStateToProps, mapDispatchToProps)(ListEditor));
 
