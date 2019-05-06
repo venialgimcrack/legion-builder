@@ -4,11 +4,8 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
+
+import ListDetails from './ListDetails';
 
 class NewListDialog extends Component {
     constructor(props) {
@@ -17,6 +14,7 @@ class NewListDialog extends Component {
         this.state = {
             faction: '',
             name: '',
+            description: '',
             errors: {
                 faction: false,
                 name: false
@@ -61,7 +59,7 @@ class NewListDialog extends Component {
 
     render () {
         const { open } = this.props,
-            { faction, name, errors } = this.state;
+            { description, faction, name, errors } = this.state;
 
         return (
             <Dialog
@@ -71,25 +69,13 @@ class NewListDialog extends Component {
             >
                 <DialogTitle>New List</DialogTitle>
                 <DialogContent>
-                    <FormControl margin="normal" required fullWidth error={errors.faction}>
-                        <InputLabel htmlFor="faction">Faction</InputLabel>
-                        <Select
-                            value={faction}
-                            onChange={this.handleChange}
-                            inputProps={{
-                                name: 'faction',
-                                id: 'faction'
-                            }}
-                        >
-                            <MenuItem value=""><em>None</em></MenuItem>
-                            <MenuItem value="rebel">Rebel Alliance</MenuItem>
-                            <MenuItem value="empire">Galactic Empire</MenuItem>
-                        </Select>
-                    </FormControl>
-                    <FormControl margin="normal" required fullWidth error={errors.name}>
-                        <InputLabel htmlFor="name">Name</InputLabel>
-                        <Input id="name" name="name" value={name} onChange={this.handleChange} />
-                    </FormControl>
+                    <ListDetails
+                        name={name}
+                        faction={faction}
+                        description={description}
+                        errors={errors}
+                        onChange={this.handleChange}
+                    />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={this.handleCancel}>Cancel</Button>
