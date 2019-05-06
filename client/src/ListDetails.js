@@ -29,8 +29,8 @@ export default ({ name, faction, description, errors, onChange }) => (
             </Select>
         </FormControl>
         <FormControl margin="normal" fullWidth>
-            <InputLabel htmlFor="desc">Description</InputLabel>
-            <Input id="desc" name="desc" value={description} onChange={onChange} />
+            <InputLabel htmlFor="description">Description</InputLabel>
+            <Input id="description" name="description" value={description} onChange={onChange} />
         </FormControl>
     </React.Fragment>
 );
