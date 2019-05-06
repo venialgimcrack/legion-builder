@@ -131,3 +131,9 @@ export const createNewList = (name, faction, description) => ({
         description
     }
 });
+
+export const RESET_LIST = 'RESET_LIST';
+
+export const resetList = () => ({
+    type: RESET_LIST
+});

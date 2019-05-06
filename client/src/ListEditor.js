@@ -4,9 +4,9 @@ import { Redirect, withRouter } from 'react-router-dom';
 import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 
-import { loadList, createNewList } from './actions/listActions';
+import { loadList, createNewList, resetList } from './actions/listActions';
+import MetadataPanel from './MetadataPanel';
 import NewListDialog from './NewListDialog';
 
 class ListEditor extends Component {
@@ -48,6 +48,8 @@ class ListEditor extends Component {
     };
 
     componentDidMount () {
+        this.props.reset();
+
         if (this.shouldLoadList()) {
             this.props.load(this.props.listId);
         } else {
@@ -56,7 +58,7 @@ class ListEditor extends Component {
     }
 
     render () {
-        const { classes, listId } = this.props,
+        const { classes, current } = this.props,
             { showDialog, canceled } = this.state;
 
         if (canceled) {
@@ -65,9 +67,9 @@ class ListEditor extends Component {
 
         return (
             <div className={classes.root}>
-                <Typography>
-                    { listId === 'new' ? 'Creating a new list!' : `Editing list ${listId}` }
-                </Typography>
+                <MetadataPanel
+                    list={current}
+                />
                 <NewListDialog
                     open={showDialog}
                     onCancel={this.handleCancel}
@@ -80,12 +82,13 @@ class ListEditor extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
     listId: _.get(ownProps, 'match.params.id', 'new'),
-    current: _.get(state, 'list.current', null)
+    current: _.get(state, 'list.current')
 });
 
 const mapDispatchToProps = {
     load: loadList,
-    create: createNewList
+    create: createNewList,
+    reset: resetList
 };
 
 const connected = withRouter(connect(mapStateToProps, mapDispatchToProps)(ListEditor));

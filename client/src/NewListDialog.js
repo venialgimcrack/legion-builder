@@ -5,7 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import ListDetails from './ListDetails';
+import MetadataControls from './MetadataControls';
 
 class NewListDialog extends Component {
     constructor(props) {
@@ -69,7 +69,7 @@ class NewListDialog extends Component {
             >
                 <DialogTitle>New List</DialogTitle>
                 <DialogContent>
-                    <ListDetails
+                    <MetadataControls
                         name={name}
                         faction={faction}
                         description={description}
