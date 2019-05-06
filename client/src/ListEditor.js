@@ -41,10 +41,10 @@ class ListEditor extends Component {
         });
     };
 
-    handleAccept = ({ name, faction }) => {
+    handleAccept = ({ name, faction, description }) => {
         this.setState({ showDialog: false });
 
-        this.props.create(name, faction);
+        this.props.create(name, faction, description);
     };
 
     componentDidMount () {

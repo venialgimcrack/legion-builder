@@ -123,10 +123,11 @@ export const getLists = () => {
 
 export const CREATE_NEW_LIST = 'CREATE_NEW_LIST';
 
-export const createNewList = (name, faction) => ({
+export const createNewList = (name, faction, description) => ({
     type: CREATE_NEW_LIST,
     payload: {
         name,
-        faction
+        faction,
+        description
     }
 });
