@@ -5,11 +5,11 @@ const passport = require('passport'),
 
 router.post('/save', passport.authenticate('jwt', { session: false }), (req, res) => {
     const owner = req.user._id,
-        { id, name, faction, description, units } = req.body;
+        { _id, name, faction, description, units } = req.body;
 
-    List.findById(id)
+    List.findById(_id)
         .then(list => {
-            if (id && !list) {
+            if (_id && !list) {
                 return res.status(400).json({ invalid: 'Unknown id' });
             }
 
@@ -19,7 +19,15 @@ router.post('/save', passport.authenticate('jwt', { session: false }), (req, res
 
             list.set('name', name);
             list.set('description', description);
-            list.set('units', units);
+
+            if (list.get('faction') !== faction) {
+                // Clear unit list if we're changing factions
+                list.set('faction', faction);
+                list.set('units', []);
+
+            } else {
+                list.set('units', units);
+            }
 
             return list.save()
                 .then(result => res.json(result));
