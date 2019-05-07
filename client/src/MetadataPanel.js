@@ -39,7 +39,7 @@ class MetadataPanel extends Component {
                     </div>
                 }
                 actions={
-                    <Button size="small" color="primary" onClick={onSave}>Save</Button>
+                    <Button size="small" color="primary" onClick={onSave} disabled={errors.name || errors.faction}>Save</Button>
                 }
             />
         );
