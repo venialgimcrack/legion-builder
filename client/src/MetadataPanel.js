@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import FlatExpansionPanel from './FlatExpansionPanel';
@@ -8,11 +9,11 @@ import MetadataControls from './MetadataControls';
 
 class MetadataPanel extends Component {
     handleChange = event => {
-        this.props.onChange({ [ event.target.id ]: event.target.value });
+        this.props.onChange({ [ event.target.name ]: event.target.value });
     };
 
     render () {
-        const { classes, list } = this.props;
+        const { classes, expanded, list, onSave } = this.props;
 
         let { name, faction, description } = list,
             errors = {
@@ -22,7 +23,7 @@ class MetadataPanel extends Component {
 
         return (
             <FlatExpansionPanel
-                expanded={true}
+                expanded={expanded}
                 label={
                     <Typography>Details</Typography>
                 }
@@ -36,6 +37,9 @@ class MetadataPanel extends Component {
                             onChange={this.handleChange}
                         />
                     </div>
+                }
+                actions={
+                    <Button size="small" color="primary" onClick={onSave}>Save</Button>
                 }
             />
         );

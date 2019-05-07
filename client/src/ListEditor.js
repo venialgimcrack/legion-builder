@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import { loadList, createNewList, updateList, resetList } from './actions/listActions';
+import { loadList, saveList, createNewList, updateList, resetList } from './actions/listActions';
 import MetadataPanel from './MetadataPanel';
 import NewListDialog from './NewListDialog';
 
@@ -14,9 +14,10 @@ class ListEditor extends Component {
         super(props);
 
         this.state = {
-            faction: 'rebels',
+            expanded: 'meta',
             showDialog: false,
-            canceled: false
+            canceled: false,
+            saved: false
         };
     }
 
@@ -54,6 +55,10 @@ class ListEditor extends Component {
         this.props.update(updated);
     };
 
+    handleSave = () => {
+        this.props.save(this.props.current);
+    };
+
     componentDidMount () {
         this.props.reset();
 
@@ -64,19 +69,34 @@ class ListEditor extends Component {
         }
     }
 
+    componentDidUpdate () {
+        if (this.shouldLoadList()) {
+            this.setState({ saved: true });
+
+        } else if (this.state.saved) {
+            this.setState({ saved: false });
+        }
+    }
+
     render () {
         const { classes, current } = this.props,
-            { showDialog, canceled } = this.state;
+            { expanded, showDialog, canceled, saved } = this.state;
 
         if (canceled) {
             return <Redirect to="/" />;
         }
 
+        if (saved) {
+            return <Redirect to={`/lists/${current._id}`} />;
+        }
+
         return (
             <div className={classes.root}>
                 <MetadataPanel
+                    expanded={expanded === 'meta'}
                     list={current}
                     onChange={this.handleMetadataUpdate}
+                    onSave={this.handleSave}
                 />
                 <NewListDialog
                     open={showDialog}
@@ -97,7 +117,8 @@ const mapDispatchToProps = {
     load: loadList,
     create: createNewList,
     reset: resetList,
-    update: updateList
+    update: updateList,
+    save: saveList
 };
 
 const connected = withRouter(connect(mapStateToProps, mapDispatchToProps)(ListEditor));

@@ -6,6 +6,8 @@ import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import MuiExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 const ExpansionPanel = withStyles({
     root: {
         border: '1px solid rgba(0,0,0,.125)',
@@ -24,7 +26,6 @@ const ExpansionPanel = withStyles({
 
 const ExpansionPanelSummary = withStyles({
     root: {
-        // backgroundColor: 'rgba(0,0,0,.03)',
         borderBottom: '1px solid rgba(0,0,0,.125)',
         marginBottom: -1,
         minHeight: 56,
@@ -57,7 +58,7 @@ const FlatExpansionPanel = ({ expanded, onExpand, label, details, actions }) => 
             expanded={expanded}
             onChange={onExpand}
         >
-            <ExpansionPanelSummary>{label}</ExpansionPanelSummary>
+            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>{label}</ExpansionPanelSummary>
             <ExpansionPanelDetails>{details}</ExpansionPanelDetails>
             {panelActions}
         </ExpansionPanel>
