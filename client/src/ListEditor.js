@@ -28,6 +28,13 @@ class ListEditor extends Component {
         return listId !== 'new' && listId !== currentId;
     };
 
+    wasListSaved = () => {
+        let { listId, current } = this.props,
+            currentId = _.get(current, '_id', null);
+
+        return listId === 'new' && !!currentId;
+    };
+
     showNewListDialog = () => {
         this.setState({
             showDialog: true,
@@ -70,10 +77,13 @@ class ListEditor extends Component {
     }
 
     componentDidUpdate () {
-        if (this.shouldLoadList()) {
+        if (this.wasListSaved()) {
+            // If the update was from saving a new list, set a flag that
+            // triggers a redirect to /lists/{id}
             this.setState({ saved: true });
 
         } else if (this.state.saved) {
+            // Otherwise reset the flag
             this.setState({ saved: false });
         }
     }
