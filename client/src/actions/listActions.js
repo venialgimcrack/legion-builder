@@ -137,3 +137,10 @@ export const RESET_LIST = 'RESET_LIST';
 export const resetList = () => ({
     type: RESET_LIST
 });
+
+export const UPDATE_LIST = 'UPDATE_LIST';
+
+export const updateList = list => ({
+    type: UPDATE_LIST,
+    payload: list
+});

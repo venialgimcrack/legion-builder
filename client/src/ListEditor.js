@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import { loadList, createNewList, resetList } from './actions/listActions';
+import { loadList, createNewList, updateList, resetList } from './actions/listActions';
 import MetadataPanel from './MetadataPanel';
 import NewListDialog from './NewListDialog';
 
@@ -47,6 +47,13 @@ class ListEditor extends Component {
         this.props.create(name, faction, description);
     };
 
+    handleMetadataUpdate = update => {
+        let { current } = this.props,
+            updated = Object.assign({}, current, update);
+
+        this.props.update(updated);
+    };
+
     componentDidMount () {
         this.props.reset();
 
@@ -69,6 +76,7 @@ class ListEditor extends Component {
             <div className={classes.root}>
                 <MetadataPanel
                     list={current}
+                    onChange={this.handleMetadataUpdate}
                 />
                 <NewListDialog
                     open={showDialog}
@@ -88,7 +96,8 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = {
     load: loadList,
     create: createNewList,
-    reset: resetList
+    reset: resetList,
+    update: updateList
 };
 
 const connected = withRouter(connect(mapStateToProps, mapDispatchToProps)(ListEditor));

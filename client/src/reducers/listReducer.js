@@ -9,7 +9,8 @@ import {
     GET_LISTS_FINISH,
     GET_LISTS_ERROR,
     CREATE_NEW_LIST,
-    RESET_LIST
+    RESET_LIST,
+    UPDATE_LIST
 } from '../actions/listActions';
 
 const EMPTY_ARRAY = [],
@@ -55,6 +56,7 @@ const list = (state = INIT_STATE, action) => {
                 errors: {}
             });
 
+        case UPDATE_LIST:
         case CREATE_NEW_LIST:
         case LOAD_LIST_FINISH:
         case SAVE_LIST_FINISH:

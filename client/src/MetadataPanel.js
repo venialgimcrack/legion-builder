@@ -7,6 +7,10 @@ import FlatExpansionPanel from './FlatExpansionPanel';
 import MetadataControls from './MetadataControls';
 
 class MetadataPanel extends Component {
+    handleChange = event => {
+        this.props.onChange({ [ event.target.id ]: event.target.value });
+    };
+
     render () {
         const { classes, list } = this.props;
 
@@ -29,7 +33,7 @@ class MetadataPanel extends Component {
                             faction={faction}
                             description={description}
                             errors={errors}
-                            onChange={()=>{}}
+                            onChange={this.handleChange}
                         />
                     </div>
                 }
