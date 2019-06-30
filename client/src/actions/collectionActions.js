@@ -21,11 +21,15 @@ export const saveCollectionError = errors => ({
     payload: errors
 });
 
-export const saveCollection = collection => {
-    return dispatch => {
+export const saveCollection = () => {
+    return (dispatch, getState) => {
+        const { collection } = getState();
+
+        // TODO make save conditional on dirty flag?
+
         dispatch(saveCollectionStart());
 
-        axios.post('/api/collection/save', collection)
+        axios.post('/api/collection/save', collection.item)
             .then(res => {
                 let saved = res.data;
 
@@ -78,5 +82,22 @@ export const loadCollection = () => {
 
                 dispatch(loadCollectionError(errors));
             });
+    };
+};
+
+export const EDIT_COLLECTION = 'EDIT_COLLECTION';
+
+export const editCollection = (group, items) => {
+    return (dispatch, getState) => {
+        let { collection } = getState(),
+            // TODO deep clone might be overkill
+            edited = _.cloneDeep(collection.item);
+
+        edited[group] = items;
+
+        dispatch({
+            type: EDIT_COLLECTION,
+            payload: edited
+        });
     };
 };

@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import { loadCollection, saveCollection } from './actions/collectionActions';
+import { loadCollection, saveCollection, editCollection } from './actions/collectionActions';
 import { getProducts } from './actions/productActions';
 import { getContent } from './actions/contentActions';
 import CollectionTable from './CollectionTable';
@@ -17,38 +17,14 @@ const FILTER_KEYS = {
         products: [ 'category', 'faction' ],
         units: [ 'faction', 'rank' ],
         upgrades: [ 'kind', 'align' ]
-    },
-    GROUPS = [ 'products', 'units', 'upgrades' ];
+    };
 
 class Collection extends Component {
-    static getDerivedStateFromProps (props, state) {
-        let propChange = false;
-
-        GROUPS.forEach(group => {
-            let propItems = _.get(props, `collection.${group}`, []),
-                stateItems = _.get(state, `collection.${group}`, []);
-
-            if (!_.isEqual(propItems, stateItems)) {
-                propChange = true;
-                return false;
-            }
-        });
-
-        if (propChange) {
-            return {
-                collection: props.collection
-            };
-        }
-
-        return null;
-    }
-
     constructor (props) {
         super(props);
 
         this.state = {
-            expanded: 'products',
-            collection: props.collection
+            expanded: 'products'
         };
     }
 
@@ -67,58 +43,49 @@ class Collection extends Component {
     };
 
     handleProductChange = (id, count) => {
-        this.setState(state => {
-            let { collection } = state,
-                owned = collection.products;
+        let { collection } = this.props,
+            owned = collection.products.slice();
 
-            if (count > 0) {
-                let item = owned.find(item => item.id === id);                            
-
-                if (item) {
-                    item.count = count;
-                } else {
-                    owned.push({ id, count });
-                }
-
-            } else {
-                let index = owned.findIndex(item => item.id === id);
-
-                if (index >= 0) {
-                    owned.splice(index, 1);
-                }
-            }
-
-            collection.products = owned;
-
-            return { collection };
-        });
-    };
-
-    handleOtherChange = (group, id, delta) => {
-        this.setState(state => {
-            let { collection } = state,
-                owned = collection[group];
-
+        if (count > 0) {
             let item = owned.find(item => item.id === id);
 
             if (item) {
-                item.modifier += delta;
+                item.count = count;
             } else {
-                owned.push({ id, modifier: delta });
+                owned.push({ id, count });
             }
 
-            // TODO remove items with '0' modifier?
+        } else {
+            let index = owned.findIndex(item => item.id === id);
 
-            collection[group] = owned;
+            if (index >= 0) {
+                owned.splice(index, 1);
+            }
+        }
 
-            return { collection };
-        });
+        this.props.edit('products', owned);
+    };
+
+    handleOtherChange = (group, id, delta) => {
+        let { collection } = this.props,
+            owned = collection[group].slice();
+
+        let item = owned.find(item => item.id === id);
+
+        // TODO remove items with '0' modifier?
+        if (item) {
+            item.modifier += delta;
+        } else {
+            owned.push({ id, modifier: delta });
+        }
+
+        this.props.edit(group, owned);
     };
 
     onSubmit = e => {
         e.preventDefault();
 
-        this.props.save(this.state.collection);
+        this.props.save();
     };
 
     onExpand = panel => (event, expanded) => {
@@ -129,14 +96,14 @@ class Collection extends Component {
 
     getOwnedList = group => {
         if (group === 'products') {
-            return this.state.collection.products;
+            return this.props.collection.products;
 
         } else {
             let results = [],
-                modifiers = this.state.collection[group];
+                modifiers = this.props.collection[group];
 
             // Compose list with raw counts first
-            this.state.collection.products.forEach(product => {
+            this.props.collection.products.forEach(product => {
                 let fullProd = this.props.products.find(prod => prod.id === product.id),
                     prodContents = fullProd.contents[group],
                     prodCount = product.count;
@@ -161,6 +128,11 @@ class Collection extends Component {
 
                 if (item && modder.modifier !== 0) {
                     item.count += modder.modifier;
+                } else {
+                    results.push({
+                        id: modder.id,
+                        count: modder.modifier
+                    });
                 }
             });
 
@@ -181,6 +153,8 @@ class Collection extends Component {
 
         let items = this.props[group],
             showTable = items.length > 0,
+            // TODO undo-ing a change doesn't re-disable the button
+            saveDisabled = !showTable || !this.props.isDirty,
             panelLabel =
                 <Typography>{label}</Typography>,
             details = showTable ?
@@ -192,7 +166,7 @@ class Collection extends Component {
                     { ...other }
                 /> : <div />,
             action =
-                <Button type="submit" size="small" color="primary" disabled={!showTable}>Save</Button>;
+                <Button type="submit" size="small" color="primary" disabled={saveDisabled}>Save</Button>;
 
         return (
             <FlatExpansionPanel
@@ -238,13 +212,15 @@ const mapStateToProps = state => {
     let products = _.get(state, 'products.items'),
         units = _.get(state, 'content.units'),
         upgrades = _.get(state, 'content.upgrades'),
-        collection = _.get(state, 'collection.item');
+        collection = _.get(state, 'collection.item'),
+        isDirty = _.get(state, 'collection.dirty', false);
 
     return {
         products,
         units,
         upgrades,
-        collection
+        collection,
+        isDirty
     };
 };
 
@@ -252,7 +228,8 @@ const mapDispatchToProps = {
     getProducts,
     getContent,
     load: loadCollection,
-    save: saveCollection
+    save: saveCollection,
+    edit: editCollection
 };
 
 const connected = withRouter(connect(mapStateToProps, mapDispatchToProps)(Collection));
