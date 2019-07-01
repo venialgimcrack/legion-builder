@@ -50,7 +50,6 @@ const collection = (state = INIT_STATE, action) => {
             return Object.assign({}, state, {
                 loading: false,
                 saved: EMPTY_COLLECTION,
-                draft: EMPTY_COLLECTION,
                 errors: { ...action.payload }
             });
 
