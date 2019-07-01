@@ -13,6 +13,8 @@ router.post('/save', passport.authenticate('jwt', { session: false }), (req, res
                 return res.status(400).json({ invalid: 'Unknown id' });
             }
 
+            // TODO should validate list belongs to owner
+
             if (!list) {
                 list = new List({ owner, faction });
             }
@@ -52,6 +54,8 @@ router.get('/load', passport.authenticate('jwt', { session: false }), (req, res)
                 return res.status(400).json({ invalid: 'Unknown id' });
             }
 
+            // TODO should validate list belongs to owner
+
             return res.json(list);
         })
         .catch(err => {
@@ -62,7 +66,9 @@ router.get('/load', passport.authenticate('jwt', { session: false }), (req, res)
 });
 
 router.get('/all', passport.authenticate('jwt', { session: false }), (req, res) => {
-    return List.find()
+    const owner = req.user._id;
+
+    return List.find({ owner })
         .then(lists => res.json(lists));
 });
 
