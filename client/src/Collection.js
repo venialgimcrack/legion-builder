@@ -33,15 +33,14 @@ class Collection extends Component {
         return !_.isEqual(draft, saved);
     }
 
-    handleChange = group => e => {
-        let { id, value, defaultValue } = e.target,
-            count = Number(value);
+    handleChange = group => (id, newValue, oldValue) => {
+        let count = Number(newValue);
 
         if (group === 'products') {
             this.handleProductChange(id, count);
 
         } else {
-            let prevCount = Number(defaultValue);
+            let prevCount = Number(oldValue);
 
             this.handleOtherChange(group, id, count - prevCount);
         }
@@ -77,10 +76,14 @@ class Collection extends Component {
 
         let item = owned.find(item => item.id === id);
 
-        // TODO remove items with '0' modifier?
         if (item) {
             item.modifier += delta;
-        } else {
+
+            if (item.modifier === 0) {
+                owned.splice(owned.indexOf(item), 1);
+            }
+
+        } else if (delta !== 0) {
             owned.push({ id, modifier: delta });
         }
 
@@ -133,6 +136,7 @@ class Collection extends Component {
 
                 if (item && modder.modifier !== 0) {
                     item.count += modder.modifier;
+
                 } else {
                     results.push({
                         id: modder.id,
@@ -141,7 +145,7 @@ class Collection extends Component {
                 }
             });
 
-            return results;
+            return results.filter(result => result.count > 0);
         }
     };
 

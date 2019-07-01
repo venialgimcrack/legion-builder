@@ -30,6 +30,14 @@ class CollectionTable extends Component {
         });
     };
 
+    handleValueChange = oldValue => event => {
+        const { onChange } = this.props;
+
+        let { id, value } = event.target;
+
+        onChange(id, value, oldValue);
+    };
+
     handleRequestSort = column => () => {
         this.setState(state => {
             const { order, orderBy } = state,
@@ -61,7 +69,7 @@ class CollectionTable extends Component {
     };
 
     FilteredTableBody = () => {
-        const { classes, items, identColumn, owned, onChange } = this.props,
+        const { classes, items, identColumn, owned } = this.props,
             { filters, order, orderBy } = this.state;
 
         let filteredItems = items.slice();
@@ -89,7 +97,7 @@ class CollectionTable extends Component {
                     let itemId = item.id,
                         rowKey = `item_${itemId}_${index}`,
                         ownedItem = owned.find(thing => thing.id === itemId),
-                        value = ownedItem ? ownedItem.count : '',
+                        value = ownedItem && ownedItem.count > 0 ? `${ownedItem.count}` : '',
                         cellText = item[identColumn];
 
                     if (item['subtitle']) {
@@ -102,7 +110,7 @@ class CollectionTable extends Component {
                                 {cellText}
                             </TableCell>
                             <TableCell>
-                                <TextField type="number" id={itemId} value={value} onChange={onChange} />
+                                <TextField type="number" id={itemId} value={value} onChange={this.handleValueChange(value)} />
                             </TableCell>
                         </TableRow>
                     );
