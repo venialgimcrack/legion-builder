@@ -28,6 +28,11 @@ class Collection extends Component {
         };
     }
 
+    get isDirty () {
+        const { draft, saved } = this.props;
+        return !_.isEqual(draft, saved);
+    }
+
     handleChange = group => e => {
         let { id, value, defaultValue } = e.target,
             count = Number(value);
@@ -43,8 +48,8 @@ class Collection extends Component {
     };
 
     handleProductChange = (id, count) => {
-        let { collection } = this.props,
-            owned = collection.products.slice();
+        let { draft } = this.props,
+            owned = draft.products.slice();
 
         if (count > 0) {
             let item = owned.find(item => item.id === id);
@@ -67,8 +72,8 @@ class Collection extends Component {
     };
 
     handleOtherChange = (group, id, delta) => {
-        let { collection } = this.props,
-            owned = collection[group].slice();
+        let { draft } = this.props,
+            owned = draft[group].slice();
 
         let item = owned.find(item => item.id === id);
 
@@ -96,14 +101,14 @@ class Collection extends Component {
 
     getOwnedList = group => {
         if (group === 'products') {
-            return this.props.collection.products;
+            return this.props.draft.products;
 
         } else {
             let results = [],
-                modifiers = this.props.collection[group];
+                modifiers = this.props.draft[group];
 
             // Compose list with raw counts first
-            this.props.collection.products.forEach(product => {
+            this.props.draft.products.forEach(product => {
                 let fullProd = this.props.products.find(prod => prod.id === product.id),
                     prodContents = fullProd.contents[group],
                     prodCount = product.count;
@@ -153,8 +158,7 @@ class Collection extends Component {
 
         let items = this.props[group],
             showTable = items.length > 0,
-            // TODO undo-ing a change doesn't re-disable the button
-            saveDisabled = !showTable || !this.props.isDirty,
+            saveDisabled = !showTable || !this.isDirty,
             panelLabel =
                 <Typography>{label}</Typography>,
             details = showTable ?
@@ -212,15 +216,15 @@ const mapStateToProps = state => {
     let products = _.get(state, 'products.items'),
         units = _.get(state, 'content.units'),
         upgrades = _.get(state, 'content.upgrades'),
-        collection = _.get(state, 'collection.item'),
-        isDirty = _.get(state, 'collection.dirty', false);
+        draft = _.get(state, 'collection.draft'),
+        saved = _.get(state, 'collection.saved');
 
     return {
         products,
         units,
         upgrades,
-        collection,
-        isDirty
+        draft,
+        saved
     };
 };
 

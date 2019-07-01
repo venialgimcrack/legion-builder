@@ -14,9 +14,9 @@ const EMPTY_COLLECTION = {
         upgrades: []
     },
     INIT_STATE = {
-        item: EMPTY_COLLECTION,
+        saved: EMPTY_COLLECTION,
+        draft: EMPTY_COLLECTION,
         loading: false,
-        dirty: false,
         errors: {}
     };
 
@@ -25,8 +25,8 @@ const collection = (state = INIT_STATE, action) => {
         case LOAD_COLLECTION_START:
             return Object.assign({}, state, {
                 loading: true,
-                dirty: false,
-                item: EMPTY_COLLECTION,
+                saved: EMPTY_COLLECTION,
+                draft: EMPTY_COLLECTION,
                 errors: {}
             });
 
@@ -40,8 +40,8 @@ const collection = (state = INIT_STATE, action) => {
         case LOAD_COLLECTION_FINISH:
             return Object.assign({}, state, {
                 loading: false,
-                dirty: false,
-                item: action.payload,
+                saved: action.payload,
+                draft: Object.assign({}, action.payload),
                 errors: {}
             });
 
@@ -49,14 +49,14 @@ const collection = (state = INIT_STATE, action) => {
         case LOAD_COLLECTION_ERROR:
             return Object.assign({}, state, {
                 loading: false,
-                item: EMPTY_COLLECTION,
+                saved: EMPTY_COLLECTION,
+                draft: EMPTY_COLLECTION,
                 errors: { ...action.payload }
             });
-        
+
         case EDIT_COLLECTION:
             return Object.assign({}, state, {
-                dirty: true,
-                item: action.payload
+                draft: action.payload
             });
 
         default:

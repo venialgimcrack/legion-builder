@@ -25,11 +25,9 @@ export const saveCollection = () => {
     return (dispatch, getState) => {
         const { collection } = getState();
 
-        // TODO make save conditional on dirty flag?
-
         dispatch(saveCollectionStart());
 
-        axios.post('/api/collection/save', collection.item)
+        axios.post('/api/collection/save', collection.draft)
             .then(res => {
                 let saved = res.data;
 
@@ -91,7 +89,7 @@ export const editCollection = (group, items) => {
     return (dispatch, getState) => {
         let { collection } = getState(),
             // TODO deep clone might be overkill
-            edited = _.cloneDeep(collection.item);
+            edited = _.cloneDeep(collection.draft);
 
         edited[group] = items;
 
