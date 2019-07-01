@@ -30,6 +30,7 @@ class Collection extends Component {
 
     get isDirty () {
         const { draft, saved } = this.props;
+        // TODO need a way to ignore _id attributes
         return !_.isEqual(draft, saved);
     }
 
