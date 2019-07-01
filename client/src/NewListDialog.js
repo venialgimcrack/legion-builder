@@ -12,14 +12,22 @@ class NewListDialog extends Component {
         super(props);
 
         this.state = {
-            faction: '',
             name: '',
+            faction: '',
+            size: 'standard',
             description: '',
             errors: {
+                name: false,
                 faction: false,
-                name: false
+                size: false
             }
         };
+    }
+
+    get isValid () {
+        const { name, faction, size } = this.state;
+
+        return name && faction && size;
     }
 
     handleChange = event => {
@@ -42,15 +50,18 @@ class NewListDialog extends Component {
     };
 
     handleAccept = () => {
-        if (this.state.faction && this.state.name) {
-            this.props.onAccept(this.state);
+        const { name, faction, size, description } = this.state;
+
+        if (this.isValid) {
+            this.props.onAccept({ name, faction, size, description });
 
         } else {
             this.setState(state => {
                 let { errors } = state;
 
-                errors.faction = !state.faction;
                 errors.name = !state.name;
+                errors.faction = !state.faction;
+                errors.size = !state.size;
 
                 return { errors };
             });
@@ -59,7 +70,7 @@ class NewListDialog extends Component {
 
     render () {
         const { open } = this.props,
-            { description, faction, name, errors } = this.state;
+            { description, size, faction, name, errors } = this.state;
 
         return (
             <Dialog
@@ -72,6 +83,7 @@ class NewListDialog extends Component {
                     <MetadataControls
                         name={name}
                         faction={faction}
+                        size={size}
                         description={description}
                         errors={errors}
                         onChange={this.handleChange}
@@ -79,7 +91,7 @@ class NewListDialog extends Component {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={this.handleCancel}>Cancel</Button>
-                    <Button onClick={this.handleAccept} color="primary">Accept</Button>
+                    <Button onClick={this.handleAccept} color="primary" disabled={!this.isValid}>Accept</Button>
                 </DialogActions>
             </Dialog>
         );

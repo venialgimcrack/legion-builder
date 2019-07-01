@@ -5,7 +5,7 @@ const passport = require('passport'),
 
 router.post('/save', passport.authenticate('jwt', { session: false }), (req, res) => {
     const owner = req.user._id,
-        { _id, name, faction, description, units } = req.body;
+        { _id, name, faction, size, description, units } = req.body;
 
     List.findById(_id)
         .then(list => {
@@ -20,7 +20,10 @@ router.post('/save', passport.authenticate('jwt', { session: false }), (req, res
             }
 
             list.set('name', name);
+            list.set('size', size);
             list.set('description', description);
+
+            // TODO should we do anything if changing army size?
 
             if (list.get('faction') !== faction) {
                 // Clear unit list if we're changing factions

@@ -125,13 +125,9 @@ export const getLists = () => {
 
 export const CREATE_NEW_LIST = 'CREATE_NEW_LIST';
 
-export const createNewList = (name, faction, description) => ({
+export const createNewList = metadata => ({
     type: CREATE_NEW_LIST,
-    payload: {
-        name,
-        faction,
-        description
-    }
+    payload: metadata
 });
 
 export const RESET_LIST = 'RESET_LIST';

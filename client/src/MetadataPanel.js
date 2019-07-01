@@ -15,12 +15,13 @@ class MetadataPanel extends Component {
     render () {
         const { classes, expanded, list, onSave, isDirty } = this.props;
 
-        let { name, faction, description } = list,
+        let { name, faction, size, description } = list,
             errors = {
                 name: !name,
-                faction: !faction
+                faction: !faction,
+                size: !size
             },
-            saveDisabled = errors.name || errors.faction || !isDirty;
+            saveDisabled = errors.name || errors.faction || errors.size || !isDirty;
 
         return (
             <FlatExpansionPanel
@@ -33,6 +34,7 @@ class MetadataPanel extends Component {
                         <MetadataControls
                             name={name}
                             faction={faction}
+                            size={size}
                             description={description}
                             errors={errors}
                             onChange={this.handleChange}

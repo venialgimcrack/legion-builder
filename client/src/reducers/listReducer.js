@@ -14,9 +14,11 @@ import {
 } from '../actions/listActions';
 
 const EMPTY_ARRAY = [],
+    // TODO may want better way to define "default" army size
     BLANK_LIST = {
         name: '',
         faction: '',
+        size: 'standard',
         description: ''
     },
     INIT_STATE = {

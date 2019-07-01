@@ -6,8 +6,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 
-// TODO need to pull the faction list from config/constant
-export default ({ name, faction, description, errors, onChange }) => (
+// TODO need to build menu items from config/constant
+export default ({ name, faction, size, description, errors, onChange }) => (
     <React.Fragment>
         <FormControl margin="normal" required fullWidth error={errors.name}>
             <InputLabel htmlFor="name">Name</InputLabel>
@@ -26,6 +26,20 @@ export default ({ name, faction, description, errors, onChange }) => (
                 <MenuItem value=""><em>None</em></MenuItem>
                 <MenuItem value="rebel">Rebel Alliance</MenuItem>
                 <MenuItem value="empire">Galactic Empire</MenuItem>
+            </Select>
+        </FormControl>
+        <FormControl margin="normal" required fullWidth error={errors.size}>
+            <InputLabel htmlFor="size">Army Size</InputLabel>
+            <Select
+                value={size}
+                onChange={onChange}
+                inputProps={{
+                    name: 'size',
+                    id: 'size'
+                }}
+            >
+                <MenuItem value="standard">Standard (800 points)</MenuItem>
+                <MenuItem value="grand">Grand (1600 points)</MenuItem>
             </Select>
         </FormControl>
         <FormControl margin="normal" fullWidth>

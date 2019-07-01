@@ -22,6 +22,10 @@ module.exports = {
         'support',
         'heavy'
     ],
+    SIZES: [
+        'standard',
+        'grand'
+    ],
     SURGES: [
         'hit',
         'crit',

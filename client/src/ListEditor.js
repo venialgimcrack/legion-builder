@@ -54,10 +54,10 @@ class ListEditor extends Component {
         });
     };
 
-    handleAccept = ({ name, faction, description }) => {
+    handleAccept = metadata => {
         this.setState({ showDialog: false });
 
-        this.props.create(name, faction, description);
+        this.props.create(metadata);
     };
 
     handleMetadataUpdate = update => {
