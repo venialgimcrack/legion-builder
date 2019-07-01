@@ -21,11 +21,13 @@ export const saveListError = errors => ({
     payload: errors
 });
 
-export const saveList = list => {
-    return dispatch => {
+export const saveList = () => {
+    return (dispatch, getState) => {
+        const { list } = getState();
+
         dispatch(saveListStart());
 
-        axios.post('/api/list/save', list)
+        axios.post('/api/list/save', list.draft)
             .then(res => {
                 let saved = res.data;
 
@@ -138,9 +140,9 @@ export const resetList = () => ({
     type: RESET_LIST
 });
 
-export const UPDATE_LIST = 'UPDATE_LIST';
+export const EDIT_LIST = 'EDIT_LIST';
 
-export const updateList = list => ({
-    type: UPDATE_LIST,
+export const editList = list => ({
+    type: EDIT_LIST,
     payload: list
 });

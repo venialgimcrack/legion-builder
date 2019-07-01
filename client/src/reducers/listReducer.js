@@ -10,7 +10,7 @@ import {
     GET_LISTS_ERROR,
     CREATE_NEW_LIST,
     RESET_LIST,
-    UPDATE_LIST
+    EDIT_LIST
 } from '../actions/listActions';
 
 const EMPTY_ARRAY = [],
@@ -20,7 +20,8 @@ const EMPTY_ARRAY = [],
         description: ''
     },
     INIT_STATE = {
-        current: BLANK_LIST,
+        saved: BLANK_LIST,
+        draft: BLANK_LIST,
         all: EMPTY_ARRAY,
         loading: false,
         errors: {}
@@ -30,14 +31,16 @@ const list = (state = INIT_STATE, action) => {
     switch (action.type) {
         case LOAD_LIST_START:
             return Object.assign({}, state, {
-                current: BLANK_LIST,
+                saved: BLANK_LIST,
+                draft: BLANK_LIST,
                 loading: true,
                 errors: {}
             });
         
         case GET_LISTS_START:
             return Object.assign({}, state, {
-                current: BLANK_LIST,
+                saved: BLANK_LIST,
+                draft: BLANK_LIST,
                 all: EMPTY_ARRAY,
                 loading: true,
                 errors: {}
@@ -56,12 +59,22 @@ const list = (state = INIT_STATE, action) => {
                 errors: {}
             });
 
-        case UPDATE_LIST:
+        case EDIT_LIST:
+            return Object.assign({}, state, {
+                draft: action.payload
+            });
+
         case CREATE_NEW_LIST:
+            return Object.assign({}, state, {
+                saved: BLANK_LIST,
+                draft: action.payload
+            });
+
         case LOAD_LIST_FINISH:
         case SAVE_LIST_FINISH:
             return Object.assign({}, state, {
-                current: action.payload,
+                saved: action.payload,
+                draft: Object.assign({}, action.payload),
                 loading: false,
                 errors: {}
             });
@@ -70,7 +83,7 @@ const list = (state = INIT_STATE, action) => {
         case LOAD_LIST_ERROR:
         case SAVE_LIST_ERROR:
             return Object.assign({}, state, {
-                current: BLANK_LIST,
+                saved: BLANK_LIST,
                 all: EMPTY_ARRAY,
                 loading: false,
                 errors: { ...action.payload }
@@ -78,7 +91,7 @@ const list = (state = INIT_STATE, action) => {
 
         case RESET_LIST:
             return Object.assign({}, state, {
-                current: BLANK_LIST
+                draft: BLANK_LIST
             });
 
         default:

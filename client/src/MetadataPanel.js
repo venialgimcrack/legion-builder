@@ -13,13 +13,14 @@ class MetadataPanel extends Component {
     };
 
     render () {
-        const { classes, expanded, list, onSave } = this.props;
+        const { classes, expanded, list, onSave, isDirty } = this.props;
 
         let { name, faction, description } = list,
             errors = {
                 name: !name,
                 faction: !faction
-            };
+            },
+            saveDisabled = errors.name || errors.faction || !isDirty;
 
         return (
             <FlatExpansionPanel
@@ -39,7 +40,7 @@ class MetadataPanel extends Component {
                     </div>
                 }
                 actions={
-                    <Button size="small" color="primary" onClick={onSave} disabled={errors.name || errors.faction}>Save</Button>
+                    <Button size="small" color="primary" onClick={onSave} disabled={saveDisabled}>Save</Button>
                 }
             />
         );

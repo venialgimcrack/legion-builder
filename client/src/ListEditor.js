@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import { loadList, saveList, createNewList, updateList, resetList } from './actions/listActions';
+import { loadList, saveList, createNewList, editList, resetList } from './actions/listActions';
 import MetadataPanel from './MetadataPanel';
 import NewListDialog from './NewListDialog';
 
@@ -21,16 +21,21 @@ class ListEditor extends Component {
         };
     }
 
+    get isDirty () {
+        const { draft, saved } = this.props;
+        return !_.isEqual(draft, saved);
+    }
+
     shouldLoadList = () => {
-        let { listId, current } = this.props,
-            currentId = _.get(current, '_id', null);
+        let { listId, draft } = this.props,
+            currentId = _.get(draft, '_id', null);
 
         return listId !== 'new' && listId !== currentId;
     };
 
     wasListSaved = () => {
-        let { listId, current } = this.props,
-            currentId = _.get(current, '_id', null);
+        let { listId, draft } = this.props,
+            currentId = _.get(draft, '_id', null);
 
         return listId === 'new' && !!currentId;
     };
@@ -56,14 +61,14 @@ class ListEditor extends Component {
     };
 
     handleMetadataUpdate = update => {
-        let { current } = this.props,
-            updated = Object.assign({}, current, update);
+        let { draft } = this.props,
+            edited = Object.assign({}, draft, update);
 
-        this.props.update(updated);
+        this.props.edit(edited);
     };
 
     handleSave = () => {
-        this.props.save(this.props.current);
+        this.props.save();
     };
 
     componentDidMount () {
@@ -89,7 +94,7 @@ class ListEditor extends Component {
     }
 
     render () {
-        const { classes, current } = this.props,
+        const { classes, draft } = this.props,
             { expanded, showDialog, canceled, saved } = this.state;
 
         if (canceled) {
@@ -97,16 +102,17 @@ class ListEditor extends Component {
         }
 
         if (saved) {
-            return <Redirect to={`/lists/${current._id}`} />;
+            return <Redirect to={`/lists/${draft._id}`} />;
         }
 
         return (
             <div className={classes.root}>
                 <MetadataPanel
                     expanded={expanded === 'meta'}
-                    list={current}
+                    list={draft}
                     onChange={this.handleMetadataUpdate}
                     onSave={this.handleSave}
+                    isDirty={this.isDirty}
                 />
                 <NewListDialog
                     open={showDialog}
@@ -120,14 +126,15 @@ class ListEditor extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
     listId: _.get(ownProps, 'match.params.id', 'new'),
-    current: _.get(state, 'list.current')
+    draft: _.get(state, 'list.draft'),
+    saved: _.get(state, 'list.saved')
 });
 
 const mapDispatchToProps = {
     load: loadList,
     create: createNewList,
     reset: resetList,
-    update: updateList,
+    edit: editList,
     save: saveList
 };
 
