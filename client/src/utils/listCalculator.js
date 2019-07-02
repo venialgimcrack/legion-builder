@@ -41,6 +41,8 @@ export const calculateSize = size => {
             return 1600;
 
         default:
-            return 0;
+            break;
     }
+
+    return 0;
 };

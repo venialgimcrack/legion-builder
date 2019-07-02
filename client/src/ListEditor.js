@@ -10,6 +10,9 @@ import MetadataPanel from './MetadataPanel';
 import UnitPanel from './UnitPanel';
 import NewListDialog from './NewListDialog';
 
+// TODO define a constant for these somewhere
+const UNIT_RANKS = [ 'commander', 'operative', 'corps', 'special', 'support', 'heavy' ];
+
 class ListEditor extends Component {
     constructor (props) {
         super(props);
@@ -112,6 +115,16 @@ class ListEditor extends Component {
             return <Redirect to={`/lists/${draft._id}`} />;
         }
 
+        let unitPanels = UNIT_RANKS.map((rank, index) => (
+                <UnitPanel
+                    key={`unitPanel${index}`}
+                    expanded={expanded === rank}
+                    onExpand={this.handleExpand(rank)}
+                    list={draft}
+                    rank={rank}
+                />
+            ));
+
         return (
             <div className={classes.root}>
                 <MetadataPanel
@@ -122,12 +135,7 @@ class ListEditor extends Component {
                     onSave={this.handleSave}
                     isDirty={this.isDirty}
                 />
-                <UnitPanel
-                    expanded={expanded === 'commander'}
-                    onExpand={this.handleExpand('commander')}
-                    list={draft}
-                    rank="commander"
-                />
+                {unitPanels}
                 <NewListDialog
                     open={showDialog}
                     onCancel={this.handleCancel}

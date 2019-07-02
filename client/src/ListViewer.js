@@ -53,6 +53,7 @@ class ListViewer extends Component {
 
         if (filtered.length > 0) {
             listItems = filtered.map((list, index) => {
+                // TODO incorporate size and point totals in labels
                 let key = `listItem${index}`,
                     listItemProps = {
                         primary: list.name

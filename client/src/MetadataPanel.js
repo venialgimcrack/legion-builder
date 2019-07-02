@@ -29,6 +29,7 @@ class MetadataPanel extends Component {
     };
 
     handleChange = event => {
+        // TODO changing faction should clear the draft list's units
         this.props.onChange({ [ event.target.name ]: event.target.value });
     };
 
