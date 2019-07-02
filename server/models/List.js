@@ -1,6 +1,7 @@
 const mongoose = require('mongoose'),
     {
         FACTIONS,
+        RANKS,
         SIZES
     } = require('../config/constants'),
     Schema = mongoose.Schema;
@@ -32,6 +33,11 @@ const schema = new Schema({
             id: {
                 type: String,
                 required: true
+            },
+            rank: {
+                type: String,
+                required: true,
+                enum: RANKS
             },
             upgrades: [
                 {

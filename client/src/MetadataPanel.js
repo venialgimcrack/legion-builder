@@ -7,13 +7,34 @@ import Typography from '@material-ui/core/Typography';
 import FlatExpansionPanel from './FlatExpansionPanel';
 import MetadataControls from './MetadataControls';
 
+import { calculateTotal, calculateSize } from './utils/listCalculator';
+
 class MetadataPanel extends Component {
+    MetadataLabel = () => {
+        const { classes, list } = this.props,
+            total = calculateTotal(list),
+            size = calculateSize(list.size),
+            colorProp = total > size ? 'error' : 'default';
+
+        return (
+            <React.Fragment>
+                <div className={classes.lblCol1}>
+                    <Typography>{list.name}</Typography>
+                </div>
+                <div className={classes.lblCol2}>
+                    <Typography align="right" color={colorProp}>{`${total} / ${size}`}</Typography>
+                </div>
+            </React.Fragment>
+        );
+    };
+
     handleChange = event => {
         this.props.onChange({ [ event.target.name ]: event.target.value });
     };
 
     render () {
-        const { classes, expanded, onExpand, list, onSave, isDirty } = this.props;
+        const MetadataLabel = this.MetadataLabel,
+            { classes, expanded, onExpand, list, onSave, isDirty } = this.props;
 
         let { name, faction, size, description } = list,
             errors = {
@@ -27,9 +48,7 @@ class MetadataPanel extends Component {
             <FlatExpansionPanel
                 expanded={expanded}
                 onExpand={onExpand}
-                label={
-                    <Typography>Details</Typography>
-                }
+                label={<MetadataLabel />}
                 details={
                     <div className={classes.root}>
                         <MetadataControls
@@ -55,6 +74,13 @@ const styles = {
         width: '100%',
         display: 'flex',
         flexDirection: 'column'
+    },
+    lblCol1: {
+        flexBasis: '60%'
+    },
+    lblCol2: {
+        flexBasis: '40%',
+        alignSelf: 'center'
     }
 };
 

@@ -19,7 +19,8 @@ const EMPTY_ARRAY = [],
         name: '',
         faction: '',
         size: 'standard',
-        description: ''
+        description: '',
+        units: []
     },
     INIT_STATE = {
         saved: BLANK_LIST,

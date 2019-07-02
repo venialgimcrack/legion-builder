@@ -125,7 +125,8 @@ class ListEditor extends Component {
                 <UnitPanel
                     expanded={expanded === 'commander'}
                     onExpand={this.handleExpand('commander')}
-                    label="Commander(s)"
+                    list={draft}
+                    rank="commander"
                 />
                 <NewListDialog
                     open={showDialog}
