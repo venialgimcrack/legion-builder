@@ -28,12 +28,14 @@ const schema = new Schema({
     description: String,
     units: [
         {
+            _id: false,
             id: {
                 type: String,
                 required: true
             },
             upgrades: [
                 {
+                    _id: false,
                     id: {
                         type: String,
                         required: true

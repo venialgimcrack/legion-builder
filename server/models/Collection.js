@@ -9,6 +9,7 @@ const schema = new Schema({
     },
     products: [
         {
+            _id: false,
             id: {
                 type: String,
                 required: true
@@ -21,6 +22,7 @@ const schema = new Schema({
     ],
     units: [
         {
+            _id: false,
             id: {
                 type: String,
                 required: true
@@ -33,6 +35,7 @@ const schema = new Schema({
     ],
     upgrades: [
         {
+            _id: false,
             id: {
                 type: String,
                 required: true
