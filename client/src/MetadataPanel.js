@@ -13,7 +13,7 @@ class MetadataPanel extends Component {
     };
 
     render () {
-        const { classes, expanded, list, onSave, isDirty } = this.props;
+        const { classes, expanded, onExpand, list, onSave, isDirty } = this.props;
 
         let { name, faction, size, description } = list,
             errors = {
@@ -26,6 +26,7 @@ class MetadataPanel extends Component {
         return (
             <FlatExpansionPanel
                 expanded={expanded}
+                onExpand={onExpand}
                 label={
                     <Typography>Details</Typography>
                 }

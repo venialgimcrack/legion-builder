@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import { loadList, saveList, createNewList, editList, resetList } from './actions/listActions';
 import MetadataPanel from './MetadataPanel';
+import UnitPanel from './UnitPanel';
 import NewListDialog from './NewListDialog';
 
 class ListEditor extends Component {
@@ -71,6 +72,12 @@ class ListEditor extends Component {
         this.props.save();
     };
 
+    handleExpand = panel => (event, expanded) => {
+        this.setState({
+            expanded: expanded ? panel : false
+        })
+    };
+
     componentDidMount () {
         this.props.reset();
 
@@ -109,10 +116,16 @@ class ListEditor extends Component {
             <div className={classes.root}>
                 <MetadataPanel
                     expanded={expanded === 'meta'}
+                    onExpand={this.handleExpand('meta')}
                     list={draft}
                     onChange={this.handleMetadataUpdate}
                     onSave={this.handleSave}
                     isDirty={this.isDirty}
+                />
+                <UnitPanel
+                    expanded={expanded === 'commander'}
+                    onExpand={this.handleExpand('commander')}
+                    label="Commander(s)"
                 />
                 <NewListDialog
                     open={showDialog}

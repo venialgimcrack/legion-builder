@@ -30,7 +30,6 @@ class Collection extends Component {
 
     get isDirty () {
         const { draft, saved } = this.props;
-        // TODO need a way to ignore _id attributes
         return !_.isEqual(draft, saved);
     }
 
@@ -97,7 +96,7 @@ class Collection extends Component {
         this.props.save();
     };
 
-    onExpand = panel => (event, expanded) => {
+    handleExpand = panel => (event, expanded) => {
         this.setState({
             expanded: expanded ? panel : false
         });
@@ -180,7 +179,7 @@ class Collection extends Component {
         return (
             <FlatExpansionPanel
                 expanded={expanded === group}
-                onExpand={this.onExpand(group)}
+                onExpand={this.handleExpand(group)}
                 label={panelLabel}
                 details={details}
                 actions={action}

@@ -4,22 +4,29 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
 import FlatExpansionPanel from './FlatExpansionPanel';
-import UnitControl from './UnitControl';
+import UnitControls from './UnitControls';
 
-const UnitPanel = ({ faction, rank }) => (
+const UnitPanel = ({ classes, expanded, onExpand, label }) => (
     <FlatExpansionPanel
+        expanded={expanded}
+        onExpand={onExpand}
         label={
-            <Typography>{`${rank.substring(0, 1).toUpperCase()}${rank.substring(1)}`}</Typography>
+            <Typography>{label}</Typography>
         }
         details={
-            <UnitControl
-                faction={faction}
-                rank={rank}
-            />
+            <div className={classes.root}>
+                <UnitControls />
+            </div>
         }
     />
 );
 
-const styles = {};
+const styles = {
+    root: {
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column'
+    }
+};
 
 export default withStyles(styles)(UnitPanel);
