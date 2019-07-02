@@ -23,7 +23,6 @@ export default ({ name, faction, size, description, errors, onChange }) => (
                     id: 'faction'
                 }}
             >
-                <MenuItem value=""><em>None</em></MenuItem>
                 <MenuItem value="rebel">Rebel Alliance</MenuItem>
                 <MenuItem value="empire">Galactic Empire</MenuItem>
             </Select>
