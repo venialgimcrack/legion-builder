@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import { loadList, saveList, createNewList, editList, resetList } from './actions/listActions';
 import { loadCollection } from './actions/collectionActions';
+import { getProducts } from './actions/productActions';
 import { getContent } from './actions/contentActions';
 import MetadataPanel from './MetadataPanel';
 import UnitPanel from './UnitPanel';
@@ -70,6 +71,8 @@ class ListEditor extends Component {
         let { draft } = this.props,
             edited = Object.assign({}, draft, update);
 
+        // TODO changing faction should clear the draft list's units
+
         this.props.edit(edited);
     };
 
@@ -88,9 +91,11 @@ class ListEditor extends Component {
 
         if (this.shouldLoadList()) {
             // TODO need a busy indicator
-            this.props.load(this.props.listId);
-            this.props.loadCollection();
+            this.props.getProducts();
             this.props.getContent();
+            this.props.loadCollection();
+
+            this.props.load(this.props.listId);
 
         } else {
             this.showNewListDialog();
@@ -165,7 +170,8 @@ const mapDispatchToProps = {
     edit: editList,
     save: saveList,
     loadCollection,
-    getContent
+    getContent,
+    getProducts
 };
 
 const connected = withRouter(connect(mapStateToProps, mapDispatchToProps)(ListEditor));

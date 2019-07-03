@@ -13,6 +13,8 @@ import { getContent } from './actions/contentActions';
 import CollectionTable from './CollectionTable';
 import FlatExpansionPanel from './FlatExpansionPanel';
 
+import { getOwnedItems } from './utils/collectionCalculator';
+
 const FILTER_KEYS = {
         products: [ 'category', 'faction' ],
         units: [ 'faction', 'rank' ],
@@ -102,53 +104,6 @@ class Collection extends Component {
         });
     };
 
-    getOwnedList = group => {
-        if (group === 'products') {
-            return this.props.draft.products;
-
-        } else {
-            let results = [],
-                modifiers = this.props.draft[group];
-
-            // Compose list with raw counts first
-            this.props.draft.products.forEach(product => {
-                let fullProd = this.props.products.find(prod => prod.id === product.id),
-                    prodContents = fullProd.contents[group],
-                    prodCount = product.count;
-
-                prodContents.forEach(item => {
-                    let result = results.find(res => res.id === item.id);
-
-                    if (result) {
-                        result.count += (item.count * prodCount);
-                    } else {
-                        results.push({
-                            id: item.id,
-                            count: item.count * prodCount
-                        });
-                    }
-                });
-            });
-
-            // Iterate over and apply modifier values
-            modifiers.forEach(modder => {
-                let item = results.find(res => res.id === modder.id);
-
-                if (item && modder.modifier !== 0) {
-                    item.count += modder.modifier;
-
-                } else {
-                    results.push({
-                        id: modder.id,
-                        count: modder.modifier
-                    });
-                }
-            });
-
-            return results.filter(result => result.count > 0);
-        }
-    };
-
     componentDidMount () {
         // TODO need some kind of busy indicator
         this.props.getProducts();
@@ -161,6 +116,7 @@ class Collection extends Component {
             filterKeys = FILTER_KEYS[group];
 
         let items = this.props[group],
+            owned = getOwnedItems(group),
             showTable = items.length > 0,
             saveDisabled = !showTable || !this.isDirty,
             panelLabel =
@@ -168,7 +124,7 @@ class Collection extends Component {
             details = showTable ?
                 <CollectionTable
                     items={items}
-                    owned={this.getOwnedList(group)}
+                    owned={owned}
                     onChange={this.handleChange(group)}
                     filterKeys={filterKeys}
                     { ...other }
