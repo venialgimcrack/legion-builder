@@ -31,7 +31,7 @@ class UnitPanel extends Component {
 
     render () {
         const UnitLabel = this.UnitLabel,
-            { classes, expanded, onExpand } = this.props;
+            { classes, expanded, onExpand, list, rank } = this.props;
 
         return (
             <FlatExpansionPanel
@@ -40,7 +40,10 @@ class UnitPanel extends Component {
                 label={<UnitLabel />}
                 details={
                     <div className={classes.root}>
-                        <UnitControls />
+                        <UnitControls
+                            list={list}
+                            rank={rank}
+                        />
                     </div>
                 }
             />

@@ -6,6 +6,8 @@ import _ from 'lodash';
 import { withStyles } from '@material-ui/core/styles';
 
 import { loadList, saveList, createNewList, editList, resetList } from './actions/listActions';
+import { loadCollection } from './actions/collectionActions';
+import { getContent } from './actions/contentActions';
 import MetadataPanel from './MetadataPanel';
 import UnitPanel from './UnitPanel';
 import NewListDialog from './NewListDialog';
@@ -85,7 +87,11 @@ class ListEditor extends Component {
         this.props.reset();
 
         if (this.shouldLoadList()) {
+            // TODO need a busy indicator
             this.props.load(this.props.listId);
+            this.props.loadCollection();
+            this.props.getContent();
+
         } else {
             this.showNewListDialog();
         }
@@ -157,7 +163,9 @@ const mapDispatchToProps = {
     create: createNewList,
     reset: resetList,
     edit: editList,
-    save: saveList
+    save: saveList,
+    loadCollection,
+    getContent
 };
 
 const connected = withRouter(connect(mapStateToProps, mapDispatchToProps)(ListEditor));
