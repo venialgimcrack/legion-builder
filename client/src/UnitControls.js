@@ -3,46 +3,36 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
 import { withStyles } from '@material-ui/core/styles';
 
+import UnitListItem from './UnitListItem';
 import { getOwnedUnits } from './utils/collectionCalculator';
 
 class UnitControls extends Component {
     render () {
-        const { classes, rank, allUnits } = this.props;
+        const { classes, rank, otherUnits } = this.props;
 
+        // TODO need component for displaying "listUnits"
+        // TODO need handler for removing unit
         let ownedUnits = getOwnedUnits(),
             ownedUnitIds = ownedUnits.map(unit => unit.id),
-            // TODO need to use numeric inputs instead of checkboxes
-            unitItems = allUnits.map((unit, index) => {
+            unitItems = otherUnits.map((unit, index) => {
                 let itemKey = `${rank}-${index}`,
-                    isOwned = ownedUnitIds.indexOf(unit.id) !== -1,
-                    // Display un-owned units in grey text
-                    color = isOwned ? 'default' : 'textSecondary';
+                    isOwned = ownedUnitIds.indexOf(unit.id) !== -1;
 
-                // TODO need to reflect owned unit count in UI
-
+                // TODO need handler for adding unit
                 return (
-                    <ListItem key={itemKey}>
-                        <ListItemText
-                            primary={unit.name}
-                            primaryTypographyProps={{
-                                color
-                            }}
-                        />
-                        <ListItemSecondaryAction>
-                            <Checkbox />
-                        </ListItemSecondaryAction>
-                    </ListItem>
+                    <UnitListItem
+                        key={itemKey}
+                        name={unit.name}
+                        isOwned={isOwned}
+                        onAdd={_.noop}
+                    />
                 );
             });
 
         return (
-            <List dense className={classes.root}>
+            <List className={classes.root}>
                 {unitItems}
             </List>
         );
@@ -51,14 +41,25 @@ class UnitControls extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     let { list, rank } = ownProps,
-        allUnits = _.get(state, 'content.units');
+        listUnitIds = list.units.map(unit => unit.id),
+        allUnits = _.get(state, 'content.units', []).filter(
+            unit => unit.rank === rank && unit.faction === list.faction
+        ),
+        listUnits = [],
+        otherUnits = [];
 
-    allUnits = allUnits.filter(
-        unit => unit.rank === rank && unit.faction === list.faction
-    );
+    allUnits.forEach(unit => {
+        if (listUnitIds.indexOf(unit.id) !== -1) {
+            listUnits.push(unit);
+        } else {
+            otherUnits.push(unit);
+        }
+    });
 
     return {
-        allUnits
+        allUnits,
+        listUnits,
+        otherUnits
     };
 };
 
