@@ -96,8 +96,7 @@ class CollectionTable extends Component {
                 stableSort(filteredItems, getSorting(order, orderBy)).map((item, index) => {
                     let itemId = item.id,
                         rowKey = `item_${itemId}_${index}`,
-                        ownedItem = owned.find(thing => thing.id === itemId),
-                        value = ownedItem && ownedItem.count > 0 ? `${ownedItem.count}` : '',
+                        value = owned[itemId] ? `${owned[itemId]}` : '',
                         cellText = item[identColumn];
 
                     if (item['subtitle']) {
