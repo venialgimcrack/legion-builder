@@ -71,7 +71,7 @@ class UnitPanel extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     let { list, rank } = ownProps,
-        listUnitIds = list.units.map(unit => unit.id),
+        listUnitIds = _.get(list, 'units', []).map(unit => unit.id),
         allUnits = _.get(state, 'content.units', []).filter(
             unit => unit.rank === rank &&
                     unit.faction === list.faction

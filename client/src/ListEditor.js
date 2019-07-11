@@ -87,14 +87,25 @@ class ListEditor extends Component {
     };
 
     componentDidMount () {
+        const { content, products, collection } = this.props;
+
         this.props.reset();
 
-        if (this.shouldLoadList()) {
-            // TODO need a busy indicator
-            this.props.getProducts();
-            this.props.getContent();
-            this.props.loadCollection();
+        // TODO need busy indicators
 
+        if (content && !content.loading && (!content.units.length || !content.upgrades.length)) {
+            this.props.getContent();
+        }
+
+        if (products && !products.loading && !products.items.length) {
+            this.props.getProducts();
+        }
+
+        if (collection && !collection.loading && !!collection.saved) {
+            this.props.loadCollection();
+        }
+
+        if (this.shouldLoadList()) {
             this.props.load(this.props.listId);
 
         } else {
@@ -160,7 +171,10 @@ class ListEditor extends Component {
 const mapStateToProps = (state, ownProps) => ({
     listId: _.get(ownProps, 'match.params.id', 'new'),
     draft: _.get(state, 'list.draft'),
-    saved: _.get(state, 'list.saved')
+    saved: _.get(state, 'list.saved'),
+    content: _.get(state, 'content'),
+    products: _.get(state, 'products'),
+    collection: _.get(state, 'collection')
 });
 
 const mapDispatchToProps = {
